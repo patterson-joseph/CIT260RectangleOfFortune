@@ -17,6 +17,23 @@ public class RectangleOfFortune {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        String dustinCrossley = "Dustin Crossley";
+        String josephPatterson = "Joseph Patterson";
+        
+        RectangleOfFortune name = new RectangleOfFortune();
+        name.displayDustin(dustinCrossley);
+        name.displayJoseph(josephPatterson);
+        
+        Player player = new Player();
+        player.displayName(dustinCrossley);
+    }
+    
+    void displayDustin(String name){
+        System.out.print(name);
+    }
+    
+    void displayJoseph(String name){
+        System.out.print(name);
     }
     
 }
