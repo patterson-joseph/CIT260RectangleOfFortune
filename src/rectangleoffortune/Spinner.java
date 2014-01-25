@@ -8,18 +8,18 @@ package rectangleoffortune;
 
 /**
  *
- * @author Joseph/Dustin
+ * @author Joseph
  */
-public class Puzzle {
+public class Spinner {
     public static void main(String[] args) {
         // TODO code application logic here
-        String puzzleString = "Hello world!";
+        int spinnerLocation = 10;
         
-        Puzzle puzzle = new Puzzle();
-        puzzle.displayPuzzle(puzzleString);
+        Spinner spinner = new Spinner();
+        spinner.displayLocation(spinnerLocation);
     }
     
-    public void displayPuzzle(String puzzleString){
-        System.out.print(puzzleString);
+    public void displayLocation(int spinnerLocation){
+        System.out.print(spinnerLocation);
     }
 }
