@@ -11,33 +11,26 @@ package rectangleoffortune;
  * @author Joseph
  */
 public class Player {
-    public static void main(String[] args) {
-        // TODO code application logic here
-        String playerName = "Default User";
-        float playerBank = 0;
-        int wins = 0;
-        int losses = 0;
-        
-        Player player = new Player();
-        player.displayName(playerName);
-        player.displayBank(playerBank);
-        player.displayWins(wins);
-        player.displayLosses(losses);
+    String playerName = "Default User";
+    float playerBank = 500;
+    int wins = 2;
+    int losses = 1;
+    
+    
+   
+    public void displayName(){
+        System.out.println("Player name is: " + playerName + ".");
     }
     
-    void displayName(String name){
-        System.out.print(name);
+    public void displayBank(){
+        System.out.println("Player has $" + playerBank + " in the bank.");
     }
     
-    void displayBank(float bank){
-        System.out.print(bank);
+    public void displayWins(){
+        System.out.println("Player has won " + wins + " games.");
     }
     
-    void displayWins(int wins){
-        System.out.print(wins);
-    }
-    
-    void displayLosses(int losses){
-        System.out.print(losses);
+    public void displayLosses(){
+        System.out.println("Player has lost " + losses + " games.");
     }
 }
