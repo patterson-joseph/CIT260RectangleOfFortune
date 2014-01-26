@@ -65,7 +65,7 @@ public class RectangleOfFortune {
     
     void getName() {
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter your name: ");
+        System.out.println("\n\nEnter your name: ");
         this.playerName = input.next();
     }
     
