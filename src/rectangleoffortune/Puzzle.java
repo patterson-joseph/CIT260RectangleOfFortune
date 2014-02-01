@@ -11,15 +11,25 @@ package rectangleoffortune;
  * @author Joseph/Dustin
  */
 public class Puzzle {
-    public static void main(String[] args) {
-        // TODO code application logic here
-        String puzzleString = "Hello world!";
-        
-        Puzzle puzzle = new Puzzle();
-        puzzle.displayPuzzle(puzzleString);
-    }
+   String puzzleText = "Hello World!";
     
-    public void displayPuzzle(String puzzleString){
-        System.out.print(puzzleString);
+    public int countLetters(char letter){
+        int count = 0;
+        
+        if(!Character.isLetter(letter) || this.puzzleText.trim().isEmpty()){
+            System.out.print("Invalid letter or puzzle given!");
+            return -1;
+        }
+        
+        for (int i=0; i < this.puzzleText.length(); i++) {
+            if (this.puzzleText.charAt(i) == letter) {
+                count++;
+                System.out.print("Letter " + letter + " found at position:\t" + i + "\n");
+            } else {
+                System.out.print("Letter " + letter + " not found at position:\t" + i + "\n");
+            }
+        }
+        
+        return (byte) count;
     }
 }
