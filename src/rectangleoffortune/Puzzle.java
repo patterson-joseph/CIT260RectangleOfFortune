@@ -12,6 +12,7 @@ package rectangleoffortune;
  */
 public class Puzzle {
    String puzzleText = "Hello World!";
+   int remainingLetters = 0;
     
     public int countLetters(char letter){
         int count = 0;
@@ -29,6 +30,8 @@ public class Puzzle {
                 System.out.print("Letter " + letter + " not found at position:\t" + i + "\n");
             }
         }
+        
+        this.remainingLetters -= count; 
         
         return (byte) count;
     }
