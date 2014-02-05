@@ -11,16 +11,15 @@ package rectangleoffortune;
  * @author Dustin
  */
 public class Board {
-    String puzzleText = "Hello World";
-    int puzzleLength = puzzleText.length();
+    int boardWidth = 10;
+    int boardHeight = 1;
+    
+    public void displayBoardWidth() {
+        System.out.println("Board width is: " + boardWidth);
+    }
+    
+    public void displayBoardHeight() {
+        System.out.println("Board height is: " + boardHeight);
+    }
 
-    public void getPuzzleLength() {
-        System.out.println("Puzzle is: " + this.puzzleLength 
-                + " characters long");
-    }
-    
-    public void getPuzzleText() {
-        System.out.println("Puzzle text is: '" + this.puzzleText + "'");
-    }
-    
 }

@@ -49,13 +49,17 @@ public class RectangleOfFortune {
         player.displayLosses();
         
         Board currentBoard = new Board();
-        currentBoard.getPuzzleText();
-        currentBoard.getPuzzleLength();
+        currentBoard.displayBoardWidth();
+        currentBoard.displayBoardHeight();
         
-        CurrentRound Round = new CurrentRound();
-        Round.showCurrentPlayerTurn();
-        Round.showRemainingVowels();
-        
+        Game game = new Game();
+        game.getPuzzleText();
+        game.getPuzzleLength();    
+        game.showCurrentPlayerTurn();
+        game.showRemainingVowels();
+        game.puzzleText="Lazy River";
+        int iNumCorrectLetters = game.getNumberOfLettersGuessed("r");
+    
     }
     
     void displayDustin(String name){
