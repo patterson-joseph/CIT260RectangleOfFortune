@@ -24,6 +24,9 @@ public class RectangleOfFortune {
      * @param args the command line arguments
      */ 
     public static void main(String[] args) {
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.getInput();
+        
         // TODO code application logic here
         String dustinCrossley = "Dustin Crossley";
         String josephPatterson = "Joseph Patterson";
