@@ -24,23 +24,29 @@ public class RectangleOfFortune {
      * @param args the command line arguments
      */ 
     public static void main(String[] args) {
-        HelpMenuView helpMenu = new HelpMenuView();
-        helpMenu.getInput();
         
+        RectangleOfFortune myGame = new RectangleOfFortune();
+        myGame.displayIntro();
+        
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.getInput();
+        
+//        HelpMenuView helpMenu = new HelpMenuView();
+//        helpMenu.getInput();
+        
+               
         // TODO code application logic here
-        String dustinCrossley = "Dustin Crossley";
-        String josephPatterson = "Joseph Patterson";
+//        String dustinCrossley = "Dustin Crossley";
+//        String josephPatterson = "Joseph Patterson";
         
-        RectangleOfFortune name = new RectangleOfFortune();      
-        name.displayDustin(dustinCrossley);
-        name.displayJoseph(josephPatterson);
+//        RectangleOfFortune name = new RectangleOfFortune();      
+//        name.displayDustin(dustinCrossley);
+//        name.displayJoseph(josephPatterson);
         
 //        Player player = new Player();
 //        player.displayName(dustinCrossley);    
         
-        RectangleOfFortune myGame = new RectangleOfFortune();
         myGame.getName();
-        myGame.displayHelp();
         
         Player player = new Player();
         player.displayName();
@@ -76,8 +82,8 @@ public class RectangleOfFortune {
         this.playerName = input.next();
     }
     
-    public void displayHelp() {
-        System.out.println("\nWelcome " + this.playerName + "\n");
+    public void displayIntro() {
+        System.out.println("\nWelcome!"); // + this.playerName + 
         System.out.println(this.instructions);
     }
 }
