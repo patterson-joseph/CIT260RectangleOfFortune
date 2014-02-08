@@ -12,23 +12,20 @@ import java.util.Scanner;
  *
  * @author Joseph/Dustin
  */
-public class HelpMenuView  {
+public class GameMenuView  {
         
     private final static String[][] menuItems = {
-        {"G", "Rectangle of Fortune Game"},
-        {"R", "Rectangle"},
-        {"C", "Computer Player"},
-        {"T", "Turn, what happens on your turn"},
-        {"P", "Puzzle"},
-        {"B", "Bank"},
-        {"Q", "Quit Help"}
+        {"S", "Spin"},
+        {"B", "Buy a Vowel"},
+        {"P", "Solve the puzzle"},
+        {"Q", "Quit Game"}
     };
     
     // Create instance of the HelpMenuControl (action) class
-    private final HelpMenuControl helpMenuControl = new HelpMenuControl();
+    private final GameMenuControl gameMenuControl = new GameMenuControl();
     
     // default constructor
-    public HelpMenuView() {
+    public GameMenuView() {
         
     } 
     
@@ -47,37 +44,28 @@ public class HelpMenuView  {
             command = command.trim().toUpperCase();
             
             switch (command) {
-                case "G":
-                    this.helpMenuControl.displayGameHelp();
+                case "S":
+                    this.gameMenuControl.spin();
                     break;
-                case "R":
-                    this.helpMenuControl.displayRectangleHelp();
-                    break;
-                case "C":
-                    this.helpMenuControl.displayComputerHelp();
-                    break;                  
-                case "T":
-                    this.helpMenuControl.displayTurnHelp();
+                case "B":
+                    this.gameMenuControl.buyAVowel();
                     break;
                 case "P":
-                    this.helpMenuControl.displayPuzzleHelp();
-                    break;
-                 case "B":
-                    this.helpMenuControl.displayBankHelp();
-                    break; 
+                    this.gameMenuControl.solveThePuzzle();
+                    break;                  
                 case "Q": 
                     break;
                 default: 
                     new RectangleOfFortuneError().displayError("Invalid command. Please enter a valid command.");
             }
-        } while (!command.equals("Q"));  
+        } while (!command.equals("Q")); 
     }
 
         // displays the help menu
     public final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
-        for (String[] menuItem : HelpMenuView.menuItems) {
+        for (String[] menuItem : GameMenuView.menuItems) {
             System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
         }
         System.out.println("\t===============================================================\n");
