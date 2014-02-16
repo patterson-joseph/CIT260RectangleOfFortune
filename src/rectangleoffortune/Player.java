@@ -11,12 +11,15 @@ package rectangleoffortune;
  * @author Joseph
  */
 public class Player {
-    String playerName = "Default User";
-    int playerBank = 500;
-    int wins = 2;
-    int losses = 1;
+    String playerName; // = "Default User";
+    String playerType; // Person or Computer
+    int playerBank; // = 500;
+    int wins; // = 2;
+    int losses; // = 1;
     
+Player() {
     
+}
    
     public void displayName(){
         System.out.println("Player name is: " + playerName + ".");

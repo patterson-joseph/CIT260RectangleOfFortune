@@ -19,7 +19,7 @@ public class MainMenuView {
         {"1", "1 Player Game"},
         {"2", "2 Player Game"},
         {"3", "3 Player Game"},
-        {"G", "Game Menu"},
+//        {"G", "Game Menu"},
         {"H", "Help Menu"},
         {"X", "Exit Rectangle of Fortune"},
     };
@@ -56,9 +56,9 @@ public class MainMenuView {
                 case "3":
                     this.mainMenuControl.display3PlayerGame();
                     break; 
-                case "G":
-                    this.mainMenuControl.displayGameMenu();
-                    break;
+//                case "G":
+//                    this.mainMenuControl.displayGameMenu();
+//                    break;
                 case "H":
                     this.mainMenuControl.displayHelpMenu();
                     break;
@@ -72,7 +72,7 @@ public class MainMenuView {
         
          return;
     }
-
+    
 //         displays the help menu
     public final void display() {
         System.out.println("\n\t===============================================================");

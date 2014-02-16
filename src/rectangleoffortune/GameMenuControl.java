@@ -38,6 +38,12 @@ public class GameMenuControl  {
         displayBorder();
     }
     
+    public void promptForPlayerName(int playerNumber) {
+        System.out.println();
+        displayBorder();
+        System.out.println("Player " + playerNumber + ", please enter your name");
+        
+    }
     public void displayBorder() {       
         System.out.println(
         "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");

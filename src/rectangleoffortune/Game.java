@@ -11,59 +11,80 @@ package rectangleoffortune;
  * @author Dustin
  */
 public class Game {
-    //Re-named from CurrentRound to Game ~dustin
-    int currentPlayerTurn=1;
-    int remainingVowels=3;
-    String puzzleText = "Hello World";
-    int puzzleLength = puzzleText.length();
-
-    public void getPuzzleLength() {
-        System.out.println("Puzzle is: " + this.puzzleLength 
-                + " characters long");
-    }
+    int numberOfPlayers;
+    int currentPlayerNumberTurn;
+    private String currentPlayerName;
+    Player player1;
+    Player player2;
+    Player player3;
+    Puzzle puzzle;
+    Player playerList[];
     
-    public void getPuzzleText() {
-        System.out.println("Puzzle text is: '" + this.puzzleText + "'");
+    Game(int playerCount) {
+        numberOfPlayers=playerCount;
+        //instance the correct number of players
+        switch (numberOfPlayers) {
+            case 3:
+                player3 = new Player();
+            case 2:
+                player2 = new Player();
+            case 1:
+                player1 = new Player();
+        }
+        
+        //set up list of players
+        if (numberOfPlayers==1) {
+            //future use - setup computer player
+            playerList=new Player[1];
+            playerList[0]=player1;
+        }
+        else if(numberOfPlayers==2) {
+            playerList=new Player[2];
+            playerList[0]=player1;
+            playerList[1]=player2;
+//            Player playerList[]= new Player[]{player1, player2};              
+        }
+        else if(numberOfPlayers==3) {
+            playerList=new Player[3];
+            playerList[0]=player1;
+            playerList[1]=player2;
+            playerList[2]=player3;
+        }
+        
+        //we'll start with player1
+        currentPlayerNumberTurn=1;
+        currentPlayerName="";
+        // set up instance of puzzle class
+        puzzle = new Puzzle();
     }
-    
+   
     public void showCurrentPlayerTurn() {
-        System.out.println("It is player " + currentPlayerTurn + "'s turn.");
-    }
-    public void showRemainingVowels() {
-        System.out.println("There are " + remainingVowels 
-                + " vowels remaining.");
-    }
+        System.out.println("It is player " + getCurrentPlayerName() + "'s turn.");
+    }    
 
-    public int getNumberOfLettersGuessed(String guessedLetter) {
-        
-        int numberOfHits = 0;
-        boolean isConsonant = false;
-        String consonants[]= {"B","C","D","F","G","H","J","K","L","M","N","P"
-                            ,"Q","R","S","T","V","W","X","Y","Z"};
-        double dRatio = 0;  //percentage of letters correctly guessed, as double
-        int iRatio = 0;     //percentage of letters correctlyi guessed, as int
-        for (String validLetter : consonants) {
-            String guess = guessedLetter.toUpperCase();
-            if (validLetter.equals(guess)) {
-                isConsonant=true;
-            }
+    /**
+     * @return the currentPlayerName
+     */
+    public String getCurrentPlayerName() {
+        switch (currentPlayerNumberTurn) {
+
+            case 1:
+                currentPlayerName= player1.playerName;
+                break;
+            case 2:
+                currentPlayerName= player2.playerName;
+                break;
+            case 3:
+                currentPlayerName= player3.playerName;
+                break;
         }
-        
-        if (isConsonant == false)    {
-            System.out.println(guessedLetter + " is not a consonant.\n"
-                    + "Please enter a \"consonant\".");
-            return 0;
-        }
-        
-        int puzzleLengthWithoutLetter = 0;
-        puzzleLengthWithoutLetter=puzzleText.replace(guessedLetter, "").length();
-        numberOfHits=puzzleLength - puzzleLengthWithoutLetter;
-        
-        dRatio=(double)numberOfHits/(double)puzzleLength;
-        dRatio=dRatio*100;
-        iRatio=(int)dRatio;
-        System.out.println("Player guessed " + numberOfHits + " letters "
-                + "correctly, " + iRatio + "% of the total.");
-        return numberOfHits;
+        return currentPlayerName;
+    }
+    
+    /**
+     * @param currentPlayerName the currentPlayerName to set
+     */
+    public void setCurrentPlayerName(String currentPlayerName) {
+        this.currentPlayerName = currentPlayerName;
     }
 }

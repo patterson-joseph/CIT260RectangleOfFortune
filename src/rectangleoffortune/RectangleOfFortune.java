@@ -46,25 +46,21 @@ public class RectangleOfFortune {
 //        Player player = new Player();
 //        player.displayName(dustinCrossley);    
         
-        myGame.getName();
-        
-        Player player = new Player();
-        player.displayName();
-        player.displayBank();
-        player.displayWins();
-        player.displayLosses();
-        
-        Board currentBoard = new Board();
-        currentBoard.displayBoardWidth();
-        currentBoard.displayBoardHeight();
-        
-        Game game = new Game();
-        game.getPuzzleText();
-        game.getPuzzleLength();    
-        game.showCurrentPlayerTurn();
-        game.showRemainingVowels();
-        game.puzzleText="Lazy River";
-        int iNumCorrectLetters = game.getNumberOfLettersGuessed("r");
+//        myGame.getName();
+//        
+//        Player player = new Player();
+//        player.displayName();
+//        player.displayBank();
+//        player.displayWins();
+//        player.displayLosses();
+               
+//        Game game = new Game();
+//        game.getPuzzleText();
+//        game.getPuzzleLength();    
+//        game.showCurrentPlayerTurn();
+//        game.showRemainingVowels();
+//        game.puzzleText="Lazy River";
+//        int iNumCorrectLetters = game.getNumberOfLettersGuessed("r");
     
     }
     

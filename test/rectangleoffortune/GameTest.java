@@ -39,43 +39,42 @@ public class GameTest {
     }
 
     /**
-     * Test of getPuzzleLength method, of class Board.
+     * Test of showCurrentPlayerTurn method, of class Game.
      */
     @Test
-    public void testGetPuzzleLength() {
-        System.out.println("getPuzzleLength");
-        Game instance = new Game();
-        instance.getPuzzleLength();
+    public void testShowCurrentPlayerTurn() {
+        System.out.println("showCurrentPlayerTurn");
+        Game instance = null;
+        instance.showCurrentPlayerTurn();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
     }
 
     /**
-     * Test of getPuzzleText method, of class Board.
+     * Test of getCurrentPlayerName method, of class Game.
      */
     @Test
-    public void testGetPuzzleText() {
-        System.out.println("getPuzzleText");
-        Game instance = new Game();
-        instance.getPuzzleText();
-        // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of getNumberOfLettersGuessed method, of class Board.
-     */
-    @Test
-    public void testGetNumberOfLettersGuessed() {
-        System.out.println("getNumberOfLettersGuessed");
-        String guessedLetter = "r";
-        Game instance = new Game();
-        instance.puzzleText="Lazy River";
-        int expResult = 2;
-        int result = instance.getNumberOfLettersGuessed(guessedLetter);
+    public void testGetCurrentPlayerName() {
+        System.out.println("getCurrentPlayerName");
+        Game instance = null;
+        String expResult = "";
+        String result = instance.getCurrentPlayerName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setCurrentPlayerName method, of class Game.
+     */
+    @Test
+    public void testSetCurrentPlayerName() {
+        System.out.println("setCurrentPlayerName");
+        String currentPlayerName = "";
+        Game instance = null;
+        instance.setCurrentPlayerName(currentPlayerName);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

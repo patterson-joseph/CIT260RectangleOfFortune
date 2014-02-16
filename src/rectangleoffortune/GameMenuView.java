@@ -13,7 +13,7 @@ import java.util.Scanner;
  * @author Joseph/Dustin
  */
 public class GameMenuView  {
-        
+    Game game;
     private final static String[][] menuItems = {
         {"S", "Spin"},
         {"B", "Buy a Vowel"},
@@ -25,13 +25,15 @@ public class GameMenuView  {
     private final GameMenuControl gameMenuControl = new GameMenuControl();
     
     // default constructor
-    public GameMenuView() {
-        
+    public GameMenuView(Game game) {
+        this.game=game;
     } 
     
     // display the help menu and get the end users input selection
     public void getInput() {       
-              
+
+        showWhosTurn(game.getCurrentPlayerName());
+        game.puzzle.displayPuzzle();
         String command;
         Scanner inFile = new Scanner(System.in);
         
@@ -61,9 +63,17 @@ public class GameMenuView  {
         } while (!command.equals("Q")); 
     }
 
+    public String getPlayerName(int playerNumber) {
+        this.gameMenuControl.promptForPlayerName(playerNumber);
+        String name;
+        Scanner inString = new Scanner(System.in);
+        name=inString.nextLine().trim().toUpperCase();
+        return name;
+    }
+        
         // displays the help menu
     public final void display() {
-        System.out.println("\n\t===============================================================");
+        System.out.println("\n\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
         for (String[] menuItem : GameMenuView.menuItems) {
             System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
@@ -71,4 +81,9 @@ public class GameMenuView  {
         System.out.println("\t===============================================================\n");
     }
   
+    public final void showWhosTurn(String playerName) {
+        System.out.println("\n\t===============================================================");
+        System.out.println("\t" + playerName + ", it's your turn.");
+        System.out.println("\t===============================================================\n");        
+    }
 }

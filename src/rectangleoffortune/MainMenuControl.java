@@ -28,6 +28,11 @@ public class MainMenuControl  {
         System.out.println( 
                 "\tThis menu item selects a 2 player game");
         displayBorder();
+        Game game = new Game(2);
+        GameMenuView gameMenu = new GameMenuView(game);
+        game.player1.playerName = gameMenu.getPlayerName(1);
+        game.player2.playerName = gameMenu.getPlayerName(2);
+        gameMenu.getInput();
     }    
 
     public void display3PlayerGame() {
@@ -37,11 +42,11 @@ public class MainMenuControl  {
         displayBorder();
     }
 
-    public void displayGameMenu() {
-        // instance of the Game menu class
-        GameMenuView gameMenu = new GameMenuView();
-        gameMenu.getInput();
-    }
+//    public void displayGameMenu() {
+//        // instance of the Game menu class
+//        GameMenuView gameMenu = new GameMenuView();
+//        gameMenu.getInput();
+//    }
         
     public void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
