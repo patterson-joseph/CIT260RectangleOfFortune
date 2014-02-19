@@ -18,6 +18,7 @@ public class GameMenuView  {
         {"S", "Spin"},
         {"B", "Buy a Vowel"},
         {"P", "Solve the puzzle"},
+        {"C", "Current Player Bank Standing"},
         {"Q", "Quit Game"}
     };
     
@@ -54,7 +55,9 @@ public class GameMenuView  {
                     break;
                 case "P":
                     this.gameMenuControl.solveThePuzzle();
-                    break;                  
+                    break; 
+                case "C":
+                    this.game.showCurrentPlayerStanding();
                 case "Q": 
                     break;
                 default: 
@@ -70,7 +73,17 @@ public class GameMenuView  {
         name=inString.nextLine().trim().toUpperCase();
         return name;
     }
+
+    public void printPlayerStanding() {
+        System.out.println("\n\n\t===============================================================");
+        System.out.println("\tCurrent Player Standing:");
+        //make call to game.showPlayerStandingHere
+            
         
+        System.out.println("\t===============================================================\n");
+    }
+    
+    
         // displays the help menu
     public final void display() {
         System.out.println("\n\n\t===============================================================");

@@ -40,6 +40,12 @@ public class MainMenuControl  {
         System.out.println( 
                 "\tThis menu item selects a 3 player game");
         displayBorder();
+        Game game = new Game(3);
+        GameMenuView gameMenu = new GameMenuView(game);
+        game.player1.playerName = gameMenu.getPlayerName(1);
+        game.player2.playerName = gameMenu.getPlayerName(2);
+        game.player3.playerName = gameMenu.getPlayerName(3);
+        gameMenu.getInput();   
     }
 
 //    public void displayGameMenu() {

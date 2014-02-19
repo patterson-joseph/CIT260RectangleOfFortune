@@ -12,6 +12,7 @@ package rectangleoffortune;
  */
 public class Puzzle {
     private String puzzleText;
+    private int puzzleNumWords;
     int remainingLetters = 0;
     private Letter currentPuzzle[];
     int remainingVowels; //=3;
@@ -48,7 +49,7 @@ public class Puzzle {
 //        String newPuzzle="HAPPY DAY";
 //        String newPuzzle="A FLOWER";
 //        String newPuzzle="ON FIRE";
-        String newPuzzle="WISH UPON A STAR";
+        String newPuzzle="JAVA PROGRAM";
         return newPuzzle;
     }
     
@@ -69,6 +70,39 @@ public class Puzzle {
                 System.out.print("?");
             }
         }
+    }
+
+    public void displayPuzzle2() {
+        // alternate way of displaying the puzzle
+        int puzzleRow=1; // which row we're working with, 2 rows total for now
+        int colPosition=1; //which column, 12, 12
+        int colCharStart=1; //which column to start on (to adjust for center)
+        int charRow=1; //which row of the character build are we on, 3 total
+        int numWords=1; // how many words are there in the puzzle
+        
+        String topBottom = "---|";
+        String startLeft = "|";
+        
+        colCharStart = currentPuzzle.length >>> 1;
+        for(Letter x: currentPuzzle) {
+            System.out.print(startLeft);
+            System.out.print(topBottom);
+        }
+        // next character line
+        System.out.flush();
+        colPosition=1;
+        for(Letter x: currentPuzzle) {
+            System.out.print(startLeft);
+            if (colPosition==colCharStart) {
+                System.out.print(" " + x.value + " ");
+            }
+            else {
+                   System.out.print("   ");
+            }
+            
+        }
+        
+        
     }
     
     public int countLetters(char letter){
