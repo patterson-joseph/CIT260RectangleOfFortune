@@ -6,6 +6,8 @@
 
 package rectangleoffortune;
 
+import java.util.HashSet;
+import java.util.Set;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -45,7 +47,7 @@ public class GameTest {
     public void testShowCurrentPlayerTurn() {
         System.out.println("showCurrentPlayerTurn");
         Game instance = null;
-        instance.showCurrentPlayerTurn();
+//        instance.showCurrentPlayerTurn();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
@@ -56,12 +58,13 @@ public class GameTest {
     @Test
     public void testGetCurrentPlayerName() {
         System.out.println("getCurrentPlayerName");
-        Game instance = null;
-        String expResult = "";
+        Game instance = new Game(1);
+        instance.player1.playerName="Player1";
+        String expResult = "Player1";
         String result = instance.getCurrentPlayerName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
@@ -72,9 +75,85 @@ public class GameTest {
         System.out.println("setCurrentPlayerName");
         String currentPlayerName = "";
         Game instance = null;
-        instance.setCurrentPlayerName(currentPlayerName);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+
+    /**
+     * Test of showCurrentPlayerStanding method, of class Game.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding1() {
+        System.out.println("showCurrentPlayerStanding");
+        Game instance = new Game(3);
+        instance.player1.playerName="Player1";
+        instance.player1.playerBank=0;
+        instance.player2.playerName="Player2";
+        instance.player2.playerBank=300;
+        instance.player3.playerName="Player3";
+        instance.player3.playerBank=500;        
+        instance.showCurrentPlayerStanding();
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
+
+     /**
+     * Test of showCurrentPlayerStanding method, of class Game.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding2() {
+        System.out.println("showCurrentPlayerStanding");
+        Game instance = new Game(0);
+        instance.showCurrentPlayerStanding();
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
+
+     /**
+     * Test of showCurrentPlayerStanding method, of class Game.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding3() {
+        System.out.println("showCurrentPlayerStanding");
+        Game instance = new Game(2);
+        instance.player1.playerName="Player1";
+        instance.player1.playerBank=0;      
+        instance.showCurrentPlayerStanding();
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
     
+              /**
+     * Test of showCurrentPlayerStanding method, of class Game.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding4() {
+        System.out.println("showCurrentPlayerStanding");
+        Game instance = new Game(2);
+        instance.player1.playerName="Player1";
+        instance.player1.playerBank=-100;
+        instance.player2.playerName="Player2";
+        instance.player2.playerBank=0;          
+        instance.showCurrentPlayerStanding();
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
+    
+      /**
+     * Test of showCurrentPlayerStanding method, of class Game.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding5() {
+        System.out.println("showCurrentPlayerStanding");
+        Game instance = new Game(2);
+        instance.player1.playerName="Player1";
+        instance.player1.playerBank=0;
+        instance.player2.playerName="Player2";
+        instance.player2.playerBank=0;     
+        instance.showCurrentPlayerStanding();
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }
+    
+
 }

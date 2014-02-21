@@ -26,13 +26,16 @@ public class Game {
         switch (numberOfPlayers) {
             case 3:
                 player3 = new Player();
-                player3.playerBank=11075;
+                player3.playerBank=0;
+                player3.playerName="Player1";
             case 2:
                 player2 = new Player();
-                player2.playerBank=11050;
+                player2.playerBank=0;
+                player2.playerName="Player2";
             case 1:
                 player1 = new Player();
-                player1.playerBank=3500;
+                player1.playerBank=0;
+                player1.playerName="Player1";
         }
         
         //set up list of players
@@ -94,30 +97,40 @@ public class Game {
     public void showCurrentPlayerStanding() {
         //sort player list by bank amount, highest to lowest
         //attempting an insertion sort method
+
         Player tempArray[] = playerList;
                    
         int j;      //number of items sorted so far
         Player key;    // the item to be inserted
         int i;
-        
-        for(j=1;j<tempArray.length;j++) { // start with base 1 counting
-            key=tempArray[j]; // remember which array is in the first position
-            for(i=j-1;(i>=0) && (tempArray[i].playerBank<key.playerBank);i--) {
-                tempArray[i+1]=tempArray[i];
+
+        //assert(playerList!=null);
+        if (tempArray==null) {
+            System.out.println("Missing or corrupt player array!");
+            return;
+        }
+        else {
+            for(j=1;j<tempArray.length;j++) { // start with base 1 counting
+                key=tempArray[j]; // remember which array starts in the first position
+                for(i=j-1;(i>=0) && (tempArray[i].playerBank<key.playerBank);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
+                    tempArray[i+1]=tempArray[i]; //amount is less, so move the small value up
+                }
+            tempArray[i+1]=key; //make sure the  to put the key in the correct location
             }
-            tempArray[i+1]=key;
+
+            // tempArray is now sorted highest bank amount to lowest, so display it
+            System.out.println(
+            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            for (i=0;i<tempArray.length;i++) {
+                System.out.println("\t\t" + tempArray[i].playerName 
+                + " is in " + placeRank(i) + " place with $"
+                + tempArray[i].playerBank);
+            }
+            System.out.println(
+            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+            
+            return;
         }
-        
-        // tempArray is now sorted highest to lowest, so let's display it
-        System.out.println(
-        "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        for (i=0;i<tempArray.length;i++) {
-            System.out.println("\t\t" + tempArray[i].playerName 
-            + " is in " + placeRank(i) + " place with $"
-            + tempArray[i].playerBank);
-        }
-        System.out.println(
-        "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
     
     private String placeRank(int rank) {
