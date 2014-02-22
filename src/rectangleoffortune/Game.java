@@ -180,17 +180,17 @@ public class Game {
     
     public void changeCurrentPlayerTurn() {
         
-        switch (currentPlayerNumberTurn) {
-            case 1:
-                currentPlayerNumberTurn=2;
-                break;
-            case 2:
-                currentPlayerNumberTurn=3;
-                break;
-            case 3:
-                currentPlayerNumberTurn=1;
-                break;
+        
+        if (currentPlayerNumberTurn==getNumberOfPlayers()) {
+            //if we're on the last player, move back to the beginning of the list
+            currentPlayerNumberTurn=1;
         }
+        else {
+            //advance player turn by 1
+            currentPlayerNumberTurn++;
+        }
+        //keep track of the number of turns
+        this.totalNumberOfTurns++;
             
 }
     /**

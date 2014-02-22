@@ -51,7 +51,7 @@ public class GameMenuView  {
                     this.gameMenuControl.spin(game);
                     break;
                 case "B":
-                    if(game.playerList[game.currentPlayerNumberTurn].playerBank >= 250){
+                    if(game.getCurrentPlayer().playerBank >= 250){
                         this.gameMenuControl.buyAVowel(game);
                     } else {
                         new RectangleOfFortuneError().displayError("Not enough money to buy a vowel!");
@@ -62,7 +62,8 @@ public class GameMenuView  {
                     break; 
                 case "C":
                     this.game.showCurrentPlayerStanding();
-                case "Q": 
+                case "Q":
+                    
                     break;
                 default: 
                     new RectangleOfFortuneError().displayError("Invalid command. Please enter a valid command.");
