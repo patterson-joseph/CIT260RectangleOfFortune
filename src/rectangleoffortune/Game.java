@@ -20,6 +20,7 @@ public class Game {
     Player player3;
     Puzzle puzzle;
     Player playerList[];
+    Spinner spinner = new Spinner();
     
     Game(int playerCount) {
 //        numberOfPlayers=playerCount;
@@ -115,9 +116,7 @@ public class Game {
         //assert(playerList!=null);
         if (tempArray==null) {
             System.out.println("Missing or corrupt player array!");
-            return;
-        }
-        else {
+        } else {
             for(j=1;j<tempArray.length;j++) { // start with base 1 counting
                 key=tempArray[j]; // remember which array starts in the first position
                 for(i=j-1;(i>=0) && (tempArray[i].playerBank<key.playerBank);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
@@ -136,8 +135,6 @@ public class Game {
             }
             System.out.println(
             "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            
-            return;
         }
     }
     
