@@ -11,9 +11,10 @@ package rectangleoffortune;
  * @author Dustin
  */
 public class Game {
-    int numberOfPlayers;
+//    private int numberOfPlayers;
     int currentPlayerNumberTurn;
-    private String currentPlayerName;
+    int totalNumberOfTurns;
+//    private String currentPlayerName;
     Player player1;
     Player player2;
     Player player3;
@@ -21,36 +22,39 @@ public class Game {
     Player playerList[];
     
     Game(int playerCount) {
-        numberOfPlayers=playerCount;
+//        numberOfPlayers=playerCount;
         //instance the correct number of players
-        switch (numberOfPlayers) {
+        switch (playerCount) {
             case 3:
                 player3 = new Player();
                 player3.playerBank=0;
-                player3.playerName="Player1";
+                player3.playerName="Player3";
+                player3.playerNumber=3;
             case 2:
                 player2 = new Player();
                 player2.playerBank=0;
                 player2.playerName="Player2";
+                player2.playerNumber=2;
             case 1:
                 player1 = new Player();
                 player1.playerBank=0;
                 player1.playerName="Player1";
+                player1.playerNumber=1;
         }
         
         //set up list of players
-        if (numberOfPlayers==1) {
+        if (playerCount==1) {
             //future use - setup computer player
             playerList=new Player[1];
             playerList[0]=player1;
         }
-        else if(numberOfPlayers==2) {
+        else if(playerCount==2) {
             playerList=new Player[2];
             playerList[0]=player1;
             playerList[1]=player2;
 //            Player playerList[]= new Player[]{player1, player2};              
         }
-        else if(numberOfPlayers==3) {
+        else if(playerCount==3) {
             playerList=new Player[3];
             playerList[0]=player1;
             playerList[1]=player2;
@@ -58,10 +62,10 @@ public class Game {
         }
         
         //we'll start with player1
-        currentPlayerNumberTurn=1;
-        currentPlayerName="";
+        this.currentPlayerNumberTurn=1;
+        this.totalNumberOfTurns=1;
         // set up instance of puzzle class
-        puzzle = new Puzzle();
+        this.puzzle = new Puzzle();
     }
    
     public void showCurrentPlayerTurn() {
@@ -72,27 +76,31 @@ public class Game {
      * @return the currentPlayerName
      */
     public String getCurrentPlayerName() {
-        switch (currentPlayerNumberTurn) {
-
-            case 1:
-                currentPlayerName= player1.playerName;
-                break;
-            case 2:
-                currentPlayerName= player2.playerName;
-                break;
-            case 3:
-                currentPlayerName= player3.playerName;
-                break;
+        String playerName="";
+        
+        if (playerList==null) {
+            System.out.println("Missing or corrupt player array!");
+            return playerName;
         }
-        return currentPlayerName;
+        if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
+            System.out.println("Invalid Player turn defined");
+            return playerName;
+        }
+        for(Player i: playerList) {
+            if (i.playerNumber==this.currentPlayerNumberTurn) {
+                playerName=i.playerName;
+            }
+        }
+
+         return playerName;
     }
     
-    /**
-     * @param currentPlayerName the currentPlayerName to set
-     */
-    public void setCurrentPlayerName(String currentPlayerName) {
-        this.currentPlayerName = currentPlayerName;
-    }
+//    /**
+//     * @param currentPlayerName the currentPlayerName to set
+//     */
+//    public void setCurrentPlayerName(String currentPlayerName) {
+//        this.currentPlayerName = currentPlayerName;
+//    }
 
     public void showCurrentPlayerStanding() {
         //sort player list by bank amount, highest to lowest
@@ -147,4 +155,27 @@ public class Game {
         }
         return place;
     }
+    
+    public void changeCurrentPlayerTurn() {
+        
+        switch (currentPlayerNumberTurn) {
+            case 1:
+                currentPlayerNumberTurn=2;
+                break;
+            case 2:
+                currentPlayerNumberTurn=3;
+                break;
+            case 3:
+                currentPlayerNumberTurn=1;
+                break;
+        }
+            
+}
+    /**
+     * @return the numberOfPlayers
+     */
+    public int getNumberOfPlayers() {
+        return playerList.length;
+    }
+
 }
