@@ -8,46 +8,42 @@ import java.util.Scanner;
  */
 public class GuessALetterView {
     //Array of Consonants
-    private final static String[] consonants = {"B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"};
+    public final static char[] consonants = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};
+    public final static char[] vowels = {'A','E','I','O','U'};
     
     // display the Guess A Letter menu and get the end users input selection
-    public String getInput() {
-        Boolean notConsonant = true;
-        String command = null;
+    public char getInput(char[] type) {
+        Boolean notValid = true;
+        char command;
         Scanner inFile = new Scanner(System.in);
         
-        while(notConsonant){
-            this.display(); // display the menu
+        do{
+            this.display(type); // display the menu
             
-            // get commaned entered
-            command = inFile.nextLine();
-            command = command.trim().toUpperCase();
-            
-            if(command.length() > 1){
-                new RectangleOfFortuneError().displayError("Please enter one character!");
-                continue;
-            }
-            
-            for (String consonant : consonants){
-                if(consonant == null ? command == null : consonant.equals(command)){
-                    notConsonant = false;
+            // get command entered
+            command = Character.toUpperCase(inFile.next().charAt(0));
+
+            for (char letter : type){
+                if(letter == command){
+                    notValid = false;
+                    break;
                 }
             }
             
-            if(notConsonant){
-                new RectangleOfFortuneError().displayError("Input is not a consonant. Please enter a consonant.");
+            if(notValid){
+                new RectangleOfFortuneError().displayError("Invalid Input!");
             }
-        }
+        }while(notValid);
         
         return command;
     }
     
     // displays the help menu
-    public final void display() {
+    public final void display(char[] type) {
         System.out.println("\n\t===============================================================");
-        System.out.print("\tBuy a Consonant(");
-        for (String consonant : GuessALetterView.consonants) {
-            System.out.print(consonant);
+        System.out.print("\tGuess a Letter(");
+        for (char letter : type) {
+            System.out.print(letter);
         }
         System.out.print(")\n");
         System.out.println("\t===============================================================\n");

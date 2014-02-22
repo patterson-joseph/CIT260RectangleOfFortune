@@ -48,10 +48,14 @@ public class GameMenuView  {
             
             switch (command) {
                 case "S":
-                    this.gameMenuControl.spin();
+                    this.gameMenuControl.spin(game);
                     break;
                 case "B":
-                    this.gameMenuControl.buyAVowel();
+                    if(game.playerList[game.currentPlayerNumberTurn].playerBank >= 250){
+                        this.gameMenuControl.buyAVowel(game);
+                    } else {
+                        new RectangleOfFortuneError().displayError("Not enough money to buy a vowel!");
+                    }
                     break;
                 case "P":
                     this.gameMenuControl.solveThePuzzle();

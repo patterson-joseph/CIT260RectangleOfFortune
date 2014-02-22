@@ -14,6 +14,7 @@ public class Game {
 //    private int numberOfPlayers;
     int currentPlayerNumberTurn;
     int totalNumberOfTurns;
+    Player currentPlayer;
 //    private String currentPlayerName;
     Player player1;
     Player player2;
@@ -82,6 +83,7 @@ public class Game {
         if (playerList==null) {
             System.out.println("Missing or corrupt player array!");
             return playerName;
+
         }
         if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
             System.out.println("Invalid Player turn defined");
@@ -94,6 +96,29 @@ public class Game {
         }
 
          return playerName;
+    }
+    
+    /**
+     * @return the currentPlayerName
+     */
+    public Player getCurrentPlayer() {
+        Player currentPlayer=new Player();
+        
+        if (playerList==null) {
+            System.out.println("Missing or corrupt player array!");
+            return currentPlayer;
+        }
+        if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
+            System.out.println("Invalid Player turn defined");
+            return currentPlayer;
+        }
+        for(Player i: playerList) {
+            if (i.playerNumber==this.currentPlayerNumberTurn) {
+                currentPlayer=i;
+            }
+        }
+
+         return currentPlayer;
     }
     
 //    /**

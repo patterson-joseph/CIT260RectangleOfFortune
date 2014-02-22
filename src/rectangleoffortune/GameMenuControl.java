@@ -1,5 +1,7 @@
 package rectangleoffortune;
 
+import java.util.Random;
+import java.util.Scanner;
 
 /**
  *
@@ -11,22 +13,59 @@ public class GameMenuControl  {
         
     } 
         
-    public void spin() {
-        System.out.println();
-        displayBorder();     
-        System.out.println(
-                "\tThis function will be used to perform the spin operation."
-                ); 
+    public void spin(Game game) {
+        game.spinner.spinnerLocation = new Random().nextInt(game.spinner.spinnerValues.length);
+        
         displayBorder();
+        System.out.println(
+            "\tEach letter is worth $" 
+            + game.spinner.spinnerValues[game.spinner.spinnerLocation]
+        );
+        displayBorder();
+        
+        game.puzzle.displayPuzzle();
+        GuessALetterView guessLetter = new GuessALetterView();
+        char guessedLetter = guessLetter.getInput(guessLetter.consonants);
+        
+        int count = game.puzzle.countLetters(guessedLetter);        
+        
+        if(count > 0){
+            game.getCurrentPlayer().playerBank += count*game.spinner.spinnerValues[game.spinner.spinnerLocation];           
+            displayBorder();
+            System.out.println("\tThere are " + count + " " + guessedLetter + "s. Your bank total is now: $" + game.getCurrentPlayer().playerBank);
+            displayBorder();
+        } else {
+            displayBorder();
+            System.out.println("\tLetter not found in puzzle or was already guessed!");
+            displayBorder();
+            game.changeCurrentPlayerTurn();
+        }
+        
+        GameMenuView gameMenu = new GameMenuView(game);
+        gameMenu.getInput();
     }
     
-    public void buyAVowel() {
-        System.out.println();
-        this.displayBorder();             
-        System.out.println(
-                "\tThis function will be used to perform the buy a vowel operation."
-            );
-        displayBorder();
+    public void buyAVowel(Game game) {        
+        game.puzzle.displayPuzzle();
+        GuessALetterView guessLetter = new GuessALetterView();
+        char guessedLetter = guessLetter.getInput(guessLetter.vowels);
+        
+        int count = game.puzzle.countLetters(guessedLetter);  
+        
+        if(count > 0){
+            game.getCurrentPlayer().playerBank -= 250;
+            displayBorder();
+            System.out.println("\tThere are " + count + " " + guessedLetter + "s. Your bank total is now: $" + game.getCurrentPlayer().playerBank);
+            displayBorder();
+        } else {
+            displayBorder();
+            System.out.println("\tLetter not found in puzzle or was already guessed!");
+            displayBorder();
+            game.changeCurrentPlayerTurn();
+        }
+        
+        GameMenuView gameMenu = new GameMenuView(game);
+        gameMenu.getInput();
     }
           
     public void solveThePuzzle() {
@@ -46,6 +85,6 @@ public class GameMenuControl  {
     }
     public void displayBorder() {       
         System.out.println(
-        "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        "\t===============================================================");
     }
 }

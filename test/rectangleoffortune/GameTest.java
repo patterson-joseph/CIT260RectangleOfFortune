@@ -46,21 +46,24 @@ public class GameTest {
     @Test
     public void testShowCurrentPlayerTurn() {
         System.out.println("showCurrentPlayerTurn");
-        Game instance = null;
-//        instance.showCurrentPlayerTurn();
+        Game instance = new Game(2);
+        instance.showCurrentPlayerTurn();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
     }
 
     /**
      * Test of getCurrentPlayerName method, of class Game.
      */
     @Test
-    public void testGetCurrentPlayerName() {
+    public void testGetCurrentPlayerName1() {
         System.out.println("getCurrentPlayerName");
-        Game instance = new Game(1);
-        instance.player1.playerName="Player1";
-        String expResult = "Player1";
+        Game instance = new Game(3);
+        instance.player1.playerName="Name1";
+        instance.player2.playerName="Name2";
+        instance.player3.playerName="Name3";
+        instance.currentPlayerNumberTurn=3;
+        String expResult = "Name3";
         String result = instance.getCurrentPlayerName();
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
@@ -68,16 +71,100 @@ public class GameTest {
     }
 
     /**
-     * Test of setCurrentPlayerName method, of class Game.
+     * Test of getCurrentPlayerName method, of class Game.
      */
     @Test
-    public void testSetCurrentPlayerName() {
-        System.out.println("setCurrentPlayerName");
-        String currentPlayerName = "";
-        Game instance = null;
+    public void testGetCurrentPlayerName2() {
+        System.out.println("getCurrentPlayerName");
+        Game instance = new Game(0);       
+        String expResult = "";
+        String result = instance.getCurrentPlayerName();
+        assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+//        fail("The test case is a prototype.");
+    }    
+
+        /**
+     * Test of getCurrentPlayerName method, of class Game.
+     */
+    @Test
+    public void testGetCurrentPlayerName3() {
+        System.out.println("getCurrentPlayerName");
+        Game instance = new Game(2);       
+        instance.player1.playerName="Name1";
+        instance.player2.playerName="Name2"; 
+        instance.currentPlayerNumberTurn=4;
+        String expResult = "";
+        String result = instance.getCurrentPlayerName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }    
+
+        /**
+     * Test of getCurrentPlayerName method, of class Game.
+     */
+    @Test
+    public void testGetCurrentPlayerName4() {
+        System.out.println("getCurrentPlayerName");
+        Game instance = new Game(2);       
+        instance.player1.playerName="Name1";
+        instance.player2.playerName="Name2"; 
+        instance.currentPlayerNumberTurn=0;
+        String expResult = "";
+        String result = instance.getCurrentPlayerName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }  
+    
+        /**
+     * Test of getCurrentPlayerName method, of class Game.
+     */
+    @Test
+    public void testGetCurrentPlayerName5() {
+        System.out.println("getCurrentPlayerName");
+        Game instance = new Game(2);       
+        instance.player1.playerName="Name1";
+        instance.player2.playerName="Name2"; 
+        instance.currentPlayerNumberTurn=1;
+        String expResult = "Name1";
+        String result = instance.getCurrentPlayerName();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+    }  
+    
+     /**
+     * Test of getCurrentPlayerName method, of class Game.
+     */
+    @Test
+    public void testChangePlayerTurn() {
+        System.out.println("changePlayerTurn");
+        Game instance = new Game(2);
+        instance.player1.playerName="Name1";
+        instance.player2.playerName="Name2";
+        System.out.println("Current Player Name:" + instance.getCurrentPlayerName());
+        String expResult = "Name2";
+        instance.changeCurrentPlayerTurn();
+        String result = instance.getCurrentPlayerName();
+        System.out.println("Current Player Name after change player request:" + instance.getCurrentPlayerName());        
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
     }
+    
+//    /**
+//     * Test of setCurrentPlayerName method, of class Game.
+//     */
+//    @Test
+//    public void testSetCurrentPlayerName() {
+//        System.out.println("setCurrentPlayerName");
+//        String currentPlayerName = "";
+//        Game instance = null;
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of showCurrentPlayerStanding method, of class Game.

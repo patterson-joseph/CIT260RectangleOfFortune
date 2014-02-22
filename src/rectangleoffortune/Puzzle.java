@@ -14,7 +14,7 @@ public class Puzzle {
     private String puzzleText;
     private int puzzleNumWords;
     int remainingLetters = 0;
-    private Letter currentPuzzle[];
+    Letter currentPuzzle[];
     int remainingVowels; //=3;
 //    int puzzleLength; // = puzzleText.length();
        
@@ -115,10 +115,10 @@ public class Puzzle {
 
         for (int i=0; i < this.puzzleText.length(); i++) {
             if (this.puzzleText.charAt(i) == letter) {
-                count++;
-                System.out.print("Letter " + letter + " found at position:\t" + i + "\n");
-            } else {
-                System.out.print("Letter " + letter + " not found at position:\t" + i + "\n");
+                if(!this.currentPuzzle[i].isVisible){
+                    this.currentPuzzle[i].isVisible = true;
+                    count++;
+                }
             }
         }
 

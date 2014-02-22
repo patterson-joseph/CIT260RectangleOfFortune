@@ -13,6 +13,7 @@ package rectangleoffortune;
 public class Player {
     String playerName; // = "Default User";
     String playerType; // Person or Computer
+    int playerNumber; // where the player is in the lineup of other players
     int playerBank; // = 500;
     int wins; // = 2;
     int losses; // = 1;

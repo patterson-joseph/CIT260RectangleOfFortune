@@ -24,10 +24,10 @@ public class MainMenuControl  {
     }
     
     public void display2PlayerGame() {
-        displayBorder();            
-        System.out.println( 
-                "\tThis menu item selects a 2 player game");
-        displayBorder();
+//        displayBorder();            
+//        System.out.println( 
+//                "\tThis menu item selects a 2 player game");
+//        displayBorder();
         Game game = new Game(2);
         GameMenuView gameMenu = new GameMenuView(game);
         game.player1.playerName = gameMenu.getPlayerName(1);

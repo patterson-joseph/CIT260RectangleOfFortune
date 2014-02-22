@@ -21,7 +21,9 @@ public class Letter {
         isSpace=false;
         value=letter;
         //determine whether a space or not
-        if (' '==letter) isSpace=true;
+        if (' '==letter) {
+            isSpace=true;
+        }
         //else isSpace=false;
     }
 
