@@ -19,6 +19,7 @@ public class Game {
     Player player3;
     Puzzle puzzle;
     Player playerList[];
+    Spinner spinner = new Spinner();
     
     Game(int playerCount) {
         numberOfPlayers=playerCount;
@@ -58,7 +59,7 @@ public class Game {
         }
         
         //we'll start with player1
-        currentPlayerNumberTurn=1;
+        currentPlayerNumberTurn=0;
         currentPlayerName="";
         // set up instance of puzzle class
         puzzle = new Puzzle();
@@ -74,13 +75,13 @@ public class Game {
     public String getCurrentPlayerName() {
         switch (currentPlayerNumberTurn) {
 
-            case 1:
+            case 0:
                 currentPlayerName= player1.playerName;
                 break;
-            case 2:
+            case 1:
                 currentPlayerName= player2.playerName;
                 break;
-            case 3:
+            case 2:
                 currentPlayerName= player3.playerName;
                 break;
         }
@@ -107,9 +108,7 @@ public class Game {
         //assert(playerList!=null);
         if (tempArray==null) {
             System.out.println("Missing or corrupt player array!");
-            return;
-        }
-        else {
+        } else {
             for(j=1;j<tempArray.length;j++) { // start with base 1 counting
                 key=tempArray[j]; // remember which array starts in the first position
                 for(i=j-1;(i>=0) && (tempArray[i].playerBank<key.playerBank);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
@@ -128,8 +127,6 @@ public class Game {
             }
             System.out.println(
             "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            
-            return;
         }
     }
     
