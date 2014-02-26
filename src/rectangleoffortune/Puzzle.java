@@ -6,6 +6,10 @@
 
 package rectangleoffortune;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
 /**
  *
  * @author Joseph/Dustin
@@ -17,18 +21,28 @@ public class Puzzle {
     Letter currentPuzzle[];
     int remainingVowels; //=3;
 //    int puzzleLength; // = puzzleText.length();
+    private List<String> puzzleList;
        
     public Puzzle() {
-        setUpNewPuzzle();
+        puzzleList=new ArrayList();
+        populatePuzzleList();
+        selectNewPuzzle();
     }
     
-    private void setUpNewPuzzle() {
-        //hard coding puzzle for now, will need a random puzzle picker
-        puzzleText = selectNewPuzzle();
+    public void selectNewPuzzle() {
+        //random puzzle picker
+        int highNum = puzzleList.size(); //highest number needed
+        int i; // to keep track of the index
+        
+        i = getRandomNumber(highNum);  //generate the random number
+//        System.out.println("Index is " + i);
+        puzzleText = this.puzzleList.get(i); //pick the random puzzle from the array
+        this.puzzleList.remove(i); //remove the puzzle so we don't use it again during this game
         
         //create the array of letters
         currentPuzzle= new Letter[puzzleText.length()];
-        int i;
+
+        //populate the array with each letter object
         for(i=0;i<=puzzleText.length()-1;i++) {
             currentPuzzle[i]=new Letter(puzzleText.charAt(i));
         }
@@ -42,15 +56,48 @@ public class Puzzle {
 //                    + "IsSpace?" + x.isSpace + ".\n");
 //        }
     }
-
-    private String selectNewPuzzle() {
-//        String newPuzzle="HANGMAN";
-//        String newPuzzle="";
-//        String newPuzzle="HAPPY DAY";
-//        String newPuzzle="A FLOWER";
-//        String newPuzzle="ON FIRE";
-        String newPuzzle="JAVA PROGRAM";
-        return newPuzzle;
+    private int getRandomNumber(int highNum) {
+        //returns an int between 1 and the number provided
+        Random rand = new Random();
+        int i;
+        i = rand.nextInt(highNum);
+        return i;
+    }
+    
+//    private String selectNewPuzzle() {
+////        String newPuzzle="HANGMAN";
+////        String newPuzzle="";
+////        String newPuzzle="HAPPY DAY";
+////        String newPuzzle="A FLOWER";
+////        String newPuzzle="ON FIRE";
+//        String newPuzzle="JAVA PROGRAM";
+//        
+//       
+//        return newPuzzle;
+//    }
+    
+    private void populatePuzzleList() {
+         String list[] = {
+            "MY FAIR LADY"
+            ,"CRAZY EIGHTS"
+            ,"BOOK WORM"
+            ,"MY FUNNY VALENTINE"
+            ,"FINANCIALLY SOUND PROOF"
+            ,"GRANDMA'S FEATHER BED"
+            ,"BUTTERSCOTCH COOKIES"
+            ,"COMPUTER ANIMATION"
+            ,"GARDEN TOOLS"
+            ,"BALANCING ACT"
+            ,"MAKE A MENTAL NOTE"
+            ,"FIRING ON ALL CYLINDERS"
+            
+        };
+        
+        //add all the items to the List, using a List so we can removing items later
+        for(String string:list) {
+            puzzleList.add(string);
+        }
+        
     }
     
     public void displayPuzzle() {
