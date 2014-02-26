@@ -101,6 +101,23 @@ public class Puzzle {
     }
     
     public void displayPuzzle() {
+       
+        String startLeft = "|";
+        
+//        colCharStart = currentPuzzle.length >>> 1;
+        for(int i=1;i<4;i++){
+            //left side bars to start
+            System.out.print(startLeft);
+            for(Letter x: currentPuzzle) {
+                //print each section consecutively
+                System.out.print(x.displayLetterSection(i));
+            }
+            //clear current line to start fresh on next line
+            System.out.println();
+        }         
+    }
+    
+    public void displayPuzzle_Retired() {
         int i=0;
         if (currentPuzzle.length == 0) {
             System.out.println("Puzzle Not Found!");
@@ -117,39 +134,6 @@ public class Puzzle {
                 System.out.print("?");
             }
         }
-    }
-
-    public void displayPuzzle2() {
-        // alternate way of displaying the puzzle
-        int puzzleRow=1; // which row we're working with, 2 rows total for now
-        int colPosition=1; //which column, 12, 12
-        int colCharStart=1; //which column to start on (to adjust for center)
-        int charRow=1; //which row of the character build are we on, 3 total
-        int numWords=1; // how many words are there in the puzzle
-        
-        String topBottom = "---|";
-        String startLeft = "|";
-        
-        colCharStart = currentPuzzle.length >>> 1;
-        for(Letter x: currentPuzzle) {
-            System.out.print(startLeft);
-            System.out.print(topBottom);
-        }
-        // next character line
-        System.out.flush();
-        colPosition=1;
-        for(Letter x: currentPuzzle) {
-            System.out.print(startLeft);
-            if (colPosition==colCharStart) {
-                System.out.print(" " + x.value + " ");
-            }
-            else {
-                   System.out.print("   ");
-            }
-            
-        }
-        
-        
     }
     
     public int countLetters(char letter){
@@ -174,51 +158,51 @@ public class Puzzle {
         return (byte) count;
     }    
     
-    //moved from Game class ~dustin
-    public void getPuzzleLength() {
-        System.out.println("Puzzle is: " + puzzleText.length()
-                + " characters long");
-    }
+//    //moved from Game class ~dustin
+//    public void getPuzzleLength() {
+//        System.out.println("Puzzle is: " + puzzleText.length()
+//                + " characters long");
+//    }
     
-    public void getPuzzleText() {
-        System.out.println("Puzzle text is: '" + this.puzzleText + "'");
-    }
+//    public void getPuzzleText() {
+//        System.out.println("Puzzle text is: '" + this.puzzleText + "'");
+//    }
     
-    public void showRemainingVowels() {
-        System.out.println("There are " + remainingVowels 
-                + " vowels remaining.");
-    }
+//    public void showRemainingVowels() {
+//        System.out.println("There are " + remainingVowels 
+//                + " vowels remaining.");
+//    }
 
-    public int getNumberOfLettersGuessed(String guessedLetter) {
-        
-        int numberOfHits = 0;
-        boolean isConsonant = false;
-        String consonants[]= {"B","C","D","F","G","H","J","K","L","M","N","P"
-                            ,"Q","R","S","T","V","W","X","Y","Z"};
-        double dRatio = 0;  //percentage of letters correctly guessed, as double
-        int iRatio = 0;     //percentage of letters correctlyi guessed, as int
-        for (String validLetter : consonants) {
-            String guess = guessedLetter.toUpperCase();
-            if (validLetter.equals(guess)) {
-                isConsonant=true;
-            }
-        }
-        
-        if (isConsonant == false)    {
-            System.out.println(guessedLetter + " is not a consonant.\n"
-                    + "Please enter a \"consonant\".");
-            return 0;
-        }
-        
-        int puzzleLengthWithoutLetter = 0;
-        puzzleLengthWithoutLetter=puzzleText.replace(guessedLetter, "").length();
-        numberOfHits=puzzleText.length() - puzzleLengthWithoutLetter;
-        
-        dRatio=(double)numberOfHits/(double)puzzleText.length();
-        dRatio=dRatio*100;
-        iRatio=(int)dRatio;
-        System.out.println("Player guessed " + numberOfHits + " letters "
-                + "correctly, " + iRatio + "% of the total.");
-        return numberOfHits;
-    }
+//    public int getNumberOfLettersGuessed(String guessedLetter) {
+//        
+//        int numberOfHits = 0;
+//        boolean isConsonant = false;
+//        String consonants[]= {"B","C","D","F","G","H","J","K","L","M","N","P"
+//                            ,"Q","R","S","T","V","W","X","Y","Z"};
+//        double dRatio = 0;  //percentage of letters correctly guessed, as double
+//        int iRatio = 0;     //percentage of letters correctlyi guessed, as int
+//        for (String validLetter : consonants) {
+//            String guess = guessedLetter.toUpperCase();
+//            if (validLetter.equals(guess)) {
+//                isConsonant=true;
+//            }
+//        }
+//        
+//        if (isConsonant == false)    {
+//            System.out.println(guessedLetter + " is not a consonant.\n"
+//                    + "Please enter a \"consonant\".");
+//            return 0;
+//        }
+//        
+//        int puzzleLengthWithoutLetter = 0;
+//        puzzleLengthWithoutLetter=puzzleText.replace(guessedLetter, "").length();
+//        numberOfHits=puzzleText.length() - puzzleLengthWithoutLetter;
+//        
+//        dRatio=(double)numberOfHits/(double)puzzleText.length();
+//        dRatio=dRatio*100;
+//        iRatio=(int)dRatio;
+//        System.out.println("Player guessed " + numberOfHits + " letters "
+//                + "correctly, " + iRatio + "% of the total.");
+//        return numberOfHits;
+//    }
 }
