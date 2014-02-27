@@ -17,10 +17,14 @@ public class MainMenuControl  {
     } 
     
     public void display1PlayerGame() {
-        displayBorder();            
-        System.out.println( 
-                "\tThis menu item selects a 1 player game");
-        displayBorder();
+//        displayBorder();            
+//        System.out.println( 
+//                "\tThis menu item selects a 1 player practice game");
+//        displayBorder();
+        Game game = new Game(1);
+        GameMenuView gameMenu=new GameMenuView(game);
+        game.player1.playerName=gameMenu.getPlayerName(1);
+        gameMenu.getInput();
     }
     
     public void display2PlayerGame() {
@@ -36,10 +40,10 @@ public class MainMenuControl  {
     }    
 
     public void display3PlayerGame() {
-        displayBorder();            
-        System.out.println( 
-                "\tThis menu item selects a 3 player game");
-        displayBorder();
+//        displayBorder();            
+//        System.out.println( 
+//                "\tThis menu item selects a 3 player game");
+//        displayBorder();
         Game game = new Game(3);
         GameMenuView gameMenu = new GameMenuView(game);
         game.player1.playerName = gameMenu.getPlayerName(1);

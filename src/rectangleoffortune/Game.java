@@ -13,6 +13,8 @@ package rectangleoffortune;
 public class Game {
 //    private int numberOfPlayers;
     int currentPlayerNumberTurn;
+    int currentRound;
+    int startOfRoundPlayerNumber;
     int totalNumberOfTurns;
     Player currentPlayer;
 //    private String currentPlayerName;
@@ -28,20 +30,11 @@ public class Game {
         //instance the correct number of players
         switch (playerCount) {
             case 3:
-                player3 = new Player();
-                player3.playerBank=0;
-                player3.playerName="Player3";
-                player3.playerNumber=3;
+                player3 = new Player(3);
             case 2:
-                player2 = new Player();
-                player2.playerBank=0;
-                player2.playerName="Player2";
-                player2.playerNumber=2;
+                player2 = new Player(2);
             case 1:
-                player1 = new Player();
-                player1.playerBank=0;
-                player1.playerName="Player1";
-                player1.playerNumber=1;
+                player1 = new Player(1);
         }
         
         //set up list of players
@@ -65,9 +58,12 @@ public class Game {
         
         //we'll start with player1
         this.currentPlayerNumberTurn=1;
+        this.startOfRoundPlayerNumber=1;
         this.totalNumberOfTurns=1;
         // set up instance of puzzle class
         this.puzzle = new Puzzle();
+        // start with round 1
+        this.currentRound=1;
     }
    
     public void showCurrentPlayerTurn() {
@@ -102,7 +98,7 @@ public class Game {
      * @return the currentPlayerName
      */
     public Player getCurrentPlayer() {
-        Player currentPlayer=new Player();
+        Player currentPlayer=new Player(1);
         
         if (playerList==null) {
             System.out.println("Missing or corrupt player array!");
@@ -144,7 +140,7 @@ public class Game {
         } else {
             for(j=1;j<tempArray.length;j++) { // start with base 1 counting
                 key=tempArray[j]; // remember which array starts in the first position
-                for(i=j-1;(i>=0) && (tempArray[i].playerBank<key.playerBank);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
+                for(i=j-1;(i>=0) && (tempArray[i].playerBank_Round<key.playerBank_Round);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
                     tempArray[i+1]=tempArray[i]; //amount is less, so move the small value up
                 }
             tempArray[i+1]=key; //make sure the  to put the key in the correct location
@@ -156,7 +152,7 @@ public class Game {
             for (i=0;i<tempArray.length;i++) {
                 System.out.println("\t\t" + tempArray[i].playerName 
                 + " is in " + placeRank(i) + " place with $"
-                + tempArray[i].playerBank);
+                + tempArray[i].playerBank_Round);
             }
             System.out.println(
             "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
@@ -200,4 +196,46 @@ public class Game {
         return playerList.length;
     }
 
+    public void advanceToNextRound(Player roundWinner) {
+        //reset for the next round
+
+        //record the winner's totals into game totals
+        roundWinner.playerBank_Game += roundWinner.playerBank_Round;
+        
+        //record the win/loss stats
+        for(Player player: playerList) {
+            if(player.playerNumber==roundWinner.playerNumber) {
+                player.wins++;
+            }
+            else {
+                player.losses++;
+            }
+        }
+        
+        //reset player amounts
+        for(Player player: playerList) {
+            player.playerBank_Round=0;
+        }
+        
+        //pick a new puzzle
+        puzzle.selectNewPuzzle();
+        
+        //set which player goes first
+        this.changeStartRoundPlayer();
+        
+        //advance round counter
+        this.currentRound++;
+    }
+    
+    private void changeStartRoundPlayer() {
+       
+        if (startOfRoundPlayerNumber==getNumberOfPlayers()) {
+            //if we're on the last player, move back to the beginning of the list
+            startOfRoundPlayerNumber=1;
+        }
+        else {
+            //advance start round player counter by 1
+            startOfRoundPlayerNumber++;
+        }
+    }
 }

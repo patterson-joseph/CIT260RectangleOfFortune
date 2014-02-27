@@ -95,7 +95,7 @@ public class PlayerTest {
         int letterValue = 100;
         byte numberOfCorrectLetters = 2;
         Player instance = new Player();
-        instance.playerBank=-1700;
+        instance.playerBank_Round=-1700;
         boolean expResult = false;
         boolean result = instance.updatePlayerBank(letterValue, numberOfCorrectLetters);
         assertEquals(expResult, result);

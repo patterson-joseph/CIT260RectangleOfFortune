@@ -51,7 +51,7 @@ public class GameMenuView  {
                     this.gameMenuControl.spin(game);
                     break;
                 case "B":
-                    if(game.getCurrentPlayer().playerBank >= 250){
+                    if(game.getCurrentPlayer().playerBank_Round >= 250){
                         this.gameMenuControl.buyAVowel(game);
                     } else {
                         new RectangleOfFortuneError().displayError("Not enough money to buy a vowel!");

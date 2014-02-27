@@ -30,9 +30,9 @@ public class GameMenuControl  {
         int count = game.puzzle.countLetters(guessedLetter);        
         
         if(count > 0){
-            game.getCurrentPlayer().playerBank += count*game.spinner.spinnerValues[game.spinner.spinnerLocation];           
+            game.getCurrentPlayer().playerBank_Round += count*game.spinner.spinnerValues[game.spinner.spinnerLocation];           
             displayBorder();
-            System.out.println("\tThere are " + count + " " + guessedLetter + "s. Your bank total is now: $" + game.getCurrentPlayer().playerBank);
+            System.out.println("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
             displayBorder();
         } else {
             displayBorder();
@@ -53,9 +53,9 @@ public class GameMenuControl  {
         int count = game.puzzle.countLetters(guessedLetter);  
         
         if(count > 0){
-            game.getCurrentPlayer().playerBank -= 250;
+            game.getCurrentPlayer().playerBank_Round -= 250;
             displayBorder();
-            System.out.println("\tThere are " + count + " " + guessedLetter + "s. Your bank total is now: $" + game.getCurrentPlayer().playerBank);
+            System.out.println("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
             displayBorder();
         } else {
             displayBorder();

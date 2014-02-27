@@ -174,11 +174,11 @@ public class GameTest {
         System.out.println("showCurrentPlayerStanding");
         Game instance = new Game(3);
         instance.player1.playerName="Player1";
-        instance.player1.playerBank=0;
+        instance.player1.playerBank_Round=0;
         instance.player2.playerName="Player2";
-        instance.player2.playerBank=300;
+        instance.player2.playerBank_Round=300;
         instance.player3.playerName="Player3";
-        instance.player3.playerBank=500;        
+        instance.player3.playerBank_Round=500;        
         instance.showCurrentPlayerStanding();
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -204,7 +204,7 @@ public class GameTest {
         System.out.println("showCurrentPlayerStanding");
         Game instance = new Game(2);
         instance.player1.playerName="Player1";
-        instance.player1.playerBank=0;      
+        instance.player1.playerBank_Round=0;      
         instance.showCurrentPlayerStanding();
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -218,9 +218,9 @@ public class GameTest {
         System.out.println("showCurrentPlayerStanding");
         Game instance = new Game(2);
         instance.player1.playerName="Player1";
-        instance.player1.playerBank=-100;
+        instance.player1.playerBank_Round=-100;
         instance.player2.playerName="Player2";
-        instance.player2.playerBank=0;          
+        instance.player2.playerBank_Round=0;          
         instance.showCurrentPlayerStanding();
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");
@@ -234,9 +234,9 @@ public class GameTest {
         System.out.println("showCurrentPlayerStanding");
         Game instance = new Game(2);
         instance.player1.playerName="Player1";
-        instance.player1.playerBank=0;
+        instance.player1.playerBank_Round=0;
         instance.player2.playerName="Player2";
-        instance.player2.playerBank=0;     
+        instance.player2.playerBank_Round=0;     
         instance.showCurrentPlayerStanding();
         // TODO review the generated test code and remove the default call to fail.
 //        fail("The test case is a prototype.");

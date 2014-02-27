@@ -12,14 +12,20 @@ package rectangleoffortune;
  */
 public class Player {
     String playerName; // = "Default User";
-    String playerType; // Person or Computer
+//    String playerType; // Person or Computer
     int playerNumber; // where the player is in the lineup of other players
-    int playerBank; // = 500;
+    int playerBank_Round; // total won for the round
+    int playerBank_Game; //total won during the game
     int wins; // = 2;
     int losses; // = 1;
     
-Player() {
-    
+Player(int playerNumber) {
+    playerBank_Round=0;
+    playerBank_Game=0;
+    wins=0;
+    losses=0;
+    this.playerNumber=playerNumber;
+    this.playerName="Player" + playerNumber;
 }
    
     public void displayName(){
@@ -27,7 +33,7 @@ Player() {
     }
     
     public void displayBank(){
-        System.out.println("Player has $" + playerBank + " in the bank.");
+        System.out.println("Player has $" + playerBank_Round + " in the bank.");
     }
     
     public void displayWins(){
@@ -39,7 +45,7 @@ Player() {
     }
     
    public boolean updatePlayerBank(int letterValue
-            , byte numberOfCorrectLetters) {
+            , int numberOfCorrectLetters) {
        
        if (letterValue < 0) {
            System.out.println("Invalid letter value: \n"
@@ -51,14 +57,13 @@ Player() {
                     + "\t" + numberOfCorrectLetters);
            return false;
        }
-       if (playerBank < 0) {
+       if (playerBank_Round < 0) {
            System.out.println("Invalid player bank amount: \n"
-                   + "\t" + playerBank);
+                   + "\t" + playerBank_Round);
            return false;
        }
        
-       playerBank += letterValue*numberOfCorrectLetters;
-       byte castingTest = (byte)playerBank;
+       playerBank_Round += letterValue*numberOfCorrectLetters;
        return true;
     }
 }
