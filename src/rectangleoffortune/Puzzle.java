@@ -54,7 +54,7 @@ public class Puzzle {
             ,"BOOK WORM"
             ,"MY FUNNY VALENTINE"
             ,"FINANCIALLY SOUND PROOF"
-            ,"GRANDMA'S FEATHER BED"
+            ,"GRANDMAS FEATHER BED"
             ,"BUTTERSCOTCH COOKIES"
             ,"COMPUTER ANIMATION"
             ,"GARDEN TOOLS"
