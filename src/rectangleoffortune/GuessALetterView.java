@@ -45,6 +45,6 @@ public class GuessALetterView {
             System.out.print(letter);
         }
         System.out.print(")\n");
-        System.out.println("\t===============================================================\n");
+        System.out.println("\t===============================================================");
     }
 }

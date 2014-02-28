@@ -26,7 +26,7 @@ public class GameMenuView  {
     
     // display the help menu and get the end users input selection
     public void getInput() {       
-        showWhosTurn(game.getCurrentPlayerName());
+//        showWhosTurn(game.getCurrentPlayerName());
         String command;
         Scanner inFile = new Scanner(System.in);
         
@@ -53,6 +53,7 @@ public class GameMenuView  {
                     boolean result = this.gameMenuControl.solveThePuzzle(game);
                     if(result){
                         new Messages().displayMessage(game.getCurrentPlayer().playerName + " wins!");
+                        game.puzzle.showWinningPuzzle();
                         command = "Q";
                     } else {
                         new Messages().displayMessage("Sorry that is incorrect!");
@@ -80,12 +81,14 @@ public class GameMenuView  {
     // displays the help menu
     public final void display() {
         game.puzzle.displayPuzzle();
-        System.out.println("\n\n\t===============================================================");
+        System.out.println("\n\t===============================================================");
+        System.out.println("\t" + game.getCurrentPlayerName() + ", it's your turn. "
+                + "You currently have $" + game.getCurrentPlayer().playerBank_Round + ".");
         System.out.println("\tEnter the letter associated with one of the following commands:");
         for (String[] menuItem : GameMenuView.menuItems) {
             System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
         }
-        System.out.println("\t===============================================================\n");
+        System.out.println("\t===============================================================");
     }
   
     public final void showWhosTurn(String playerName) {

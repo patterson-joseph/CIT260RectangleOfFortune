@@ -10,7 +10,7 @@ public class Game {
     int currentRound;
     int startOfRoundPlayerNumber;
     int totalNumberOfTurns;
-    Player currentPlayer;
+//    Player currentPlayer;
     Player player1;
     Player player2;
     Player player3;

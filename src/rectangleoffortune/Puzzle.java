@@ -87,6 +87,16 @@ public class Puzzle {
         }         
     }
     
+    public void showWinningPuzzle() {
+        //make all letters in the puzzle visible
+        
+        for (Letter letter:currentPuzzle) {
+            letter.isVisible=true;
+        }
+        
+        this.displayPuzzle();
+    }
+    
     public void displayPuzzle_Retired() {
         int i=0;
         if (currentPuzzle.length == 0) {
