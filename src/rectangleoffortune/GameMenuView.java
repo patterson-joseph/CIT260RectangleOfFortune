@@ -1,12 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rectangleoffortune;
 
 import java.util.Scanner;
-
-
 
 /**
  *
@@ -32,9 +26,7 @@ public class GameMenuView  {
     
     // display the help menu and get the end users input selection
     public void getInput() {       
-
         showWhosTurn(game.getCurrentPlayerName());
-        game.puzzle.displayPuzzle();
         String command;
         Scanner inFile = new Scanner(System.in);
         
@@ -54,21 +46,27 @@ public class GameMenuView  {
                     if(game.getCurrentPlayer().playerBank_Round >= 250){
                         this.gameMenuControl.buyAVowel(game);
                     } else {
-                        new RectangleOfFortuneError().displayError("Not enough money to buy a vowel!");
+                        new Messages().displayMessage("Not enough money to buy a vowel!");
                     }
                     break;
                 case "P":
-                    this.gameMenuControl.solveThePuzzle();
+                    boolean result = this.gameMenuControl.solveThePuzzle(game);
+                    if(result){
+                        new Messages().displayMessage(game.getCurrentPlayer().playerName + " wins!");
+                        command = "Q";
+                    } else {
+                        new Messages().displayMessage("Sorry that is incorrect!");
+                    }
                     break; 
                 case "C":
                     this.game.showCurrentPlayerStanding();
+                    break;
                 case "Q":
-                    
                     break;
                 default: 
-                    new RectangleOfFortuneError().displayError("Invalid command. Please enter a valid command.");
+                    new Messages().displayError("Invalid command. Please enter a valid command.");
             }
-        } while (!command.equals("Q")); 
+        } while (!command.equals("Q"));
     }
 
     public String getPlayerName(int playerNumber) {
@@ -77,20 +75,11 @@ public class GameMenuView  {
         Scanner inString = new Scanner(System.in);
         name=inString.nextLine().trim().toUpperCase();
         return name;
-    }
-
-    public void printPlayerStanding() {
-        System.out.println("\n\n\t===============================================================");
-        System.out.println("\tCurrent Player Standing:");
-        //make call to game.showPlayerStandingHere
-            
-        
-        System.out.println("\t===============================================================\n");
-    }
+    }    
     
-    
-        // displays the help menu
+    // displays the help menu
     public final void display() {
+        game.puzzle.displayPuzzle();
         System.out.println("\n\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
         for (String[] menuItem : GameMenuView.menuItems) {
@@ -100,8 +89,6 @@ public class GameMenuView  {
     }
   
     public final void showWhosTurn(String playerName) {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\t" + playerName + ", it's your turn.");
-        System.out.println("\t===============================================================\n");        
+        new Messages().displayMessage("\t" + playerName + ", it's your turn.");
     }
 }

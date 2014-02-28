@@ -1,20 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rectangleoffortune;
 
 import java.util.Scanner;
 
 /**
- *
  * @author Dustin
  */
 public class MainMenuView {
-    
-        
     private final static String[][] menuItems = {
         {"1", "1 Player Game"},
         {"2", "2 Player Game"},
@@ -27,14 +18,8 @@ public class MainMenuView {
     // Create instance of the MainMenuControl class
     private MainMenuControl mainMenuControl = new MainMenuControl();
     
-    // default constructor
-    public MainMenuView() {
-        
-    } 
-    
 //     display the main menu and get input selection from user
-    public void getInput() {       
-              
+    public void getInput() {                 
         String command;
         Scanner inFile = new Scanner(System.in);
         
@@ -65,7 +50,7 @@ public class MainMenuView {
                 case "X": 
                     break;
                 default: 
-                    new RectangleOfFortuneError().displayError("Invalid command. Please enter a valid command.");
+                    new Messages().displayError("Invalid command. Please enter a valid command.");
                     continue;
             }
         } while (!command.equals("X"));  
@@ -83,8 +68,4 @@ public class MainMenuView {
         }
         System.out.println("\t===============================================================\n");
     }
-  
-//}
-
-    
 }

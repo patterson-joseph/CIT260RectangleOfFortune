@@ -1,23 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rectangleoffortune;
 
 /**
  *
- * @author Dustin
+ * @author Dustin/Joseph
  */
+
 public class Game {
-//    private int numberOfPlayers;
     int currentPlayerNumberTurn;
     int currentRound;
     int startOfRoundPlayerNumber;
     int totalNumberOfTurns;
     Player currentPlayer;
-//    private String currentPlayerName;
     Player player1;
     Player player2;
     Player player3;
@@ -26,7 +19,6 @@ public class Game {
     Spinner spinner = new Spinner();
     
     Game(int playerCount) {
-//        numberOfPlayers=playerCount;
         //instance the correct number of players
         switch (playerCount) {
             case 3:
@@ -47,7 +39,6 @@ public class Game {
             playerList=new Player[2];
             playerList[0]=player1;
             playerList[1]=player2;
-//            Player playerList[]= new Player[]{player1, player2};              
         }
         else if(playerCount==3) {
             playerList=new Player[3];
@@ -117,16 +108,9 @@ public class Game {
          return currentPlayer;
     }
     
-//    /**
-//     * @param currentPlayerName the currentPlayerName to set
-//     */
-//    public void setCurrentPlayerName(String currentPlayerName) {
-//        this.currentPlayerName = currentPlayerName;
-//    }
-
     public void showCurrentPlayerStanding() {
         //sort player list by bank amount, highest to lowest
-        //attempting an insertion sort method
+        //using insertion sort method
 
         Player tempArray[] = playerList;
                    
@@ -134,16 +118,17 @@ public class Game {
         Player key;    // the item to be inserted
         int i;
 
-        //assert(playerList!=null);
         if (tempArray==null) {
             System.out.println("Missing or corrupt player array!");
         } else {
             for(j=1;j<tempArray.length;j++) { // start with base 1 counting
                 key=tempArray[j]; // remember which array starts in the first position
+                
                 for(i=j-1;(i>=0) && (tempArray[i].playerBank_Round<key.playerBank_Round);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
                     tempArray[i+1]=tempArray[i]; //amount is less, so move the small value up
                 }
-            tempArray[i+1]=key; //make sure the  to put the key in the correct location
+                
+                tempArray[i+1]=key; //make sure the  to put the key in the correct location
             }
 
             // tempArray is now sorted highest bank amount to lowest, so display it
@@ -174,9 +159,7 @@ public class Game {
         return place;
     }
     
-    public void changeCurrentPlayerTurn() {
-        
-        
+    public void changeCurrentPlayerTurn() {        
         if (currentPlayerNumberTurn==getNumberOfPlayers()) {
             //if we're on the last player, move back to the beginning of the list
             currentPlayerNumberTurn=1;
@@ -188,7 +171,8 @@ public class Game {
         //keep track of the number of turns
         this.totalNumberOfTurns++;
             
-}
+    }
+    
     /**
      * @return the numberOfPlayers
      */

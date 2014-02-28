@@ -1,16 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rectangleoffortune;
 
 import java.util.Scanner;
 
 /**
  *
- * @author Joseph
+ * @author Joseph/Dustin
  */
 public class RectangleOfFortune {
     String playerName;
@@ -20,9 +14,7 @@ public class RectangleOfFortune {
             + "the other players.  Guessing a correct letter allows you \n"
             + "guess another letter or guess the puzzle. Press the spin \n"
             + "button to start your turn.  Player 1 goes first.\n\n";
-    /**
-     * @param args the command line arguments
-     */ 
+
     public static void main(String[] args) {
         
         RectangleOfFortune myGame = new RectangleOfFortune();
@@ -30,38 +22,6 @@ public class RectangleOfFortune {
         
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.getInput();
-        
-//        HelpMenuView helpMenu = new HelpMenuView();
-//        helpMenu.getInput();
-        
-               
-        // TODO code application logic here
-//        String dustinCrossley = "Dustin Crossley";
-//        String josephPatterson = "Joseph Patterson";
-        
-//        RectangleOfFortune name = new RectangleOfFortune();      
-//        name.displayDustin(dustinCrossley);
-//        name.displayJoseph(josephPatterson);
-        
-//        Player player = new Player();
-//        player.displayName(dustinCrossley);    
-        
-//        myGame.getName();
-//        
-//        Player player = new Player();
-//        player.displayName();
-//        player.displayBank();
-//        player.displayWins();
-//        player.displayLosses();
-               
-//        Game game = new Game();
-//        game.getPuzzleText();
-//        game.getPuzzleLength();    
-//        game.showCurrentPlayerTurn();
-//        game.showRemainingVowels();
-//        game.puzzleText="Lazy River";
-//        int iNumCorrectLetters = game.getNumberOfLettersGuessed("r");
-    
     }
     
     void displayDustin(String name){
@@ -80,6 +40,6 @@ public class RectangleOfFortune {
     
     public void displayIntro() {
         System.out.println("\nWelcome!"); // + this.playerName + 
-        System.out.println(this.instructions);
+        new Messages().displayMessage(this.instructions);
     }
 }

@@ -3,13 +3,12 @@ package rectangleoffortune;
 import java.util.Scanner;
 
 /**
- *
  * @author Joseph/Dustin
  */
 public class GuessALetterView {
     //Array of Consonants
-    public final static char[] consonants = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};
-    public final static char[] vowels = {'A','E','I','O','U'};
+    public final char[] consonants = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};
+    public final char[] vowels = {'A','E','I','O','U'};
     
     // display the Guess A Letter menu and get the end users input selection
     public char getInput(char[] type) {
@@ -31,7 +30,7 @@ public class GuessALetterView {
             }
             
             if(notValid){
-                new RectangleOfFortuneError().displayError("Invalid Input!");
+                new Messages().displayError("Invalid Input!");
             }
         }while(notValid);
         

@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package rectangleoffortune;
 
 import java.util.ArrayList;
@@ -15,12 +9,11 @@ import java.util.Random;
  * @author Joseph/Dustin
  */
 public class Puzzle {
-    private String puzzleText;
+    public String puzzleText;
     private int puzzleNumWords;
     int remainingLetters = 0;
     Letter currentPuzzle[];
-    int remainingVowels; //=3;
-//    int puzzleLength; // = puzzleText.length();
+    int remainingVowels;
     private List<String> puzzleList;
        
     public Puzzle() {
@@ -35,7 +28,6 @@ public class Puzzle {
         int i; // to keep track of the index
         
         i = getRandomNumber(highNum);  //generate the random number
-//        System.out.println("Index is " + i);
         puzzleText = this.puzzleList.get(i); //pick the random puzzle from the array
         this.puzzleList.remove(i); //remove the puzzle so we don't use it again during this game
         
@@ -46,15 +38,6 @@ public class Puzzle {
         for(i=0;i<=puzzleText.length()-1;i++) {
             currentPuzzle[i]=new Letter(puzzleText.charAt(i));
         }
-
-        //for testing
-//        System.out.println("Puzzle Text is :" + puzzleText);
-//        System.out.println("Puzzle characters are:");
-//        for(Letter x: currentPuzzle) {
-//            System.out.println("Letter: " + x.value + "\n\t"
-//                    + "IsDisplayed? " + x.isVisible + "\n\t"
-//                    + "IsSpace?" + x.isSpace + ".\n");
-//        }
     }
     private int getRandomNumber(int highNum) {
         //returns an int between 1 and the number provided
@@ -63,18 +46,6 @@ public class Puzzle {
         i = rand.nextInt(highNum);
         return i;
     }
-    
-//    private String selectNewPuzzle() {
-////        String newPuzzle="HANGMAN";
-////        String newPuzzle="";
-////        String newPuzzle="HAPPY DAY";
-////        String newPuzzle="A FLOWER";
-////        String newPuzzle="ON FIRE";
-//        String newPuzzle="JAVA PROGRAM";
-//        
-//       
-//        return newPuzzle;
-//    }
     
     private void populatePuzzleList() {
          String list[] = {
@@ -104,7 +75,6 @@ public class Puzzle {
        
         String startLeft = "|";
         
-//        colCharStart = currentPuzzle.length >>> 1;
         for(int i=1;i<4;i++){
             //left side bars to start
             System.out.print(startLeft);
@@ -156,53 +126,5 @@ public class Puzzle {
         this.remainingLetters -= count; 
 
         return (byte) count;
-    }    
-    
-//    //moved from Game class ~dustin
-//    public void getPuzzleLength() {
-//        System.out.println("Puzzle is: " + puzzleText.length()
-//                + " characters long");
-//    }
-    
-//    public void getPuzzleText() {
-//        System.out.println("Puzzle text is: '" + this.puzzleText + "'");
-//    }
-    
-//    public void showRemainingVowels() {
-//        System.out.println("There are " + remainingVowels 
-//                + " vowels remaining.");
-//    }
-
-//    public int getNumberOfLettersGuessed(String guessedLetter) {
-//        
-//        int numberOfHits = 0;
-//        boolean isConsonant = false;
-//        String consonants[]= {"B","C","D","F","G","H","J","K","L","M","N","P"
-//                            ,"Q","R","S","T","V","W","X","Y","Z"};
-//        double dRatio = 0;  //percentage of letters correctly guessed, as double
-//        int iRatio = 0;     //percentage of letters correctlyi guessed, as int
-//        for (String validLetter : consonants) {
-//            String guess = guessedLetter.toUpperCase();
-//            if (validLetter.equals(guess)) {
-//                isConsonant=true;
-//            }
-//        }
-//        
-//        if (isConsonant == false)    {
-//            System.out.println(guessedLetter + " is not a consonant.\n"
-//                    + "Please enter a \"consonant\".");
-//            return 0;
-//        }
-//        
-//        int puzzleLengthWithoutLetter = 0;
-//        puzzleLengthWithoutLetter=puzzleText.replace(guessedLetter, "").length();
-//        numberOfHits=puzzleText.length() - puzzleLengthWithoutLetter;
-//        
-//        dRatio=(double)numberOfHits/(double)puzzleText.length();
-//        dRatio=dRatio*100;
-//        iRatio=(int)dRatio;
-//        System.out.println("Player guessed " + numberOfHits + " letters "
-//                + "correctly, " + iRatio + "% of the total.");
-//        return numberOfHits;
-//    }
+    }
 }

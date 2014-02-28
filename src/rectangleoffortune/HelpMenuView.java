@@ -1,15 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rectangleoffortune;
 
 import java.util.Scanner;
 
-
-
 /**
- *
  * @author Joseph/Dustin
  */
 public class HelpMenuView  {
@@ -68,7 +61,7 @@ public class HelpMenuView  {
                 case "Q": 
                     break;
                 default: 
-                    new RectangleOfFortuneError().displayError("Invalid command. Please enter a valid command.");
+                    new Messages().displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));  
     }
@@ -81,6 +74,5 @@ public class HelpMenuView  {
             System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
         }
         System.out.println("\t===============================================================\n");
-    }
-  
+    }  
 }
