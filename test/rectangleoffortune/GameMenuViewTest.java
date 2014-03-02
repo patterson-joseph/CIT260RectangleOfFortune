@@ -38,17 +38,18 @@ public class GameMenuViewTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getInput method, of class GameMenuView.
-     */
-    @Test
-    public void testGetInput() {
-        System.out.println("getInput");
-        GameMenuView instance = new GameMenuView();
-        instance.getInput();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of getInput method, of class GameMenuView.
+//     */
+//    @Test
+//    public void testGetInput() {
+//        System.out.println("getInput");
+//        Game game = new Game(1);
+//        GameMenuView instance = new GameMenuView(game);
+//        instance.getInput();
+//        // TODO review the generated test code and remove the default call to fail.
+//        //fail("The test case is a prototype.");
+//    }
 
     /**
      * Test of display method, of class GameMenuView.
@@ -56,10 +57,11 @@ public class GameMenuViewTest {
     @Test
     public void testDisplay() {
         System.out.println("display");
-        GameMenuView instance = new GameMenuView();
+        Game game = new Game(1);
+        GameMenuView instance = new GameMenuView(game);
         instance.display();
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        //fail("The test case is a prototype.");
     }
     
 }

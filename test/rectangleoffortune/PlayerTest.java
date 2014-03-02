@@ -44,7 +44,7 @@ public class PlayerTest {
     @Test
     public void testDisplayName() {
         System.out.println("displayName");
-        Player instance = new Player();
+        Player instance = new Player(1);
         instance.displayName();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -56,7 +56,7 @@ public class PlayerTest {
     @Test
     public void testDisplayBank() {
         System.out.println("displayBank");
-        Player instance = new Player();
+        Player instance = new Player(1);
         instance.displayBank();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -68,7 +68,7 @@ public class PlayerTest {
     @Test
     public void testDisplayWins() {
         System.out.println("displayWins");
-        Player instance = new Player();
+        Player instance = new Player(1);
         instance.displayWins();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -80,7 +80,7 @@ public class PlayerTest {
     @Test
     public void testDisplayLosses() {
         System.out.println("displayLosses");
-        Player instance = new Player();
+        Player instance = new Player(1);
         instance.displayLosses();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -94,7 +94,7 @@ public class PlayerTest {
         System.out.println("updatePlayerBank");
         int letterValue = 100;
         byte numberOfCorrectLetters = 2;
-        Player instance = new Player();
+        Player instance = new Player(1);
         instance.playerBank_Round=-1700;
         boolean expResult = false;
         boolean result = instance.updatePlayerBank(letterValue, numberOfCorrectLetters);

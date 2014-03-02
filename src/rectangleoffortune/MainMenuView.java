@@ -7,7 +7,7 @@ import java.util.Scanner;
  */
 public class MainMenuView {
     private final static String[][] menuItems = {
-        {"1", "1 Player Game"},
+        {"1", "1 Player Practice Game"},
         {"2", "2 Player Game"},
         {"3", "3 Player Game"},
 //        {"G", "Game Menu"},

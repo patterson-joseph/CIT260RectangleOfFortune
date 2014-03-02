@@ -110,16 +110,16 @@ public class HelpMenuControlTest {
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of displayHelpBorder method, of class HelpMenuControl.
-     */
-    @Test
-    public void testDisplayHelpBorder() {
-        System.out.println("displayHelpBorder");
-        HelpMenuControl instance = new HelpMenuControl();
-        instance.displayHelpBorder();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of displayHelpBorder method, of class HelpMenuControl.
+//     */
+//    @Test
+//    public void testDisplayHelpBorder() {
+//        System.out.println("displayHelpBorder");
+//        HelpMenuControl instance = new HelpMenuControl();
+//        instance.displayHelpBorder();
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
     
 }
