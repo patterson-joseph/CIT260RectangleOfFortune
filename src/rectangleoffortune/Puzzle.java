@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class Puzzle {
     public String puzzleText;
-    private int puzzleNumWords;
+//    private int puzzleNumWords;
     int remainingLetters = 0;
     Letter currentPuzzle[];
     int remainingVowels;
@@ -91,7 +91,7 @@ public class Puzzle {
         //make all letters in the puzzle visible
         
         for (Letter letter:currentPuzzle) {
-            letter.isVisible=true;
+            letter.setIsVisible((Boolean) true);
         }
         
         this.displayPuzzle();
@@ -104,11 +104,11 @@ public class Puzzle {
             return;
         }
         for(i=0;i<currentPuzzle.length;i++) {
-            if (currentPuzzle[i].isSpace) {
+            if (currentPuzzle[i].getIsSpace()) {
                 System.out.print(" ");
             }
-            else if (currentPuzzle[i].isVisible) {
-                System.out.print(currentPuzzle[i].value);
+            else if (currentPuzzle[i].getIsVisible()) {
+                System.out.print(currentPuzzle[i].getValue());
             }
             else {
                 System.out.print("?");
@@ -126,8 +126,8 @@ public class Puzzle {
 
         for (int i=0; i < this.puzzleText.length(); i++) {
             if (this.puzzleText.charAt(i) == letter) {
-                if(!this.currentPuzzle[i].isVisible){
-                    this.currentPuzzle[i].isVisible = true;
+                if(!this.currentPuzzle[i].getIsVisible()){
+                    this.currentPuzzle[i].setIsVisible((Boolean) true);
                     count++;
                 }
             }
