@@ -1,6 +1,5 @@
 package rectangleoffortune;
 
-import java.util.Random;
 import java.util.Scanner;
 
 /**
@@ -14,9 +13,10 @@ public class GameMenuControl  {
     } 
         
     public void spin(Game game) {
-        game.spinner.spinnerLocation = new Random().nextInt(game.spinner.spinnerValues.length);
+//        game.spinner.setSpinnerLocation(new Random().nextInt(game.spinner.getSpinnerValues().length));
         
-        new Messages().displayMessage("\tEach letter is worth $" + game.spinner.spinnerValues[game.spinner.spinnerLocation]);
+        game.spinner.spin(); 
+        new Messages().displayMessage("\tEach letter is worth $" + game.spinner.getCurrentSpinValue());
         
         game.puzzle.displayPuzzle();
         GuessALetterView guessLetter = new GuessALetterView();
@@ -25,7 +25,7 @@ public class GameMenuControl  {
         int count = game.puzzle.countLetters(guessedLetter);        
         
         if(count > 0){
-            game.getCurrentPlayer().playerBank_Round += count*game.spinner.spinnerValues[game.spinner.spinnerLocation];           
+            game.getCurrentPlayer().playerBank_Round += count*game.spinner.getCurrentSpinValue();           
             new Messages().displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
         } else {
             new Messages().displayMessage("\tLetter not found in puzzle or was already guessed!");
