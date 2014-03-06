@@ -58,7 +58,7 @@ public class GameMenuControl  {
         command = inFile.nextLine();
         command = command.trim().toUpperCase();
         
-        if(command.equals(game.puzzle.puzzleText)){
+        if(command.equals(game.puzzle.getPuzzleText())){
             return true;
         } else {
             return false;

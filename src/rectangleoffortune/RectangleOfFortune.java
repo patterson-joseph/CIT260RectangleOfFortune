@@ -7,7 +7,6 @@ import java.util.Scanner;
  * @author Joseph/Dustin
  */
 public class RectangleOfFortune {
-    String playerName;
     String instructions = "This is the game of Rectangle of Fortune. \n\n"
             + "You will be playing against 1 or 2 other players. \n"
             + "The object of the game is to solve the puzzle before \n"
@@ -22,20 +21,6 @@ public class RectangleOfFortune {
         
         MainMenuView mainMenu = new MainMenuView();
         mainMenu.getInput();
-    }
-    
-    void displayDustin(String name){
-        System.out.print(name);
-    }
-    
-    void displayJoseph(String name){
-        System.out.print(name);
-    }
-    
-    void getName() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("\n\nEnter your name: ");
-        this.playerName = input.next();
     }
     
     public void displayIntro() {
