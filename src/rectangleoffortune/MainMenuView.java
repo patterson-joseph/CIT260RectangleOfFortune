@@ -1,11 +1,12 @@
 package rectangleoffortune;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 /**
- * @author Dustin
+ * @author Joseph/Dustin
  */
-public class MainMenuView {
+public class MainMenuView implements Serializable {
     private final static String[][] menuItems = {
         {"1", "1 Player Practice Game"},
         {"2", "2 Player Game"},
@@ -16,16 +17,16 @@ public class MainMenuView {
     };
     
     // Create instance of the MainMenuControl class
-    private MainMenuControl mainMenuControl = new MainMenuControl();
+//    private MainMenuControl mainMenuControl = new MainMenuControl();
     
 //     display the main menu and get input selection from user
-    public void getInput() {                 
+    public static void getInput() {                 
         String command;
-        Scanner inFile = new Scanner(System.in);
+        Scanner inFile = RectangleOfFortune.getInputFile();
         
         do {
             
-            this.display(); // display the menu
+            display(); // display the menu
             
             // get commaned entered
             command = inFile.nextLine();
@@ -33,24 +34,24 @@ public class MainMenuView {
             
             switch (command) {
                 case "1":
-                    this.mainMenuControl.display1PlayerGame();
+                    MainMenuControl.display1PlayerGame();
                     break;
                 case "2":
-                    this.mainMenuControl.display2PlayerGame();
+                    MainMenuControl.display2PlayerGame();
                     break;
                 case "3":
-                    this.mainMenuControl.display3PlayerGame();
+                    MainMenuControl.display3PlayerGame();
                     break; 
 //                case "G":
 //                    this.mainMenuControl.displayGameMenu();
 //                    break;
                 case "H":
-                    this.mainMenuControl.displayHelpMenu();
+                    MainMenuControl.displayHelpMenu();
                     break;
                 case "X": 
                     break;
                 default: 
-                    new Messages().displayError("Invalid command. Please enter a valid command.");
+                    Messages.displayError("Invalid command. Please enter a valid command.");
                     continue;
             }
         } while (!command.equals("X"));  
@@ -59,11 +60,11 @@ public class MainMenuView {
     }
     
 //         displays the help menu
-    public final void display() {
+    public static final void display() {
         System.out.println("\n\t===============================================================");
         System.out.println("\tEnter the letter associated with one of the following commands:");
 
-        for (int i = 0; i < MainMenuView.menuItems.length; i++) {
+        for (int i = 0; i < menuItems.length; i++) {
             System.out.println("\t   " + menuItems[i][0] + "\t" + menuItems[i][1]);
         }
         System.out.println("\t===============================================================\n");

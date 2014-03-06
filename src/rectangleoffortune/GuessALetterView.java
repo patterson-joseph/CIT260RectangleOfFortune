@@ -14,7 +14,7 @@ public class GuessALetterView {
     public char getInput(char[] type) {
         Boolean notValid = true;
         char command;
-        Scanner inFile = new Scanner(System.in);
+        Scanner inFile = RectangleOfFortune.getInputFile();
         
         do{
             this.display(type); // display the menu
@@ -30,9 +30,12 @@ public class GuessALetterView {
             }
             
             if(notValid){
-                new Messages().displayError("Invalid Input!");
+                Messages.displayError("Invalid Input!");
             }
         }while(notValid);
+        //read the current Scanner line to clear it out of the buffer
+        //so it's ready for the next read
+        inFile.nextLine();
         
         return command;
     }

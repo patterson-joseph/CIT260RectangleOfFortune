@@ -17,7 +17,7 @@ public class HelpMenuControl  {
         
     public void displayGameHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tThe objective of the game is to be the first player to "
                 + "\n\tcorrectly guess the puzzle word or phrase. Each player "
                 + "\n\ttakes turns spinning for a value of correctly guessed "
@@ -33,7 +33,7 @@ public class HelpMenuControl  {
     
     public void displayRectangleHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tThe Rectangle represents the \"Wheel\", as in the Wheel of Fortune. "
                 + "\n\t It consists of a rectangular grid of squares, each square having "
                 + "\n\t either a dollar amount, a lose a turn square, or two bankruptcy "
@@ -44,7 +44,7 @@ public class HelpMenuControl  {
             
     public void displayComputerHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tA computer based player automatically takes its turn in sequence "
                 + "\n\t after a real player."
                 );
@@ -53,7 +53,7 @@ public class HelpMenuControl  {
                    
     public void displayTurnHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tA player is given three choices at the beginning of their turn;\n"
                 + "\tspin, buy a vowel, or solve the puzzle. If the player chooses\n"
                 + "\tspin the rectangle marker is moved forward and the player\n"
@@ -68,7 +68,7 @@ public class HelpMenuControl  {
              
     public void displayPuzzleHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tA new puzzle is randomly generated at the beginning of each\n"
                 + "\tgame. A puzzle will be a well known person, place, thing, or phrase."
                 );
@@ -76,7 +76,7 @@ public class HelpMenuControl  {
                  
     public void displayBankHelp() {
         System.out.println();
-        new Messages().displayMessage(
+        Messages.displayMessage(
                 "\tEach player has a bank which starts at $0. As the player\n"
                 + "\tguesses letters correctly the total is added to his current\n"
                 + "\tbank. A player may lose money through the purchase of vowels\n"
