@@ -1,12 +1,14 @@
 package rectangleoffortune;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Joseph/Dustin
  */
-public class Messages {
+public class Messages implements Serializable{
  
-    public Object displayError(Object object) {
+    public static Object displayError(Object object) {
         String message = (String) object;
         System.out.println("\t???????????????????????????????????????????????????????????????");
         System.out.println("\t ERROR: " + message);
@@ -14,7 +16,7 @@ public class Messages {
         return null;
     }
     
-    public void displayMessage(Object object) {
+    public static void displayMessage(Object object) {
         String message = (String) object;
         System.out.println("\t===============================================================");
         System.out.println("\t" + message);

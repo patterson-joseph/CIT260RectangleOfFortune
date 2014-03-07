@@ -1,18 +1,20 @@
 package rectangleoffortune;
 
+import java.io.Serializable;
+
 /**
- * @author jacksonrkj
+ * @author Joseph/Dustin
  */
-public class MainMenuControl  {
+public class MainMenuControl implements Serializable {
     
-    public void display1PlayerGame() {
+    public static void display1PlayerGame() {
         Game game = new Game(1);
         GameMenuView gameMenu=new GameMenuView(game);
         game.player1.playerName=gameMenu.getPlayerName(1);
         gameMenu.getInput();
     }
     
-    public void display2PlayerGame() {
+    public static void display2PlayerGame() {
         Game game = new Game(2);
         GameMenuView gameMenu = new GameMenuView(game);
         game.player1.playerName = gameMenu.getPlayerName(1);
@@ -20,7 +22,7 @@ public class MainMenuControl  {
         gameMenu.getInput();
     }    
 
-    public void display3PlayerGame() {
+    public static void display3PlayerGame() {
         Game game = new Game(3);
         GameMenuView gameMenu = new GameMenuView(game);
         game.player1.playerName = gameMenu.getPlayerName(1);
@@ -29,7 +31,7 @@ public class MainMenuControl  {
         gameMenu.getInput();   
     }
 
-    public void displayHelpMenu() {
+    public static void displayHelpMenu() {
         HelpMenuView helpMenu = new HelpMenuView();
         helpMenu.getInput();
     }    

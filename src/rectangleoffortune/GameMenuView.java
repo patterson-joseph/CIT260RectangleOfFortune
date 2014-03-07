@@ -27,7 +27,7 @@ public class GameMenuView  {
     // display the help menu and get the end users input selection
     public void getInput() { 
         String command;
-        Scanner inFile = new Scanner(System.in);
+        Scanner inFile = RectangleOfFortune.getInputFile();
         
         do {
             
@@ -45,17 +45,17 @@ public class GameMenuView  {
                     if(game.getCurrentPlayer().playerBank_Round >= 250){
                         this.gameMenuControl.buyAVowel(game);
                     } else {
-                        new Messages().displayMessage("Not enough money to buy a vowel!");
+                        Messages.displayMessage("Not enough money to buy a vowel!");
                     }
                     break;
                 case "P":
                     boolean result = this.gameMenuControl.solveThePuzzle(game);
                     if(result){
-                        new Messages().displayMessage(game.getCurrentPlayer().playerName + " wins!");
+                        Messages.displayMessage(game.getCurrentPlayer().playerName + " wins!");
                         game.puzzle.showWinningPuzzle();
                         command = "Q";
                     } else {
-                        new Messages().displayMessage("Sorry that is incorrect!");
+                        Messages.displayMessage("Sorry that is incorrect!");
                     }
                     break; 
                 case "C":
@@ -64,7 +64,7 @@ public class GameMenuView  {
                 case "Q":
                     break;
                 default: 
-                    new Messages().displayError("Invalid command. Please enter a valid command.");
+                    Messages.displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));
     }
@@ -72,7 +72,7 @@ public class GameMenuView  {
     public String getPlayerName(int playerNumber) {
         this.gameMenuControl.promptForPlayerName(playerNumber);
         String name;
-        Scanner inString = new Scanner(System.in);
+        Scanner inString = RectangleOfFortune.getInputFile();
         name=inString.nextLine().trim().toUpperCase();
         return name;
     }    
@@ -91,4 +91,4 @@ public class GameMenuView  {
         
         new Messages().displayMessage(menuText);
     }
-}
+    }

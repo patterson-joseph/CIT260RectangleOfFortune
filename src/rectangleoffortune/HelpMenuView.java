@@ -29,7 +29,7 @@ public class HelpMenuView  {
     public void getInput() {       
               
         String command;
-        Scanner inFile = new Scanner(System.in);
+        Scanner inFile = RectangleOfFortune.getInputFile();
         
         do {
             
@@ -61,7 +61,7 @@ public class HelpMenuView  {
                 case "Q": 
                     break;
                 default: 
-                    new Messages().displayError("Invalid command. Please enter a valid command.");
+                    Messages.displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));  
     }

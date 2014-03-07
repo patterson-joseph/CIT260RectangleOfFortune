@@ -14,7 +14,7 @@ public class GameMenuControl  {
         
     public void spin(Game game) {        
         game.spinner.spin(); 
-        new Messages().displayMessage("\tEach letter is worth $" + game.spinner.getCurrentSpinValue());
+        Messages.displayMessage("\tEach letter is worth $" + game.spinner.getCurrentSpinValue());
         
         game.puzzle.displayPuzzle();
         GuessALetterView guessLetter = new GuessALetterView();
@@ -24,9 +24,9 @@ public class GameMenuControl  {
         
         if(count > 0){
             game.getCurrentPlayer().playerBank_Round += count*game.spinner.getCurrentSpinValue();           
-            new Messages().displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
+            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
         } else {
-            new Messages().displayMessage("\tLetter not found in puzzle or was already guessed!");
+            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
             game.changeCurrentPlayerTurn();
         }
     }
@@ -40,23 +40,23 @@ public class GameMenuControl  {
         
         if(count > 0){
             game.getCurrentPlayer().playerBank_Round -= 250;
-            new Messages().displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
+            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().playerBank_Round);
         } else {
-            new Messages().displayMessage("\tLetter not found in puzzle or was already guessed!");
+            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
             game.changeCurrentPlayerTurn();
         }
     }
           
     public boolean solveThePuzzle(Game game) {
         game.puzzle.displayPuzzle();
-        new Messages().displayMessage("Please enter your guess!");
-        Scanner inFile = new Scanner(System.in);
+        Messages.displayMessage("Please enter your guess!");
+        Scanner inFile = RectangleOfFortune.getInputFile();
         String command;
         
         command = inFile.nextLine();
         command = command.trim().toUpperCase();
         
-        if(command.equals(game.puzzle.puzzleText)){
+        if(command.equals(game.puzzle.getPuzzleText())){
             return true;
         } else {
             return false;
@@ -65,6 +65,6 @@ public class GameMenuControl  {
     
     public void promptForPlayerName(int playerNumber) {
         System.out.println();
-        new Messages().displayMessage("Player " + playerNumber + ", please enter your name");        
+        Messages.displayMessage("Player " + playerNumber + ", please enter your name");        
     }
 }
