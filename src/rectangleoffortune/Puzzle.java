@@ -13,7 +13,6 @@ public class Puzzle implements Serializable{
     private String puzzleText;
     private int remainingLetters = 0;
     private Letter currentPuzzle[];
-    private int remainingVowels;
     private List<String> puzzleList;
        
     public Puzzle() {
@@ -28,17 +27,18 @@ public class Puzzle implements Serializable{
         int i; // to keep track of the index
         
         i = getRandomNumber(highNum);  //generate the random number
-        setPuzzleText(this.puzzleList.get(i)); //pick the random puzzle from the array
+        puzzleText = (puzzleList.get(i)); //pick the random puzzle from the array
         this.puzzleList.remove(i); //remove the puzzle so we don't use it again during this game
         
         //create the array of letters
-        setCurrentPuzzle(new Letter[getPuzzleText().length()]);
+        currentPuzzle = (new Letter[getPuzzleText().length()]);
 
         //populate the array with each letter object
         for(i=0;i<=getPuzzleText().length()-1;i++) {
-            getCurrentPuzzle()[i]=new Letter(getPuzzleText().charAt(i));
+            currentPuzzle[i]=new Letter(puzzleText.charAt(i));
         }
     }
+    
     private int getRandomNumber(int highNum) {
         //returns an int between 1 and the number provided
         Random rand = new Random();
@@ -78,7 +78,7 @@ public class Puzzle implements Serializable{
         for(int i=1;i<4;i++){
             //left side bars to start
             System.out.print(startLeft);
-            for(Letter x: getCurrentPuzzle()) {
+            for(Letter x: currentPuzzle) {
                 //print each section consecutively
                 System.out.print(x.displayLetterSection(i));
             }
@@ -90,7 +90,7 @@ public class Puzzle implements Serializable{
     public void showWinningPuzzle() {
         //make all letters in the puzzle visible
         
-        for (Letter letter:getCurrentPuzzle()) {
+        for (Letter letter:currentPuzzle) {
             letter.setIsVisible((Boolean) true);
         }
         
@@ -108,13 +108,13 @@ public class Puzzle implements Serializable{
         for (int i=0; i < this.getPuzzleText().length(); i++) {
             if (this.getPuzzleText().charAt(i) == letter) {
                 if(!this.currentPuzzle[i].getIsVisible()){
-                    this.getCurrentPuzzle()[i].setIsVisible((Boolean) true);
+                    currentPuzzle[i].setIsVisible((Boolean) true);
                     count++;
                 }
             }
         }
 
-        this.setRemainingLetters(this.getRemainingLetters() - count); 
+        remainingLetters=(remainingLetters - count); 
 
         return (byte) count;
     }
@@ -125,56 +125,7 @@ public class Puzzle implements Serializable{
     public String getPuzzleText() {
         return puzzleText;
     }
-
-    /**
-     * @param puzzleText the puzzleText to set
-     */
-    public void setPuzzleText(String puzzleText) {
-        this.puzzleText = puzzleText;
-    }
-
-    /**
-     * @return the remainingLetters
-     */
-    public int getRemainingLetters() {
-        return remainingLetters;
-    }
-
-    /**
-     * @param remainingLetters the remainingLetters to set
-     */
-    public void setRemainingLetters(int remainingLetters) {
-        this.remainingLetters = remainingLetters;
-    }
-
-    /**
-     * @return the currentPuzzle
-     */
-    public Letter[] getCurrentPuzzle() {
-        return currentPuzzle;
-    }
-
-    /**
-     * @param currentPuzzle the currentPuzzle to set
-     */
-    public void setCurrentPuzzle(Letter[] currentPuzzle) {
-        this.currentPuzzle = currentPuzzle;
-    }
-
-    /**
-     * @return the remainingVowels
-     */
-    public int getRemainingVowels() {
-        return remainingVowels;
-    }
-
-    /**
-     * @param remainingVowels the remainingVowels to set
-     */
-    public void setRemainingVowels(int remainingVowels) {
-        this.remainingVowels = remainingVowels;
-    }
-    
+   
     /**
  * @author Joseph/Dustin
  */
