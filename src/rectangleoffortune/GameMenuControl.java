@@ -13,17 +13,17 @@ public class GameMenuControl  {
     } 
         
     public void spin(Game game) {        
-        game.spinner.spin(); 
-        Messages.displayMessage("\tEach letter is worth $" + game.spinner.getCurrentSpinValue());
+        game.getSpinner().spin(); 
+        Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
         
-        game.puzzle.displayPuzzle();
+        game.getPuzzle().displayPuzzle();
         GuessALetterView guessLetter = new GuessALetterView();
         char guessedLetter = guessLetter.getInput(guessLetter.consonants);
         
-        int count = game.puzzle.countLetters(guessedLetter);        
+        int count = game.getPuzzle().countLetters(guessedLetter);        
         
         if(count > 0){
-            game.getCurrentPlayer().setPlayerRoundBank(game.spinner.getCurrentSpinValue(),count);           
+            game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
             Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
         } else {
             Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
@@ -32,11 +32,11 @@ public class GameMenuControl  {
     }
     
     public void buyAVowel(Game game) {        
-        game.puzzle.displayPuzzle();
+        game.getPuzzle().displayPuzzle();
         GuessALetterView guessLetter = new GuessALetterView();
         char guessedLetter = guessLetter.getInput(guessLetter.vowels);
         
-        int count = game.puzzle.countLetters(guessedLetter);  
+        int count = game.getPuzzle().countLetters(guessedLetter);  
         
         if(count > 0){
             game.getCurrentPlayer().setPlayerRoundBank(-250,1);
@@ -48,7 +48,7 @@ public class GameMenuControl  {
     }
           
     public boolean solveThePuzzle(Game game) {
-        game.puzzle.displayPuzzle();
+        game.getPuzzle().displayPuzzle();
         Messages.displayMessage("Please enter your guess!");
         Scanner inFile = RectangleOfFortune.getInputFile();
         String command;
@@ -56,7 +56,7 @@ public class GameMenuControl  {
         command = inFile.nextLine();
         command = command.trim().toUpperCase();
         
-        if(command.equals(game.puzzle.getPuzzleText())){
+        if(command.equals(game.getPuzzle().getPuzzleText())){
             return true;
         } else {
             return false;

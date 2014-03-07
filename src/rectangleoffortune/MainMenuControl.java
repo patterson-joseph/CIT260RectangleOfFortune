@@ -9,26 +9,29 @@ import java.util.Scanner;
 public class MainMenuControl implements Serializable {
     
     public static void display1PlayerGame() {
-        Game game = new Game(1);
-        GameMenuView gameMenu=new GameMenuView(game);
-        game.player1.setPlayerName(getPlayerName(1));
+//        Game game = new Game(1);
+//        GameMenuView gameMenu=new GameMenuView(game);
+        GameMenuView gameMenu=new GameMenuView(1);
+//        game.player1.setPlayerName(getPlayerName(1));
         gameMenu.getInput();
     }
     
     public static void display2PlayerGame() {
-        Game game = new Game(2);
-        GameMenuView gameMenu = new GameMenuView(game);
-        game.player1.setPlayerName(getPlayerName(1));
-        game.player2.setPlayerName(getPlayerName(2));
+//        Game game = new Game(2);
+//        GameMenuView gameMenu = new GameMenuView(game);
+//        game.player1.setPlayerName(getPlayerName(1));
+//        game.player2.setPlayerName(getPlayerName(2));
+        GameMenuView gameMenu=new GameMenuView(2);
         gameMenu.getInput();
     }    
 
     public static void display3PlayerGame() {
-        Game game = new Game(3);
-        GameMenuView gameMenu = new GameMenuView(game);
-        game.player1.setPlayerName(getPlayerName(1));
-        game.player2.setPlayerName(getPlayerName(2));
-        game.player3.setPlayerName(getPlayerName(3));
+//        Game game = new Game(3);
+//        GameMenuView gameMenu = new GameMenuView(game);
+//        game.player1.setPlayerName(getPlayerName(1));
+//        game.player2.setPlayerName(getPlayerName(2));
+//        game.player3.setPlayerName(getPlayerName(3));
+        GameMenuView gameMenu=new GameMenuView(3);
         gameMenu.getInput();   
     }
 
@@ -37,12 +40,4 @@ public class MainMenuControl implements Serializable {
         helpMenu.getInput();
     }
     
-    public static String getPlayerName(int playerNumber) {
-        System.out.println();
-        Messages.displayMessage("Player " + playerNumber + ", please enter your name");
-        String name;
-        Scanner inString = RectangleOfFortune.getInputFile();
-        name=inString.nextLine().trim().toUpperCase();
-        return name;
-    } 
 }

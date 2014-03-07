@@ -34,6 +34,7 @@ public class RectangleOfFortune {
      */
     public static Scanner getInputFile() {
         //available for all classes to use rather than keep instancing a new input each time
+        //a Singleton pattern
         return RectangleOfFortune.inFile;
     }
 }

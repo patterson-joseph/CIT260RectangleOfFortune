@@ -23,11 +23,19 @@ public class GameMenuView  {
     public GameMenuView(Game game) {
         this.game=game;
     } 
-    
+    // new default constructor
+    public GameMenuView(int numberOfPlayers) {
+        this.game = new Game(numberOfPlayers);
+    }
     // display the help menu and get the end users input selection
     public void getInput() { 
         String command;
         Scanner inFile = RectangleOfFortune.getInputFile();
+        
+        //ask for player names before going further
+        for(int i=0;i<game.getNumberOfPlayers();i++) {
+            game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
+        }
         
         do {
             
@@ -51,15 +59,20 @@ public class GameMenuView  {
                 case "P":
                     boolean result = this.gameMenuControl.solveThePuzzle(game);
                     if(result){
-                        Messages.displayMessage(game.getCurrentPlayer().getPlayerName() + " wins!");
-                        game.puzzle.showWinningPuzzle();
+                        Messages.displayMessage(game.getCurrentPlayer().getPlayerName() 
+                                + " wins! $" + game.getCurrentPlayer().getPlayerRoundBank()
+                                + " in total winnings.");
+                        game.getPuzzle().showWinningPuzzle();
+                        Messages.displayMessage("Total turns played: "
+                            + game.getTotalNumberOfTurns() + "."
+                            + " Thanks for playing!");
                         command = "Q";
                     } else {
                         Messages.displayMessage("Sorry that is incorrect!");
                     }
                     break; 
                 case "C":
-                    this.gameMenuControl.showCurrentPlayerStanding(game.playerList);
+                    this.gameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
                     break;
                 case "Q":
                     break;
@@ -71,7 +84,7 @@ public class GameMenuView  {
     
     // displays the help menu
     public final void displayGameMenu() {
-        game.puzzle.displayPuzzle();
+        game.getPuzzle().displayPuzzle();
         
         String menuText = game.getCurrentPlayerName() + ", it's your turn. " + 
             "You currently have $" + game.getCurrentPlayer().getPlayerRoundBank() +
@@ -82,4 +95,14 @@ public class GameMenuView  {
         
         Messages.displayMessage(menuText);
     }
+    
+    private String getPlayerName(int playerNumber) {
+        System.out.println();
+        Messages.displayMessage("Player " + playerNumber + ", please enter your name");
+        String name;
+        Scanner inString = RectangleOfFortune.getInputFile();
+        name=inString.nextLine().trim().toUpperCase();
+        return name;
+    } 
+        
     }
