@@ -12,9 +12,7 @@ public class GameMenuControl  {
         
     } 
         
-    public void spin(Game game) {
-//        game.spinner.setSpinnerLocation(new Random().nextInt(game.spinner.getSpinnerValues().length));
-        
+    public void spin(Game game) {        
         game.spinner.spin(); 
         new Messages().displayMessage("\tEach letter is worth $" + game.spinner.getCurrentSpinValue());
         

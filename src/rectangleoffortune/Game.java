@@ -72,6 +72,7 @@ public class Game {
             return playerName;
 
         }
+        
         if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
             System.out.println("Invalid Player turn defined");
             return playerName;

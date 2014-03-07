@@ -25,14 +25,13 @@ public class GameMenuView  {
     } 
     
     // display the help menu and get the end users input selection
-    public void getInput() {       
-//        showWhosTurn(game.getCurrentPlayerName());
+    public void getInput() { 
         String command;
         Scanner inFile = new Scanner(System.in);
         
         do {
             
-            this.display(); // display the menu
+            this.displayGameMenu(); // display the menu
             
             // get commaned entered
             command = inFile.nextLine();
@@ -79,19 +78,17 @@ public class GameMenuView  {
     }    
     
     // displays the help menu
-    public final void display() {
+    public final void displayGameMenu() {
         game.puzzle.displayPuzzle();
-        System.out.println("\n\t===============================================================");
-        System.out.println("\t" + game.getCurrentPlayerName() + ", it's your turn. "
-                + "You currently have $" + game.getCurrentPlayer().playerBank_Round + ".");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
+        
+        String menuText = "";
+        menuText += game.getCurrentPlayerName() + ", it's your turn. " + 
+            "You currently have $" + game.getCurrentPlayer().playerBank_Round +
+            ".\n\tEnter the letter associated with one of the following commands:";
         for (String[] menuItem : GameMenuView.menuItems) {
-            System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
+            menuText += "\n\t   " + menuItem[0] + "\t" + menuItem[1];
         }
-        System.out.println("\t===============================================================");
-    }
-  
-    public final void showWhosTurn(String playerName) {
-        new Messages().displayMessage("\t" + playerName + ", it's your turn.");
+        
+        new Messages().displayMessage(menuText);
     }
 }

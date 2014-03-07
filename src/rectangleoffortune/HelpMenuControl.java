@@ -15,7 +15,7 @@ public class HelpMenuControl  {
         
     } 
         
-    public void displayGameHelp() {
+    public static void displayGameHelp() {
         System.out.println();
         new Messages().displayMessage(
                 "\tThe objective of the game is to be the first player to "

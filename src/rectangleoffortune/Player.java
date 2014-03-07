@@ -5,29 +5,24 @@ package rectangleoffortune;
  * @author Joseph/Dustin
  */
 public class Player {
-    String playerName; // = "Default User";
-//    String playerType; // Person or Computer
-    int playerNumber; // where the player is in the lineup of other players
-    int playerBank_Round; // total won for the round
-    int playerBank_Game; //total won during the game
+    private String playerName; // = "Default User";
+    int playerRoundBank; // total won for the round
+    int playerGameBank; //total won during the game
     int wins; // = 2;
     int losses; // = 1;
     
 Player(int playerNumber) {
-    playerBank_Round=0;
-    playerBank_Game=0;
     wins=0;
     losses=0;
-    this.playerNumber=playerNumber;
     this.playerName="Player" + playerNumber;
 }
    
-    public void displayName(){
+    public void getPlayerName(){
         System.out.println("Player name is: " + playerName + ".");
     }
     
     public void displayBank(){
-        System.out.println("Player has $" + playerBank_Round + " in the bank.");
+        System.out.println("Player has $" + playerRoundBank + " in the bank.");
     }
     
     public void displayWins(){
@@ -51,13 +46,13 @@ Player(int playerNumber) {
                     + "\t" + numberOfCorrectLetters);
            return false;
        }
-       if (playerBank_Round < 0) {
+       if (playerRoundBank < 0) {
            System.out.println("Invalid player bank amount: \n"
-                   + "\t" + playerBank_Round);
+                   + "\t" + playerRoundBank);
            return false;
        }
        
-       playerBank_Round += letterValue*numberOfCorrectLetters;
+       playerRoundBank += letterValue*numberOfCorrectLetters;
        return true;
     }
 }
