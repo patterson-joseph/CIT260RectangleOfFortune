@@ -68,11 +68,10 @@ public class HelpMenuView  {
 
         // displays the help menu
     public final void display() {
-        System.out.println("\n\t===============================================================");
-        System.out.println("\tEnter the letter associated with one of the following commands:");
+        String menuText = "\tEnter the letter associated with one of the following commands:";
         for (String[] menuItem : HelpMenuView.menuItems) {
-            System.out.println("\t   " + menuItem[0] + "\t" + menuItem[1]);
+            menuText += "\n\t" + menuItem[0] + "\t" + menuItem[1];
         }
-        System.out.println("\t===============================================================\n");
+        Messages.displayMessage(menuText);
     }  
 }

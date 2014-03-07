@@ -48,7 +48,7 @@ public class Game {
         }
         
         //we'll start with player1
-        this.currentPlayerNumberTurn=1;
+        this.currentPlayerNumberTurn=0;
         this.startOfRoundPlayerNumber=1;
         this.totalNumberOfTurns=1;
         // set up instance of puzzle class
@@ -73,17 +73,11 @@ public class Game {
 
         }
         
-        if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
+        if (currentPlayerNumberTurn<0 | currentPlayerNumberTurn>2) {
             System.out.println("Invalid Player turn defined");
             return playerName;
         }
-        for(Player i: playerList) {
-            if (i.playerNumber==this.currentPlayerNumberTurn) {
-                playerName=i.playerName;
-            }
-        }
-
-         return playerName;
+        return playerList[currentPlayerNumberTurn].getPlayerName();
     }
     
     /**
@@ -96,74 +90,17 @@ public class Game {
             System.out.println("Missing or corrupt player array!");
             return currentPlayer;
         }
-        if (currentPlayerNumberTurn<1 | currentPlayerNumberTurn>3) {
+        if (currentPlayerNumberTurn<0 | currentPlayerNumberTurn>2) {
             System.out.println("Invalid Player turn defined");
             return currentPlayer;
         }
-        for(Player i: playerList) {
-            if (i.playerNumber==this.currentPlayerNumberTurn) {
-                currentPlayer=i;
-            }
-        }
-
-         return currentPlayer;
-    }
-    
-    public void showCurrentPlayerStanding() {
-        //sort player list by bank amount, highest to lowest
-        //using insertion sort method
-
-        Player tempArray[] = playerList;
-                   
-        int j;      //number of items sorted so far
-        Player key;    // the item to be inserted
-        int i;
-
-        if (tempArray==null) {
-            System.out.println("Missing or corrupt player array!");
-        } else {
-            for(j=1;j<tempArray.length;j++) { // start with base 1 counting
-                key=tempArray[j]; // remember which array starts in the first position
-                
-                for(i=j-1;(i>=0) && (tempArray[i].playerBank_Round<key.playerBank_Round);i--) { //i is still >=0 AND player[i].bankamount<player[1].bankamount)
-                    tempArray[i+1]=tempArray[i]; //amount is less, so move the small value up
-                }
-                
-                tempArray[i+1]=key; //make sure the  to put the key in the correct location
-            }
-
-            // tempArray is now sorted highest bank amount to lowest, so display it
-            System.out.println(
-            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-            for (i=0;i<tempArray.length;i++) {
-                System.out.println("\t\t" + tempArray[i].playerName 
-                + " is in " + placeRank(i) + " place with $"
-                + tempArray[i].playerBank_Round);
-            }
-            System.out.println(
-            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-        }
-    }
-    
-    private String placeRank(int rank) {
-        String place="";
-        switch(rank){
-            case 0:
-                place= "First";
-                break;
-            case 1:
-                place= "Second";
-                break;
-            case 2:
-                place= "Third";
-        }
-        return place;
+        return playerList[currentPlayerNumberTurn];
     }
     
     public void changeCurrentPlayerTurn() {        
-        if (currentPlayerNumberTurn==getNumberOfPlayers()) {
+        if ((currentPlayerNumberTurn+1)==getNumberOfPlayers()) {
             //if we're on the last player, move back to the beginning of the list
-            currentPlayerNumberTurn=1;
+            currentPlayerNumberTurn=0;
         }
         else {
             //advance player turn by 1
@@ -185,21 +122,21 @@ public class Game {
         //reset for the next round
 
         //record the winner's totals into game totals
-        roundWinner.playerBank_Game += roundWinner.playerBank_Round;
+        roundWinner.setPlayerGameBank(roundWinner.getPlayerRoundBank());
         
         //record the win/loss stats
         for(Player player: playerList) {
-            if(player.playerNumber==roundWinner.playerNumber) {
-                player.wins++;
-            }
-            else {
-                player.losses++;
-            }
+//            if(player.playerNumber==roundWinner.playerNumber) {
+//                player.wins++;
+//            }
+//            else {
+//                player.losses++;
+//            }
         }
         
         //reset player amounts
         for(Player player: playerList) {
-            player.playerBank_Round=0;
+            player.setPlayerRoundBank(0,0);
         }
         
         //pick a new puzzle

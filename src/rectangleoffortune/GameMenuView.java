@@ -42,7 +42,7 @@ public class GameMenuView  {
                     this.gameMenuControl.spin(game);
                     break;
                 case "B":
-                    if(game.getCurrentPlayer().playerBank_Round >= 250){
+                    if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
                         this.gameMenuControl.buyAVowel(game);
                     } else {
                         Messages.displayMessage("Not enough money to buy a vowel!");
@@ -51,7 +51,7 @@ public class GameMenuView  {
                 case "P":
                     boolean result = this.gameMenuControl.solveThePuzzle(game);
                     if(result){
-                        Messages.displayMessage(game.getCurrentPlayer().playerName + " wins!");
+                        Messages.displayMessage(game.getCurrentPlayer().getPlayerName() + " wins!");
                         game.puzzle.showWinningPuzzle();
                         command = "Q";
                     } else {
@@ -59,7 +59,7 @@ public class GameMenuView  {
                     }
                     break; 
                 case "C":
-                    this.game.showCurrentPlayerStanding();
+                    this.gameMenuControl.showCurrentPlayerStanding(game.playerList);
                     break;
                 case "Q":
                     break;
@@ -68,27 +68,18 @@ public class GameMenuView  {
             }
         } while (!command.equals("Q"));
     }
-
-    public String getPlayerName(int playerNumber) {
-        this.gameMenuControl.promptForPlayerName(playerNumber);
-        String name;
-        Scanner inString = RectangleOfFortune.getInputFile();
-        name=inString.nextLine().trim().toUpperCase();
-        return name;
-    }    
     
     // displays the help menu
     public final void displayGameMenu() {
         game.puzzle.displayPuzzle();
         
-        String menuText = "";
-        menuText += game.getCurrentPlayerName() + ", it's your turn. " + 
-            "You currently have $" + game.getCurrentPlayer().playerBank_Round +
+        String menuText = game.getCurrentPlayerName() + ", it's your turn. " + 
+            "You currently have $" + game.getCurrentPlayer().getPlayerRoundBank() +
             ".\n\tEnter the letter associated with one of the following commands:";
         for (String[] menuItem : GameMenuView.menuItems) {
             menuText += "\n\t   " + menuItem[0] + "\t" + menuItem[1];
         }
         
-        new Messages().displayMessage(menuText);
+        Messages.displayMessage(menuText);
     }
     }
