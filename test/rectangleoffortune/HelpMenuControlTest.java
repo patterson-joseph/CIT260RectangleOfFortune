@@ -44,8 +44,7 @@ public class HelpMenuControlTest {
     @Test
     public void testDisplayGameHelp() {
         System.out.println("displayGameHelp");
-        HelpMenuControl instance = new HelpMenuControl();
-        instance.displayGameHelp();
+        HelpMenuControl.displayGameHelp();
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

@@ -11,11 +11,11 @@ public class Player {
     private int wins; // = 2;
     private int losses; // = 1;
     
-Player(int playerNumber) {
-    wins=0;
-    losses=0;
-    this.playerName="Player" + playerNumber;
-}
+    Player(int playerNumber) {
+        wins=0;
+        losses=0;
+        this.playerName="Player" + playerNumber;
+    }
    
     public String getPlayerName(){
         return playerName;

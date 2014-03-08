@@ -1,19 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package rectangleoffortune;
-
 
 /**
  *
  * @author Joseph/Dustin
  */
 public class HelpMenuControl  {
-    
-    public HelpMenuControl() {
-        
-    } 
         
     public static void displayGameHelp() {
         System.out.println();
@@ -31,7 +22,7 @@ public class HelpMenuControl  {
                 );
     }
     
-    public void displayRectangleHelp() {
+    public static void displayRectangleHelp() {
         System.out.println();
         Messages.displayMessage(
                 "\tThe Rectangle represents the \"Wheel\", as in the Wheel of Fortune. "
@@ -42,7 +33,7 @@ public class HelpMenuControl  {
             );
     }
             
-    public void displayComputerHelp() {
+    public static void displayComputerHelp() {
         System.out.println();
         Messages.displayMessage(
                 "\tA computer based player automatically takes its turn in sequence "
@@ -51,7 +42,7 @@ public class HelpMenuControl  {
     }
     
                    
-    public void displayTurnHelp() {
+    public static void displayTurnHelp() {
         System.out.println();
         Messages.displayMessage(
                 "\tA player is given three choices at the beginning of their turn;\n"
@@ -66,7 +57,7 @@ public class HelpMenuControl  {
                 );
     }
              
-    public void displayPuzzleHelp() {
+    public static void displayPuzzleHelp() {
         System.out.println();
         Messages.displayMessage(
                 "\tA new puzzle is randomly generated at the beginning of each\n"
@@ -74,7 +65,7 @@ public class HelpMenuControl  {
                 );
     }
                  
-    public void displayBankHelp() {
+    public static void displayBankHelp() {
         System.out.println();
         Messages.displayMessage(
                 "\tEach player has a bank which starts at $0. As the player\n"

@@ -7,7 +7,7 @@ import java.util.Scanner;
  * @author Joseph/Dustin
  */
 public class GameMenuView  {
-    Game game;
+    private static Game game;
     private final static String[][] menuItems = {
         {"S", "Spin"},
         {"B", "Buy a Vowel"},
@@ -16,30 +16,24 @@ public class GameMenuView  {
         {"Q", "Quit Game"}
     };
     
-    // Create instance of the HelpMenuControl (action) class
-    private final GameMenuControl gameMenuControl = new GameMenuControl();
-    
-    // default constructor
-    public GameMenuView(Game game) {
-        this.game=game;
-    } 
     // new default constructor
     public GameMenuView(int numberOfPlayers) {
-        this.game = new Game(numberOfPlayers);
+        GameMenuView.game = new Game(numberOfPlayers);
     }
+    
     // display the help menu and get the end users input selection
-    public void getInput() { 
+    public static void getInput() { 
         String command;
         Scanner inFile = RectangleOfFortune.getInputFile();
         
         //ask for player names before going further
-        for(int i=0;i<game.getNumberOfPlayers();i++) {
-            game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
+        for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++) {
+            game.getPlayerList()[i].setPlayerName(GameMenuView.getPlayerName(i+1));
         }
         
         do {
             
-            this.displayGameMenu(); // display the menu
+            GameMenuView.displayGameMenu(); // display the menu
             
             // get commaned entered
             command = inFile.nextLine();
@@ -47,17 +41,17 @@ public class GameMenuView  {
             
             switch (command) {
                 case "S":
-                    this.gameMenuControl.spin(game);
+                    GameMenuControl.spin(game);
                     break;
                 case "B":
                     if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
-                        this.gameMenuControl.buyAVowel(game);
+                        GameMenuControl.buyAVowel(game);
                     } else {
                         Messages.displayMessage("Not enough money to buy a vowel!");
                     }
                     break;
                 case "P":
-                    boolean result = this.gameMenuControl.solveThePuzzle(game);
+                    boolean result = GameMenuControl.solveThePuzzle(game);
                     if(result){
                         Messages.displayMessage(game.getCurrentPlayer().getPlayerName() 
                                 + " wins! $" + game.getCurrentPlayer().getPlayerRoundBank()
@@ -72,7 +66,7 @@ public class GameMenuView  {
                     }
                     break; 
                 case "C":
-                    this.gameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
+                    GameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
                     break;
                 case "Q":
                     break;
@@ -83,7 +77,7 @@ public class GameMenuView  {
     }
     
     // displays the help menu
-    public final void displayGameMenu() {
+    private static final void displayGameMenu() {
         game.getPuzzle().displayPuzzle();
         
         String menuText = game.getCurrentPlayerName() + ", it's your turn. " + 
@@ -96,7 +90,7 @@ public class GameMenuView  {
         Messages.displayMessage(menuText);
     }
     
-    private String getPlayerName(int playerNumber) {
+    private static String getPlayerName(int playerNumber) {
         System.out.println();
         Messages.displayMessage("Player " + playerNumber + ", please enter your name");
         String name;
@@ -105,4 +99,4 @@ public class GameMenuView  {
         return name;
     } 
         
-    }
+}

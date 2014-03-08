@@ -34,17 +34,10 @@ public class MainMenuView implements Serializable {
             
             switch (command) {
                 case "1":
-                    MainMenuControl.display1PlayerGame();
-                    break;
                 case "2":
-                    MainMenuControl.display2PlayerGame();
-                    break;
                 case "3":
-                    MainMenuControl.display3PlayerGame();
-                    break; 
-//                case "G":
-//                    this.mainMenuControl.displayGameMenu();
-//                    break;
+                    MainMenuControl.displayGame(Integer.parseInt(command));
+                    break;
                 case "H":
                     MainMenuControl.displayHelpMenu();
                     break;

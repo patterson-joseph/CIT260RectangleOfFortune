@@ -7,18 +7,12 @@ import java.util.Scanner;
  * @author Joseph/Dustin
  */
 public class GameMenuControl  {
-    
-    public GameMenuControl() {
-        
-    } 
-        
-    public void spin(Game game) {        
+    public static void spin(Game game) {
         game.getSpinner().spin(); 
         Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
         
         game.getPuzzle().displayPuzzle();
-        GuessALetterView guessLetter = new GuessALetterView();
-        char guessedLetter = guessLetter.getInput(guessLetter.consonants);
+        char guessedLetter = GuessALetterView.getInput(GuessALetterView.getConsonants());
         
         int count = game.getPuzzle().countLetters(guessedLetter);        
         
@@ -31,10 +25,9 @@ public class GameMenuControl  {
         }
     }
     
-    public void buyAVowel(Game game) {        
+    public static void buyAVowel(Game game) {        
         game.getPuzzle().displayPuzzle();
-        GuessALetterView guessLetter = new GuessALetterView();
-        char guessedLetter = guessLetter.getInput(guessLetter.vowels);
+        char guessedLetter = GuessALetterView.getInput(GuessALetterView.getVowels());
         
         int count = game.getPuzzle().countLetters(guessedLetter);  
         
@@ -47,7 +40,7 @@ public class GameMenuControl  {
         }
     }
           
-    public boolean solveThePuzzle(Game game) {
+    public static boolean solveThePuzzle(Game game) {
         game.getPuzzle().displayPuzzle();
         Messages.displayMessage("Please enter your guess!");
         Scanner inFile = RectangleOfFortune.getInputFile();
@@ -63,7 +56,7 @@ public class GameMenuControl  {
         }
     }
     
-    public void showCurrentPlayerStanding(Player[] playerList) {
+    public static void showCurrentPlayerStanding(Player[] playerList) {
         //sort player list by bank amount, highest to lowest
         //using insertion sort method
 
@@ -99,7 +92,7 @@ public class GameMenuControl  {
         }
     }
     
-    private String placeRank(int rank) {
+    private static String placeRank(int rank) {
         String place="";
         switch(rank){
             case 0:
