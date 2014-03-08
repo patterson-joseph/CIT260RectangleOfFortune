@@ -1,10 +1,12 @@
 package rectangleoffortune;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Joseph/Dustin
  */
-public class Player {
+public class Player implements Serializable {
     private String playerName; // = "Default User";
     private int playerRoundBank; // total won for the round
     private int playerGameBank; //total won during the game
