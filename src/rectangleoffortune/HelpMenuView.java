@@ -1,12 +1,9 @@
 package rectangleoffortune;
 
-import java.util.Scanner;
-
 /**
  * @author Joseph/Dustin
  */
-public class HelpMenuView  {
-        
+public class HelpMenuView extends Menu  {
     private final static String[][] menuItems = {
         {"G", "Rectangle of Fortune Game"},
         {"R", "Rectangle"},
@@ -17,19 +14,19 @@ public class HelpMenuView  {
         {"Q", "Quit Help"}
     };
     
+    public HelpMenuView(){
+        super(HelpMenuView.menuItems);
+    }
+
     // display the help menu and get the end users input selection
-    public static void getInput() {       
-              
+    @Override
+    public String executeCommands(){
         String command;
-        Scanner inFile = RectangleOfFortune.getInputFile();
-        
-        do {
-            
-            HelpMenuView.display(); // display the menu
+        do {            
+            this.display();
             
             // get commaned entered
-            command = inFile.nextLine();
-            command = command.trim().toUpperCase();
+            command = this.getCommand();
             
             switch (command) {
                 case "G":
@@ -40,30 +37,23 @@ public class HelpMenuView  {
                     break;
                 case "C":
                     HelpMenuControl.displayComputerHelp();
-                    break;                  
+                    break;
                 case "T":
                     HelpMenuControl.displayTurnHelp();
                     break;
                 case "P":
                     HelpMenuControl.displayPuzzleHelp();
                     break;
-                 case "B":
+                case "B":
                     HelpMenuControl.displayBankHelp();
-                    break; 
-                case "Q": 
                     break;
-                default: 
+                case "Q":
+                    break;
+                default:
                     Messages.displayError("Invalid command. Please enter a valid command.");
             }
-        } while (!command.equals("Q"));  
+        } while (!command.equals("Q"));
+        
+        return command;
     }
-
-        // displays the help menu
-    public static final void display() {
-        String menuText = "\tEnter the letter associated with one of the following commands:";
-        for (String[] menuItem : HelpMenuView.menuItems) {
-            menuText += "\n\t" + menuItem[0] + "\t" + menuItem[1];
-        }
-        Messages.displayMessage(menuText);
-    }  
 }

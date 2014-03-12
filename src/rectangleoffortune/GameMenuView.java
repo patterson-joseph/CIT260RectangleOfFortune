@@ -6,7 +6,7 @@ import java.util.Scanner;
  *
  * @author Joseph/Dustin
  */
-public class GameMenuView  {
+public class GameMenuView extends Menu {
     private static Game game;
     private final static String[][] menuItems = {
         {"S", "Spin"},
@@ -16,28 +16,25 @@ public class GameMenuView  {
         {"Q", "Quit Game"}
     };
     
-    // new default constructor
-    public GameMenuView(int numberOfPlayers) {
+    public GameMenuView(int numberOfPlayers){
+        super(GameMenuView.menuItems);
         GameMenuView.game = new Game(numberOfPlayers);
     }
-    
-    // display the help menu and get the end users input selection
-    public static void getInput() { 
+
+    @Override
+    public String executeCommands(){
         String command;
-        Scanner inFile = RectangleOfFortune.getInputFile();
         
-        //ask for player names before going further
-        for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++) {
+        for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++){
             game.getPlayerList()[i].setPlayerName(GameMenuView.getPlayerName(i+1));
         }
         
         do {
-            
-            GameMenuView.displayGameMenu(); // display the menu
+            game.getPuzzle().displayPuzzle();
+            this.display();
             
             // get commaned entered
-            command = inFile.nextLine();
-            command = command.trim().toUpperCase();
+            command = this.getCommand();
             
             switch (command) {
                 case "S":
@@ -74,21 +71,9 @@ public class GameMenuView  {
                     Messages.displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));
-    }
-    
-    // displays the help menu
-    private static final void displayGameMenu() {
-        game.getPuzzle().displayPuzzle();
         
-        String menuText = game.getCurrentPlayerName() + ", it's your turn. " + 
-            "You currently have $" + game.getCurrentPlayer().getPlayerRoundBank() +
-            ".\n\tEnter the letter associated with one of the following commands:";
-        for (String[] menuItem : GameMenuView.menuItems) {
-            menuText += "\n\t   " + menuItem[0] + "\t" + menuItem[1];
-        }
-        
-        Messages.displayMessage(menuText);
-    }
+        return command;
+    }    
     
     private static String getPlayerName(int playerNumber) {
         System.out.println();

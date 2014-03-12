@@ -21,7 +21,8 @@ public class RectangleOfFortune {
         //display our splash page
         displayIntro();
         //call the main menu up
-        MainMenuView.getInput();
+        MainMenuView mainMenu = new MainMenuView();
+        mainMenu.executeCommands();
     }
     
     public static void displayIntro() {

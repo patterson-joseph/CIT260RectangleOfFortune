@@ -9,11 +9,12 @@ public class MainMenuControl implements Serializable {
     
     public static void displayGame(int numberOfPlayers) {
         GameMenuView gameMenu=new GameMenuView(numberOfPlayers);
-        GameMenuView.getInput();
+        gameMenu.executeCommands();
     }
 
     public static void displayHelpMenu() {
-        HelpMenuView.getInput();
+        HelpMenuView helpMenu = new HelpMenuView();
+        helpMenu.executeCommands();
     }
     
 }
