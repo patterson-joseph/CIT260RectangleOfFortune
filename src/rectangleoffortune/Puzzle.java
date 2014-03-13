@@ -2,6 +2,7 @@ package rectangleoffortune;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -13,7 +14,7 @@ public class Puzzle implements Serializable{
     private String puzzleText;
     private int remainingLetters = 0;
     private Letter currentPuzzle[];
-    private List<String> puzzleList;
+    private final List<String> puzzleList;
        
     public Puzzle() {
         puzzleList=new ArrayList();
@@ -21,7 +22,7 @@ public class Puzzle implements Serializable{
         selectNewPuzzle();
     }
     
-    public void selectNewPuzzle() {
+    public final void selectNewPuzzle() {
         //random puzzle picker
         int highNum = puzzleList.size(); //highest number needed
         int i; // to keep track of the index
@@ -63,38 +64,35 @@ public class Puzzle implements Serializable{
             ,"FIRING ON ALL CYLINDERS"
             
         };
-        
-        //add all the items to the List, using a List so we can removing items later
-        for(String string:list) {
-            puzzleList.add(string);
-        }
+         puzzleList.addAll(Arrays.asList(list));
         
     }
     
-    public void displayPuzzle() {
-       
-        String startLeft = "|";
+    public String puzzleTextToDisplay() {
+        String section="";
+        String startLeft = "|"; //left side bars to start
         
         for(int i=1;i<4;i++){
-            //left side bars to start
-            System.out.print(startLeft);
+            section += startLeft; //starting character
             for(Letter x: currentPuzzle) {
-                //print each section consecutively
-                System.out.print(x.displayLetterSection(i));
+                //gather up requested section
+                section+=(x.displayLetterSection(i));
             }
-            //clear current line to start fresh on next line
-            System.out.println();
-        }         
+                //clear current line to start fresh on next line
+            section+="\n";
+//            System.out.println();
+        }    
+        return section;
     }
     
-    public void showWinningPuzzle() {
+    public void makeWinningPuzzleVisible() {
         //make all letters in the puzzle visible
         
         for (Letter letter:currentPuzzle) {
             letter.setIsVisible((Boolean) true);
         }
         
-        this.displayPuzzle();
+        this.puzzleTextToDisplay();
     }
         
     public int countLetters(char letter){
@@ -132,7 +130,7 @@ public class Puzzle implements Serializable{
 private class Letter implements Serializable{
     private Boolean isVisible;
     private Boolean isSpace;
-    private char value;
+    private final char value;
         
     public Letter(char letter) {
     // default constructor
@@ -173,17 +171,17 @@ private class Letter implements Serializable{
     }
 
     private String showToOutsideWorld() {
-        String string="";
+        String str;
         if (this.getIsSpace()) {
-            string=" ";
+            str=" ";
         }
         else if (this.getIsVisible()) {
-            string=Character.toString(getValue());
+            str=Character.toString(getValue());
         }
         else {
-            string="?";
+            str="?";
         }
-        return string;
+        return str;
     }
 
     /**

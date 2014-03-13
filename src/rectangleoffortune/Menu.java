@@ -54,6 +54,16 @@ public abstract class Menu {
         Messages.displayMessage(menuText);
     }
 
+    public final void display(Player player) {
+        String menuText = player.getPlayerName() + ", it's your turn. " + 
+            "You currently have $" + player.getPlayerRoundBank() + ".\n\t" +
+            "Enter the letter associated with one of the following commands:";
+        for (String[] menuItem : this.menuItems) {
+            menuText += "\n\t" + menuItem[0] + "\t" + menuItem[1];
+        }
+        Messages.displayMessage(menuText);        
+    }
+    
     /**
      * @return the menuItems
      */
@@ -69,7 +79,7 @@ public abstract class Menu {
     }
 
     private boolean validCommand(String command) {
-        String[][] items = this.menuItems;
+//        String[][] items = this.menuItems;
         
         for(String[] item : this.menuItems){
             if(item[0].equals(command)){

@@ -14,9 +14,9 @@ public class Game implements Serializable{
     private int currentRound;
     private int startOfRoundPlayerNumber;
 
-    private Puzzle puzzle;
-    private Player playerList[];
-    private Spinner spinner = new Spinner();
+    private final Puzzle puzzle;
+    private final Player playerList[];
+    private final Spinner spinner = new Spinner();
     
     // default constructor
     public Game(int playerCount) {
@@ -159,5 +159,9 @@ public class Game implements Serializable{
      */
     public int getTotalNumberOfTurns() {
         return totalNumberOfTurns;
+    }
+    
+    public void displayPuzzle() {
+        System.out.print(this.puzzle.puzzleTextToDisplay());
     }
 }

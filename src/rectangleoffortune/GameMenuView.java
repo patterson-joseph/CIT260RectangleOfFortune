@@ -26,12 +26,12 @@ public class GameMenuView extends Menu {
         String command;
         
         for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++){
-            game.getPlayerList()[i].setPlayerName(GameMenuView.getPlayerName(i+1));
+            game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
         }
         
         do {
-            game.getPuzzle().displayPuzzle();
-            this.display();
+            game.displayPuzzle();
+            this.display(game.getCurrentPlayer());
             
             // get commaned entered
             command = this.getCommand();
@@ -53,7 +53,8 @@ public class GameMenuView extends Menu {
                         Messages.displayMessage(game.getCurrentPlayer().getPlayerName() 
                                 + " wins! $" + game.getCurrentPlayer().getPlayerRoundBank()
                                 + " in total winnings.");
-                        game.getPuzzle().showWinningPuzzle();
+                        game.getPuzzle().makeWinningPuzzleVisible();
+                        game.displayPuzzle();
                         Messages.displayMessage("Total turns played: "
                             + game.getTotalNumberOfTurns() + "."
                             + " Thanks for playing!");
@@ -75,7 +76,7 @@ public class GameMenuView extends Menu {
         return command;
     }    
     
-    private static String getPlayerName(int playerNumber) {
+    private String getPlayerName(int playerNumber) {
         System.out.println();
         Messages.displayMessage("Player " + playerNumber + ", please enter your name");
         String name;
@@ -83,5 +84,5 @@ public class GameMenuView extends Menu {
         name=inString.nextLine().trim().toUpperCase();
         return name;
     } 
-        
+              
 }

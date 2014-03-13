@@ -11,7 +11,7 @@ public class GameMenuControl  {
         game.getSpinner().spin(); 
         Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
         
-        game.getPuzzle().displayPuzzle();
+        game.displayPuzzle();
         char guessedLetter = GuessALetterView.getInput(GuessALetterView.getConsonants());
         
         int count = game.getPuzzle().countLetters(guessedLetter);        
@@ -26,7 +26,7 @@ public class GameMenuControl  {
     }
     
     public static void buyAVowel(Game game) {        
-        game.getPuzzle().displayPuzzle();
+        game.displayPuzzle();
         char guessedLetter = GuessALetterView.getInput(GuessALetterView.getVowels());
         
         int count = game.getPuzzle().countLetters(guessedLetter);  
@@ -41,7 +41,7 @@ public class GameMenuControl  {
     }
           
     public static boolean solveThePuzzle(Game game) {
-        game.getPuzzle().displayPuzzle();
+        game.displayPuzzle();
         Messages.displayMessage("Please enter your guess!");
         Scanner inFile = RectangleOfFortune.getInputFile();
         String command;
