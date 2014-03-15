@@ -14,7 +14,7 @@ public class RectangleOfFortune {
             + "guess another letter or guess the puzzle. Press the spin \n"
             + "button to start your turn.  Player 1 goes first.\n\n";
     
-    private static Scanner inFile = new Scanner(System.in);
+    private final static Scanner inFile = new Scanner(System.in);
     
     public static void main(String[] args) {
         

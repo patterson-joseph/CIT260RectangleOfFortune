@@ -19,7 +19,7 @@ import static org.junit.Assert.*;
  */
 public class PuzzleTest {
     
-    public PuzzleTest() {
+    PuzzleTest() {
     }
     
     @BeforeClass
@@ -39,13 +39,13 @@ public class PuzzleTest {
     }
 
     /**
-     * Test of countLetters method, of class Puzzle.
+     * Test of countLetters method, of class Puzzle_Easy.
      */
     @Test
     public void testCountLetters() {
         System.out.println("countLetters");
         char letter = 'Z';
-        Puzzle instance = new Puzzle();
+        Puzzle instance=new Puzzle();
         int expResult = 0;
         int result = instance.countLetters(letter);
         assertEquals(expResult, result);

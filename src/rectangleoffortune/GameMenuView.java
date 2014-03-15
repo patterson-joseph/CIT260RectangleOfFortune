@@ -13,6 +13,7 @@ public class GameMenuView extends Menu {
         {"B", "Buy a Vowel"},
         {"P", "Solve the puzzle"},
         {"C", "Current Player Bank Standing"},
+        {"V", "Toggle puzzle view mode"},
         {"Q", "Quit Game"}
     };
     
@@ -66,6 +67,9 @@ public class GameMenuView extends Menu {
                 case "C":
                     GameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
                     break;
+                case "V":
+                    game.changePuzzleView();
+                    Messages.displayMessage("Puzzle view changed");
                 case "Q":
                     break;
                 default: 

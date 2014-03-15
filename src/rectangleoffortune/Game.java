@@ -15,6 +15,9 @@ public class Game implements Serializable{
     private int startOfRoundPlayerNumber;
 
     private final Puzzle puzzle;
+    private final PuzzleView_Small viewPuzzle_Small;
+    private final PuzzleView_Large viewPuzzle_Large;
+    private String puzzleView;
     private final Player playerList[];
     private final Spinner spinner = new Spinner();
     
@@ -31,6 +34,9 @@ public class Game implements Serializable{
         this.startOfRoundPlayerNumber=1;
         this.totalNumberOfTurns=1;      
         this.puzzle = new Puzzle();     
+        this.viewPuzzle_Small = new PuzzleView_Small(puzzle);
+        this.viewPuzzle_Large = new PuzzleView_Large(puzzle);
+        this.puzzleView="Small";
         this.currentRound=1;            
     }
    
@@ -160,8 +166,25 @@ public class Game implements Serializable{
     public int getTotalNumberOfTurns() {
         return totalNumberOfTurns;
     }
-    
+
+    public void changePuzzleView() {
+       switch (puzzleView){
+            case "Small":
+                puzzleView="Large";
+                break;
+            case "Large":
+                puzzleView="Small";
+        }        
+    }
     public void displayPuzzle() {
-        System.out.print(this.puzzle.puzzleTextToDisplay());
+//        System.out.print(this.viewPuzzle.puzzleTextToDisplay());
+        switch (puzzleView){
+            case "Small":
+                this.viewPuzzle_Small.displayPuzzle();
+                break;
+            case "Large":
+                this.viewPuzzle_Large.displayPuzzle();
+        }
+        
     }
 }
