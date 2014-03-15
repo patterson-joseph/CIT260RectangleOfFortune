@@ -12,7 +12,8 @@ public class GameMenuControl  {
         Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
         
         game.displayPuzzle();
-        char guessedLetter = GuessALetterView.getInput(GuessALetterView.getConsonants());
+        GuessAConsonant guessAConsonant = new GuessAConsonant();
+        char guessedLetter = guessAConsonant.getInput();
         
         int count = game.getPuzzle().countLetters(guessedLetter);        
         
@@ -27,7 +28,8 @@ public class GameMenuControl  {
     
     public static void buyAVowel(Game game) {        
         game.displayPuzzle();
-        char guessedLetter = GuessALetterView.getInput(GuessALetterView.getVowels());
+        GuessAVowel guessAVowel = new GuessAVowel();
+        char guessedLetter = guessAVowel.getInput();
         
         int count = game.getPuzzle().countLetters(guessedLetter);  
         
