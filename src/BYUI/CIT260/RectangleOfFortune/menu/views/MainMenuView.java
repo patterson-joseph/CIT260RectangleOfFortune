@@ -1,4 +1,8 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.views;
+
+import rectangleoffortune.MainMenuControl;
+import rectangleoffortune.Menu;
+import rectangleoffortune.Messages;
 
 /**
  * @author Joseph/Dustin
@@ -19,7 +23,7 @@ public class MainMenuView extends Menu {
     }
     
     //display the main menu and get input selection from user
-    @Override
+//    @Override
     public String executeCommands(){
         String command;
         do {            

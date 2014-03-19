@@ -1,5 +1,6 @@
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.menu.views.MainMenuView;
 import java.util.Scanner;
 
 /**
@@ -27,7 +28,7 @@ public class RectangleOfFortune {
     
     public static void displayIntro() {
         System.out.println("\nWelcome!"); // + this.playerName + 
-        Messages.displayMessage(instructions);
+        Messages.displayMessage(instructions.toString());
     }
 
     /**

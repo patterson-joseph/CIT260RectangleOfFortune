@@ -1,4 +1,9 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.views;
+
+import BYUI.CIT260.RectangleOfFortune.Enums.HelpMenuItems;
+import rectangleoffortune.HelpMenuControl;
+import rectangleoffortune.Menu;
+import rectangleoffortune.Messages;
 
 /**
  * @author Joseph/Dustin
@@ -19,7 +24,7 @@ public class HelpMenuView extends Menu  {
     }
 
     // display the help menu and get the end users input selection
-    @Override
+//    @Override
     public String executeCommands(){
         String command;
         do {            
@@ -30,22 +35,22 @@ public class HelpMenuView extends Menu  {
             
             switch (command) {
                 case "G":
-                    HelpMenuControl.displayGameHelp();
+                    Messages.displayMessage(HelpMenuItems.GAME.getHelpText());
                     break;
                 case "R":
-                    HelpMenuControl.displayRectangleHelp();
+                    Messages.displayMessage(HelpMenuItems.RECTANGLE.getHelpText());
                     break;
                 case "C":
-                    HelpMenuControl.displayComputerHelp();
+                    Messages.displayMessage(HelpMenuItems.COMPUTER.getHelpText());
                     break;
                 case "T":
-                    HelpMenuControl.displayTurnHelp();
+                    Messages.displayMessage(HelpMenuItems.TURN.getHelpText());
                     break;
                 case "P":
-                    HelpMenuControl.displayPuzzleHelp();
+                    Messages.displayMessage(HelpMenuItems.PUZZLE.getHelpText());
                     break;
                 case "B":
-                    HelpMenuControl.displayBankHelp();
+                    Messages.displayMessage(HelpMenuItems.BANK.getHelpText());
                     break;
                 case "Q":
                     break;

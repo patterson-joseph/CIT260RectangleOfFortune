@@ -1,5 +1,10 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.views;
 
+import rectangleoffortune.Game;
+import rectangleoffortune.GameMenuControl;
+import rectangleoffortune.Menu;
+import rectangleoffortune.Messages;
+import rectangleoffortune.RectangleOfFortune;
 import java.util.Scanner;
 
 /**
@@ -22,7 +27,7 @@ public class GameMenuView extends Menu {
         GameMenuView.game = new Game(numberOfPlayers);
     }
 
-    @Override
+//    @Override
     public String executeCommands(){
         String command;
         

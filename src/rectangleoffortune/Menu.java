@@ -6,13 +6,15 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.Interfaces.DisplayInfo;
+import BYUI.CIT260.RectangleOfFortune.Interfaces.EnterInfo;
 import java.util.Scanner;
 
 /**
  *
  * @author Joseph
  */
-public abstract class Menu {
+public class Menu implements DisplayInfo, EnterInfo {
     private String[][] menuItems = null;
     
     public Menu(){        
@@ -23,9 +25,10 @@ public abstract class Menu {
         this.menuItems = menuItems;
     }
     
-    public abstract String executeCommands();
+//    public abstract String executeCommands();
 
     // display the help menu and get the end users input selection
+    @Override
     public String getCommand() {
         String command;
         Scanner inFile = RectangleOfFortune.getInputFile();
@@ -46,12 +49,13 @@ public abstract class Menu {
     }
 
     // displays the help menu
+    @Override
     public final void display() {
         String menuText = "\tEnter the letter associated with one of the following commands:";
         for (String[] menuItem : this.menuItems) {
             menuText += "\n\t" + menuItem[0] + "\t" + menuItem[1];
         }
-        Messages.displayMessage(menuText);
+        Messages.displayMessage(menuText.toString());
     }
 
     public final void display(Player player) {
