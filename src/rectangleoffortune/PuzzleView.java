@@ -6,19 +6,23 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
+
 /**
  *
  * @author Dustin/Joseph
  */
-public abstract class PuzzleView {
+public abstract class PuzzleView implements PuzzleInfo{
     private final Puzzle currentPuzzle;
     
     PuzzleView(Puzzle puzzle){
         currentPuzzle=puzzle;
     }
     
-    protected abstract String puzzleTextToDisplay();
     
+    public abstract String puzzleTextToDisplay();
+    
+    @Override
     public void displayPuzzle() {
         System.out.print(puzzleTextToDisplay());
     }

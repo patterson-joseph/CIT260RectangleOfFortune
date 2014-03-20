@@ -6,6 +6,7 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.DisplayInfo;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.EnterInfo;
 import java.util.Scanner;

@@ -10,9 +10,9 @@ package rectangleoffortune;
  *
  * @author Crossley Family
  */
-public class PuzzleView_Small extends PuzzleView{
+public class PuzzleView_Small extends PuzzleView {
     
-    PuzzleView_Small(Puzzle puzzle) {
+    public PuzzleView_Small(Puzzle puzzle) {
         super(puzzle);
     }
         

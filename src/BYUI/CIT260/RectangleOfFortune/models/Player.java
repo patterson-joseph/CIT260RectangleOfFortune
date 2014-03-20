@@ -1,4 +1,4 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.models;
 
 import java.io.Serializable;
 

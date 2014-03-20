@@ -6,6 +6,7 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.views.GameMenuView;
 import org.junit.After;
 import org.junit.AfterClass;

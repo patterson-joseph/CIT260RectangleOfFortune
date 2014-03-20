@@ -10,10 +10,10 @@ package rectangleoffortune;
  *
  * @author Crossley Family
  */
-public class PuzzleView_Large extends PuzzleView{
+public class PuzzleView_Large extends PuzzleView {
     private final int rowCount;
     
-    PuzzleView_Large(Puzzle puzzle) {
+    public PuzzleView_Large(Puzzle puzzle) {
         super(puzzle);
         rowCount=puzzle.getWordCount();
     }

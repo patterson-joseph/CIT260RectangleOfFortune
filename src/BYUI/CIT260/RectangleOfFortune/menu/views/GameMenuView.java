@@ -1,6 +1,6 @@
 package BYUI.CIT260.RectangleOfFortune.menu.views;
 
-import rectangleoffortune.Game;
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import rectangleoffortune.GameMenuControl;
 import rectangleoffortune.Menu;
 import rectangleoffortune.Messages;
@@ -73,7 +73,7 @@ public class GameMenuView extends Menu {
                     GameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
                     break;
                 case "V":
-                    game.changePuzzleView();
+                    GameMenuControl.changePuzzleView(game);
                     Messages.displayMessage("Puzzle view changed");
                 case "Q":
                     break;

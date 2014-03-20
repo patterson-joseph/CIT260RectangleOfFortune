@@ -6,6 +6,7 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import java.util.HashSet;
 import java.util.Set;
 import org.junit.After;

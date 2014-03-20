@@ -1,5 +1,7 @@
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.models.Player;
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import java.util.Scanner;
 
 /**
@@ -107,5 +109,9 @@ public class GameMenuControl  {
                 place= "Third";
         }
         return place;
+    }
+    
+    public static void changePuzzleView(Game game) {
+        game.changePuzzleView();
     }
 }
