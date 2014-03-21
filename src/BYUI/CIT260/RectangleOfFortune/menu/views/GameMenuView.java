@@ -2,6 +2,7 @@ package BYUI.CIT260.RectangleOfFortune.menu.views;
 
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
+import BYUI.CIT260.RectangleOfFortune.models.Player;
 import rectangleoffortune.Menu;
 import rectangleoffortune.Messages;
 import rectangleoffortune.RectangleOfFortune;
@@ -21,10 +22,20 @@ public class GameMenuView extends Menu {
         {"V", "Toggle puzzle view mode"},
         {"Q", "Quit Game"}
     };
+    private final Player playerList[];
     
     public GameMenuView(int numberOfPlayers){
         super(GameMenuView.menuItems);
-        GameMenuView.game = new Game(numberOfPlayers);
+        GameMenuView.game = new Game();
+        GameMenuView.game.setPlayerCount(numberOfPlayers);
+        //instance the correct number of players
+        
+        playerList=new Player[numberOfPlayers];   //declare the array
+        for(int i=0;i<numberOfPlayers;i++){
+            playerList[i]=new Player(i+1);      //add players
+        }
+        
+        GameMenuView.game.setPlayerList(playerList);
     }
 
 //    @Override

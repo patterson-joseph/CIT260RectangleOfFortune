@@ -13,7 +13,7 @@ public class Player implements Serializable {
     private int wins; // = 2;
     private int losses; // = 1;
     
-    Player(int playerNumber) {
+    public Player(int playerNumber) {
         wins=0;
         losses=0;
         this.playerName="Player" + playerNumber;

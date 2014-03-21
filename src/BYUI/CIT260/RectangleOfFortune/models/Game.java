@@ -12,6 +12,7 @@ import rectangleoffortune.PuzzleView_Small;
  */
 
 public class Game implements Serializable{
+    private int playerCount;
     private int currentPlayerNumberTurn;
     private int totalNumberOfTurns;
     
@@ -21,19 +22,12 @@ public class Game implements Serializable{
     private final Puzzle puzzle;
     private final PuzzleView_Small viewPuzzle_Small;
     private final PuzzleView_Large viewPuzzle_Large;
-//    private String puzzleView;
-    private final Player playerList[];
+    private Player playerList[];
     private final Spinner spinner = new Spinner();
     private PuzzleInfo puzzleInfo;
     
     // default constructor
-    public Game(int playerCount) {
-        //instance the correct number of players
-        playerList=new Player[playerCount];   //declare the array
-        for(int i=0;i<playerCount;i++){
-            playerList[i]=new Player(i+1);      //add players
-        }
-               
+    public Game() {
         // initialize variables
         this.currentPlayerNumberTurn=0;
         this.startOfRoundPlayerNumber=1;
@@ -41,14 +35,26 @@ public class Game implements Serializable{
         this.puzzle = new Puzzle();    
         this.viewPuzzle_Small = new PuzzleView_Small(puzzle);
         this.viewPuzzle_Large = new PuzzleView_Large(puzzle);
-//        this.puzzleView="Small";
         puzzleInfo=viewPuzzle_Small;
         this.currentRound=1;            
     }
+    
+    public int getPlayerCount() {
+        return playerCount;
+    }
+
+    public void setPlayerCount(int playerCount) {
+        this.playerCount = playerCount;
+    }
+    
+    public int getCurrentPlayerNumberTurn() {
+        return currentPlayerNumberTurn;
+    }
+
+    public void setCurrentPlayerNumberTurn(int currentPlayerNumberTurn) {
+        this.currentPlayerNumberTurn = currentPlayerNumberTurn;
+    }
    
-    /**
-     * @return the currentPlayerName
-     */
     public String getCurrentPlayerName() {
         String playerName="";
         
@@ -57,12 +63,12 @@ public class Game implements Serializable{
             return playerName;
         }
         
-        if (currentPlayerNumberTurn<0 | currentPlayerNumberTurn>2) {
+        if (getCurrentPlayerNumberTurn()<0 | getCurrentPlayerNumberTurn()>2) {
             System.out.println("Invalid Player turn defined");
             return playerName;
         }
         
-        return getPlayerList()[currentPlayerNumberTurn].getPlayerName();
+        return getPlayerList()[getCurrentPlayerNumberTurn()].getPlayerName();
     }
     
     /**
@@ -75,21 +81,21 @@ public class Game implements Serializable{
             System.out.println("Missing or corrupt player array!");
             return currentPlayer;
         }
-        if (currentPlayerNumberTurn<0 | currentPlayerNumberTurn>2) {
+        if (getCurrentPlayerNumberTurn()<0 | getCurrentPlayerNumberTurn()>2) {
             System.out.println("Invalid Player turn defined");
             return currentPlayer;
         }
-        return getPlayerList()[currentPlayerNumberTurn];
+        return getPlayerList()[getCurrentPlayerNumberTurn()];
     }
     
     public void changeCurrentPlayerTurn() {        
-        if ((currentPlayerNumberTurn+1)==getNumberOfPlayers()) {
+        if ((getCurrentPlayerNumberTurn()+1)==getNumberOfPlayers()) {
             //if we're on the last player, move back to the beginning of the list
-            currentPlayerNumberTurn=0;
+            setCurrentPlayerNumberTurn(0);
         }
         else {
             //advance player turn by 1
-            currentPlayerNumberTurn++;
+            setCurrentPlayerNumberTurn(getCurrentPlayerNumberTurn() + 1);
         }
         //keep track of the number of turns
         this.totalNumberOfTurns++;            
@@ -200,5 +206,9 @@ public class Game implements Serializable{
 //                this.viewPuzzle_Large.displayPuzzle();
 //        }
         
+    }
+
+    public void setPlayerList(Player[] playerList) {
+        this.playerList = playerList;
     }
 }
