@@ -1,6 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.menu.views;
 
-import rectangleoffortune.MainMenuControl;
+import BYUI.CIT260.RectangleOfFortune.Enums.MainMenuItems;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.MainMenuControl;
 import rectangleoffortune.Menu;
 import rectangleoffortune.Messages;
 
@@ -9,12 +10,11 @@ import rectangleoffortune.Messages;
  */
 public class MainMenuView extends Menu {
     private final static String[][] menuItems = {
-        {"1", "1 Player Practice Game"},
-        {"2", "2 Player Game"},
-        {"3", "3 Player Game"},
-//        {"G", "Game Menu"},
-        {"H", "Help Menu"},
-        {"X", "Exit Rectangle of Fortune"},
+        {"1", MainMenuItems.ONEPLAYER.getMainText()},
+        {"2", MainMenuItems.TWOPLAYER.getMainText()},
+        {"3", MainMenuItems.THREEPLAYER.getMainText()},
+        {"H", MainMenuItems.HELPMENU.getMainText()},
+        {"X", MainMenuItems.EXITGAME.getMainText()},
     };
     
     // Create instance of the MainMenuView class

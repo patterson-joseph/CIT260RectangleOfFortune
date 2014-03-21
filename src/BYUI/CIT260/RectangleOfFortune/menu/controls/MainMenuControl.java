@@ -1,4 +1,4 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
 import BYUI.CIT260.RectangleOfFortune.menu.views.HelpMenuView;
 import BYUI.CIT260.RectangleOfFortune.menu.views.GameMenuView;

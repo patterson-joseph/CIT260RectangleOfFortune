@@ -1,7 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.menu.views;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.HelpMenuItems;
-import rectangleoffortune.HelpMenuControl;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.HelpMenuControl;
 import rectangleoffortune.Menu;
 import rectangleoffortune.Messages;
 

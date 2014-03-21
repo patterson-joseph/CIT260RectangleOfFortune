@@ -6,6 +6,7 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.menu.controls.HelpMenuControl;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

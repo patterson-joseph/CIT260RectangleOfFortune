@@ -17,8 +17,6 @@ public class Messages implements Serializable{
     }
     
     public static void displayMessage(String message) {
-//        String message = (String) object;
-//        String msg = (String) message;
         System.out.println("\t===============================================================");
         System.out.println("\t" + message);
         System.out.println("\t===============================================================");

@@ -1,4 +1,5 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.controls;
+import rectangleoffortune.Messages;
 
 /**
  *

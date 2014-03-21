@@ -44,3 +44,5 @@
 ehthumbs.db
 Thumbs.db
 /dist/
+nbproject/private/
+.idea/

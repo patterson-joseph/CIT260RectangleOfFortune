@@ -1,8 +1,12 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import java.util.Scanner;
+import rectangleoffortune.GuessAConsonant;
+import rectangleoffortune.GuessAVowel;
+import rectangleoffortune.Messages;
+import rectangleoffortune.RectangleOfFortune;
 
 /**
  *

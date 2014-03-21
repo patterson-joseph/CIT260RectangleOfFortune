@@ -1,7 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.menu.views;
 
 import BYUI.CIT260.RectangleOfFortune.models.Game;
-import rectangleoffortune.GameMenuControl;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
 import rectangleoffortune.Menu;
 import rectangleoffortune.Messages;
 import rectangleoffortune.RectangleOfFortune;
