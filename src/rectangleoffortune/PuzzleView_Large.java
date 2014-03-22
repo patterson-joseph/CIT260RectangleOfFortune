@@ -12,27 +12,47 @@ package rectangleoffortune;
  */
 public class PuzzleView_Large extends PuzzleView {
     private final int rowCount;
+     Letter[] puzzleArray;
     
     public PuzzleView_Large(Puzzle puzzle) {
         super(puzzle);
         rowCount=puzzle.getWordCount();
+        puzzleArray=this.getCurrentPuzzle().getCurrentPuzzle();
     }
-        
+
+
+    
+    private enum puzzlePiece {
+       TOPROW("_____ ")
+       ,SPACEROW("     |")
+       ,BOTTOMROW("_____|")
+       ,STARTLEFTTOP(" ")
+       ,STARTLEFT("|");
+    
+        private final String pieceText;
+
+        private puzzlePiece(String pieceText){
+            this.pieceText = pieceText;
+        }
+
+        /**
+         * @return the helpText
+         */
+        public String getText() {
+            return pieceText;
+        }
+    }
     
     @Override
     public String puzzleTextToDisplay() {
         String section = "";
-        String startLeft = "|"; //left side bars to start
-        String topRow = "_____ "; //standard top of box
-        String bottomRow = "_____|"; //standard bottom of box
-        Letter[] puzzleArray=this.getCurrentPuzzle().getCurrentPuzzle();
+
         // displays something like this:
         //  _____ = top row, section 1
         // |     |  = section 2
         // |  A  |  = section 3, letter
         // |_____|  = section 4
        
-
         int wordStart;
         int wordEnd=-1;
         
@@ -43,27 +63,25 @@ public class PuzzleView_Large extends PuzzleView {
             wordEnd=this.getCurrentPuzzle().getWordEndPosition(wordStart);
             
             //section 1
-            section += " "; //starting character
-            section += this.constructWordRowSection(puzzleArray,wordStart,topRow,false);
+            section += puzzlePiece.STARTLEFTTOP.getText(); //starting character
+            section += this.constructWordRowSection(wordStart, puzzlePiece.TOPROW.getText(), false);
 
             //section 2
-            section += startLeft;
-            section += this.constructWordRowSection(puzzleArray,wordStart,"     |",false);
+            section += puzzlePiece.STARTLEFT.getText();
+            section += this.constructWordRowSection(wordStart,puzzlePiece.SPACEROW.getText(),false);
         
             //section 3
-            section += startLeft;            
-            section += this.constructWordRowSection(puzzleArray,wordStart,"",true);
+            section += puzzlePiece.STARTLEFT.getText();            
+            section += this.constructWordRowSection(wordStart,"",true);
                     
             //section 4
-            section += startLeft;
-            section += this.constructWordRowSection(puzzleArray,wordStart,bottomRow,false);
-
+            section += puzzlePiece.STARTLEFT.getText();
+            section += this.constructWordRowSection(wordStart,puzzlePiece.BOTTOMROW.getText(),false);
         }
         return section;
     }
 
-    private String constructWordRowSection(Letter[] puzzleArray
-            , int wordStart
+    private String constructWordRowSection(int wordStart
             , String sectionText
             , boolean showLetter) {
         
@@ -71,7 +89,6 @@ public class PuzzleView_Large extends PuzzleView {
 
         for (int j=wordStart-1;j<=puzzleArray.length-1;j++) {
              if (puzzleArray[j].getValue()==' ') {
-//                 wordRow += "\n";
                  break;
              }
              if (showLetter) {
@@ -80,8 +97,6 @@ public class PuzzleView_Large extends PuzzleView {
              else  {
                 wordRow += sectionText;                      
              }
-             
-
          }
         wordRow += "\n";
         return wordRow;

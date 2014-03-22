@@ -18,8 +18,7 @@ public abstract class PuzzleView implements PuzzleInfo{
     PuzzleView(Puzzle puzzle){
         currentPuzzle=puzzle;
     }
-    
-    
+               
     public abstract String puzzleTextToDisplay();
     
     @Override
