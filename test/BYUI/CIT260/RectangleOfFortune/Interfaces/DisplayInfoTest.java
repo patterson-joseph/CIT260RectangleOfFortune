@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.Interfaces;
 
-import BYUI.CIT260.RectangleOfFortune.models.Game;
-import BYUI.CIT260.RectangleOfFortune.menu.views.GameMenuView;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,9 +17,9 @@ import static org.junit.Assert.*;
  *
  * @author Joseph
  */
-public class GameMenuViewTest {
+public class DisplayInfoTest {
     
-    public GameMenuViewTest() {
+    public DisplayInfoTest() {
     }
     
     @BeforeClass
@@ -40,30 +38,22 @@ public class GameMenuViewTest {
     public void tearDown() {
     }
 
-//    /**
-//     * Test of getInput method, of class GameMenuView.
-//     */
-//    @Test
-//    public void testGetInput() {
-//        System.out.println("getInput");
-//        Game game = new Game(1);
-//        GameMenuView instance = new GameMenuView(game);
-//        instance.getInput();
-//        // TODO review the generated test code and remove the default call to fail.
-//        //fail("The test case is a prototype.");
-//    }
-
     /**
-     * Test of display method, of class GameMenuView.
+     * Test of display method, of class DisplayInfo.
      */
     @Test
     public void testDisplay() {
         System.out.println("display");
-        Game game = new Game(1);
-        GameMenuView instance = new GameMenuView(game);
+        DisplayInfo instance = new DisplayInfoImpl();
         instance.display();
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
+    }
+
+    public class DisplayInfoImpl implements DisplayInfo {
+
+        public void display() {
+        }
     }
     
 }

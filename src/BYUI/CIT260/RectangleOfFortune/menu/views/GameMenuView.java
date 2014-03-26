@@ -88,8 +88,6 @@ public class GameMenuView extends Menu {
                     Messages.displayMessage("Puzzle view changed");
                 case "Q":
                     break;
-                default: 
-                    Messages.displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));
         

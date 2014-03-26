@@ -6,9 +6,10 @@
 
 package rectangleoffortune;
 
-import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.DisplayInfo;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.EnterInfo;
+import BYUI.CIT260.RectangleOfFortune.exceptions.MenuException;
+import BYUI.CIT260.RectangleOfFortune.models.Player;
 import java.util.Scanner;
 
 /**
@@ -31,20 +32,23 @@ public class Menu implements DisplayInfo, EnterInfo {
     // display the help menu and get the end users input selection
     @Override
     public String getCommand() {
-        String command;
+        String command = "";
         Scanner inFile = RectangleOfFortune.getInputFile();
         boolean valid;
-        
-        do {
-            command = inFile.nextLine();
-            command = command.trim().toUpperCase();
-            
-            valid = validCommand(command);
-            
-            if(!valid){
-                Messages.displayError("Invalid command. Please enter a valid command.");
-            }
-        } while (!valid);
+        try{
+            do {
+                command = inFile.nextLine();
+                command = command.trim().toUpperCase();
+                
+                valid = validCommand(command);
+                
+                if(!valid){
+                    throw new MenuException("Please enter a valid command!");
+                }
+            } while (!valid);
+        } catch(NumberFormatException | MenuException e){
+            Messages.displayError(e.getMessage());
+        } 
         
         return command;
     }

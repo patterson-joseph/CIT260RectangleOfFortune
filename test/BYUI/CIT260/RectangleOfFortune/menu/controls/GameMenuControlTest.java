@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -16,11 +17,11 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Crossley Family
+ * @author Joseph
  */
-public class PlayerTest {
+public class GameMenuControlTest {
     
-    public PlayerTest() {
+    public GameMenuControlTest() {
     }
     
     @BeforeClass
@@ -40,68 +41,65 @@ public class PlayerTest {
     }
 
     /**
-     * Test of displayName method, of class Player.
+     * Test of spin method, of class GameMenuControl.
      */
     @Test
-    public void testDisplayName() {
-        System.out.println("displayName");
-        Player instance = new Player(1);
-        instance.displayName();
+    public void testSpin() {
+        System.out.println("spin");
+        Game game = null;
+        GameMenuControl.spin(game);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of displayBank method, of class Player.
+     * Test of buyAVowel method, of class GameMenuControl.
      */
     @Test
-    public void testDisplayBank() {
-        System.out.println("displayBank");
-        Player instance = new Player(1);
-        instance.displayBank();
+    public void testBuyAVowel() {
+        System.out.println("buyAVowel");
+        Game game = null;
+        GameMenuControl.buyAVowel(game);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
     /**
-     * Test of displayWins method, of class Player.
+     * Test of solveThePuzzle method, of class GameMenuControl.
      */
     @Test
-    public void testDisplayWins() {
-        System.out.println("displayWins");
-        Player instance = new Player(1);
-        instance.displayWins();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of displayLosses method, of class Player.
-     */
-    @Test
-    public void testDisplayLosses() {
-        System.out.println("displayLosses");
-        Player instance = new Player(1);
-        instance.displayLosses();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-
-    /**
-     * Test of updatePlayerBank method, of class Player.
-     */
-    @Test
-    public void testUpdatePlayerBank() {
-        System.out.println("updatePlayerBank");
-        int letterValue = 100;
-        byte numberOfCorrectLetters = 2;
-        Player instance = new Player(1);
-        instance.playerBank_Round=-1700;
+    public void testSolveThePuzzle() {
+        System.out.println("solveThePuzzle");
+        Game game = null;
         boolean expResult = false;
-        boolean result = instance.updatePlayerBank(letterValue, numberOfCorrectLetters);
+        boolean result = GameMenuControl.solveThePuzzle(game);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        //fail("The test case is a prototype.");
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of showCurrentPlayerStanding method, of class GameMenuControl.
+     */
+    @Test
+    public void testShowCurrentPlayerStanding() {
+        System.out.println("showCurrentPlayerStanding");
+        Player[] playerList = null;
+        GameMenuControl.showCurrentPlayerStanding(playerList);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of changePuzzleView method, of class GameMenuControl.
+     */
+    @Test
+    public void testChangePuzzleView() {
+        System.out.println("changePuzzleView");
+        Game game = null;
+        GameMenuControl.changePuzzleView(game);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

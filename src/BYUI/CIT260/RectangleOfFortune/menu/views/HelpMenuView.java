@@ -53,8 +53,6 @@ public class HelpMenuView extends Menu  {
                     break;
                 case "Q":
                     break;
-                default:
-                    Messages.displayError("Invalid command. Please enter a valid command.");
             }
         } while (!command.equals("Q"));
         

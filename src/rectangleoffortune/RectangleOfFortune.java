@@ -1,6 +1,7 @@
 package rectangleoffortune;
 
 import BYUI.CIT260.RectangleOfFortune.menu.views.MainMenuView;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -23,12 +24,20 @@ public class RectangleOfFortune {
         displayIntro();
         //call the main menu up
         MainMenuView mainMenu = new MainMenuView();
-        mainMenu.executeCommands();
+        
+        try {
+            mainMenu.executeCommands();
+        } catch (Throwable e) {
+            Messages.displayError("Unexpected Error: " + e.getMessage());
+            Messages.displayError(Arrays.toString(e.getStackTrace()));
+        } finally {
+            RectangleOfFortune.inFile.close();
+        }
     }
     
     public static void displayIntro() {
         System.out.println("\nWelcome!"); // + this.playerName + 
-        Messages.displayMessage(instructions.toString());
+        Messages.displayMessage(instructions);
     }
 
     /**

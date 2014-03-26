@@ -3,7 +3,6 @@ package BYUI.CIT260.RectangleOfFortune.menu.views;
 import BYUI.CIT260.RectangleOfFortune.Enums.MainMenuItems;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.MainMenuControl;
 import rectangleoffortune.Menu;
-import rectangleoffortune.Messages;
 
 /**
  * @author Joseph/Dustin
@@ -23,15 +22,15 @@ public class MainMenuView extends Menu {
     }
     
     //display the main menu and get input selection from user
-//    @Override
-    public String executeCommands(){
-        String command;
-        do {            
-            this.display();
+    public String executeCommands() {
+        String command = "";
             
+        do {
+            this.display();
+
             // get commaned entered
             command = this.getCommand();
-            
+
             switch (command) {
                 case "1":
                 case "2":
@@ -43,11 +42,8 @@ public class MainMenuView extends Menu {
                     break;
                 case "X": 
                     break;
-                default: 
-                    Messages.displayError("Invalid command. Please enter a valid command.");
-                    continue;
             }
-        } while (!command.equals("X"));  
+        } while (!command.equals("X"));
         
          return command;
     }

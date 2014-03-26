@@ -1,5 +1,6 @@
 package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
+import BYUI.CIT260.RectangleOfFortune.exceptions.MenuException;
 import BYUI.CIT260.RectangleOfFortune.menu.views.HelpMenuView;
 import BYUI.CIT260.RectangleOfFortune.menu.views.GameMenuView;
 import java.io.Serializable;
