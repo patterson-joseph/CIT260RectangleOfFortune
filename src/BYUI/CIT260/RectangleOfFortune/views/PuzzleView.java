@@ -4,8 +4,10 @@
  * and open the template in the editor.
  */
 
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.views;
 
+import BYUI.CIT260.RectangleOfFortune.models.Letter;
+import BYUI.CIT260.RectangleOfFortune.models.Puzzle;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
 
 /**

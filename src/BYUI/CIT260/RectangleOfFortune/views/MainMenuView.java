@@ -1,8 +1,7 @@
-package BYUI.CIT260.RectangleOfFortune.menu.views;
+package BYUI.CIT260.RectangleOfFortune.views;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.MainMenuItems;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.MainMenuControl;
-import rectangleoffortune.Menu;
 
 /**
  * @author Joseph/Dustin

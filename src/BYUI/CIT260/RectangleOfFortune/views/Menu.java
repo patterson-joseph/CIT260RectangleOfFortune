@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.views;
 
 import BYUI.CIT260.RectangleOfFortune.Interfaces.DisplayInfo;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.EnterInfo;
 import BYUI.CIT260.RectangleOfFortune.exceptions.MenuException;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import java.util.Scanner;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
 
 /**
  *

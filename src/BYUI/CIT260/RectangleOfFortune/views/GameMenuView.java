@@ -1,11 +1,9 @@
-package BYUI.CIT260.RectangleOfFortune.menu.views;
+package BYUI.CIT260.RectangleOfFortune.views;
 
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
-import rectangleoffortune.Menu;
-import rectangleoffortune.Messages;
-import rectangleoffortune.RectangleOfFortune;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
 import java.util.Scanner;
 
 /**

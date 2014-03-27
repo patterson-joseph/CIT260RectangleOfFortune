@@ -1,4 +1,4 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.views;
 
 import java.io.Serializable;
 
@@ -20,6 +20,10 @@ public class Messages implements Serializable{
         System.out.println("\t===============================================================");
         System.out.println("\t" + message);
         System.out.println("\t===============================================================");
+    }
+    
+    public static void displayLine(String message) {
+        System.out.println("\n" + message);
     }
     
 }

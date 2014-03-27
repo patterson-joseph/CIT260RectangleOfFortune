@@ -6,6 +6,7 @@
 
 package BYUI.CIT260.RectangleOfFortune.menu.views;
 
+import BYUI.CIT260.RectangleOfFortune.views.HelpMenuView;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

@@ -1,13 +1,15 @@
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.views;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
+import BYUI.CIT260.RectangleOfFortune.views.Messages;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.GuessALetter;
 import java.util.Scanner;
 
 /**
  * @author Joseph/Dustin
  */
-public class GuessAConsonant implements GuessALetter {
-    private static char[] validOptions = {'B', 'C', 'D', 'F', 'G', 'H', 'J', 'K', 'L', 'M', 'N', 'P', 'Q', 'R', 'S', 'T', 'V', 'W', 'X', 'Y', 'Z'};
-
+public class GuessAVowel implements GuessALetter {
+    private static char[] validOptions = {'A','E','I','O','U'};
+    
     // display the Guess A Letter menu and get the end users input selection
     @Override
     public char getInput() {
@@ -37,11 +39,11 @@ public class GuessAConsonant implements GuessALetter {
     // displays the help menu
      @Override
     public void display(char[] validOptions) {
-        String message = "\tGuess a Consonant(";
+        String message = "\tGuess a Vowel(";
         for (char letter : validOptions) {
             message += letter;
         }
-        message += ")\n";
+        message += ")";
         Messages.displayMessage(message.toString());
     }
 
@@ -49,7 +51,7 @@ public class GuessAConsonant implements GuessALetter {
      * @return the validOptions
      */
     public char[] getValidOptions() {
-        return GuessAConsonant.validOptions;
+        return GuessAVowel.validOptions;
     }
 
     /**

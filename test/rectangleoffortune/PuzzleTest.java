@@ -6,6 +6,8 @@
 
 package rectangleoffortune;
 
+import BYUI.CIT260.RectangleOfFortune.models.Letter;
+import BYUI.CIT260.RectangleOfFortune.models.Puzzle;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

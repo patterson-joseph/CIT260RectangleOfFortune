@@ -1,10 +1,9 @@
 package BYUI.CIT260.RectangleOfFortune.models;
 
 import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
-import rectangleoffortune.Puzzle;
 import java.io.Serializable;
-import rectangleoffortune.PuzzleView_Large;
-import rectangleoffortune.PuzzleView_Small;
+import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Large;
+import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Small;
 
 /**
  *

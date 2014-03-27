@@ -3,10 +3,9 @@ package BYUI.CIT260.RectangleOfFortune.menu.controls;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import java.util.Scanner;
-import rectangleoffortune.GuessAConsonant;
-import rectangleoffortune.GuessAVowel;
-import rectangleoffortune.Messages;
-import rectangleoffortune.RectangleOfFortune;
+import BYUI.CIT260.RectangleOfFortune.views.GuessAConsonant;
+import BYUI.CIT260.RectangleOfFortune.views.GuessAVowel;
+import BYUI.CIT260.RectangleOfFortune.views.Messages;
 
 /**
  *

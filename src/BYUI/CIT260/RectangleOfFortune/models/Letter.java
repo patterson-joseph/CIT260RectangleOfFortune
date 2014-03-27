@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package rectangleoffortune;
+package BYUI.CIT260.RectangleOfFortune.models;
 
 import java.io.Serializable;
 

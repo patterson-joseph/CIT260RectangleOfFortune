@@ -1,8 +1,6 @@
-package BYUI.CIT260.RectangleOfFortune.menu.views;
+package BYUI.CIT260.RectangleOfFortune.views;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.HelpMenuItems;
-import rectangleoffortune.Menu;
-import rectangleoffortune.Messages;
 
 /**
  * @author Joseph/Dustin
