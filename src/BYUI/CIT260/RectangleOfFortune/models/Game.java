@@ -16,6 +16,7 @@ public class Game implements Serializable{
     private int totalNumberOfTurns;
     
     private int currentRound;
+    private int numberOfRounds;
     private int startOfRoundPlayerNumber;
 
     private final Puzzle puzzle;
@@ -209,5 +210,19 @@ public class Game implements Serializable{
 
     public void setPlayerList(Player[] playerList) {
         this.playerList = playerList;
+    }
+
+    /**
+     * @return the numberOfRounds
+     */
+    public int getNumberOfRounds() {
+        return numberOfRounds;
+    }
+
+    /**
+     * @param numberOfRounds the numberOfRounds to set
+     */
+    public void setNumberOfRounds(int numberOfRounds) {
+        this.numberOfRounds = numberOfRounds;
     }
 }

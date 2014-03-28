@@ -1,9 +1,12 @@
 package BYUI.CIT260.RectangleOfFortune.views;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.ErrorTypes;
+import BYUI.CIT260.RectangleOfFortune.Enums.GameMenuItems;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
+import static java.lang.Integer.parseInt;
 import java.util.Scanner;
 
 /**
@@ -44,6 +47,9 @@ public class GameMenuView extends Menu {
             game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
         }
         
+        //ask for and set number of rounds
+        game.setNumberOfRounds(getNumberOfRounds());
+        
         do {
             game.displayPuzzle();
             this.display(game.getCurrentPlayer());
@@ -59,7 +65,7 @@ public class GameMenuView extends Menu {
                     if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
                         GameMenuControl.buyAVowel(game);
                     } else {
-                        Messages.displayMessage("Not enough money to buy a vowel!");
+                        Messages.displayMessage(GameMenuItems.LOWBALANCE.getText());
                     }
                     break;
                 case "P":
@@ -72,10 +78,10 @@ public class GameMenuView extends Menu {
                         game.displayPuzzle();
                         Messages.displayMessage("Total turns played: "
                             + game.getTotalNumberOfTurns() + "."
-                            + " Thanks for playing!");
+                            + GameMenuItems.EXITMESSAGE.getText());
                         command = "Q";
                     } else {
-                        Messages.displayMessage("Sorry that is incorrect!");
+                        Messages.displayMessage(GameMenuItems.WRONGGUESS.getText());
                     }
                     break; 
                 case "C":
@@ -83,7 +89,7 @@ public class GameMenuView extends Menu {
                     break;
                 case "V":
                     GameMenuControl.changePuzzleView(game);
-                    Messages.displayMessage("Puzzle view changed");
+                    Messages.displayMessage(GameMenuItems.VIEWCHANGED.getText());
                 case "Q":
                     break;
             }
@@ -92,9 +98,27 @@ public class GameMenuView extends Menu {
         return command;
     }    
     
+    private int getNumberOfRounds() {
+        int command;
+        boolean valid=false;
+       
+        do {
+            Messages.displayMessage(GameMenuItems.ROUNDPROMPT.getText() + " "
+                + GameMenuItems.ROUNDLIMIT.getText());
+            command=this.getIntCommand();
+            if (command>=1 && command<=5) {
+                valid=true;
+            }else {
+                Messages.displayLine("\t" + ErrorTypes.ROUNDCOUNTERROR.getText());
+            }
+        } while (!valid);
+        return command;
+    }
+    
     private String getPlayerName(int playerNumber) {
         System.out.println();
-        Messages.displayMessage("Player " + playerNumber + ", please enter your name");
+        Messages.displayMessage("Player " + playerNumber + ", " 
+                + GameMenuItems.NAMEPROMPT.getText());
         String name;
         Scanner inString = RectangleOfFortune.getInputFile();
         name=inString.nextLine().trim().toUpperCase();

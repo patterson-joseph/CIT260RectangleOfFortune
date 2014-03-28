@@ -6,12 +6,14 @@
 
 package BYUI.CIT260.RectangleOfFortune.views;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.ErrorTypes;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.DisplayInfo;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.EnterInfo;
 import BYUI.CIT260.RectangleOfFortune.exceptions.MenuException;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import java.util.Scanner;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
+import static java.lang.Integer.parseInt;
 
 /**
  *
@@ -54,6 +56,21 @@ public class Menu implements DisplayInfo, EnterInfo {
         return command;
     }
 
+    public int getIntCommand() throws NumberFormatException {
+        String command;
+        int iResult=0;
+        Scanner inFile = RectangleOfFortune.getInputFile();
+        try {
+            command = inFile.nextLine();
+            iResult=parseInt(command);
+        }
+        catch (NumberFormatException ex){
+            Messages.displayError(ex.getMessage() + "\n" + ErrorTypes.NOTNUMBER.getText());
+        }
+
+        return iResult;
+    }
+    
     // displays the help menu
     @Override
     public final void display() {
