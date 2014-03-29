@@ -6,6 +6,7 @@
 
 package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import org.junit.After;
@@ -44,7 +45,7 @@ public class GameMenuControlTest {
      * Test of spin method, of class GameMenuControl.
      */
     @Test
-    public void testSpin() {
+    public void testSpin () throws RectangleOfFortuneException {
         System.out.println("spin");
         Game game = null;
         GameMenuControl.spin(game);
@@ -56,7 +57,7 @@ public class GameMenuControlTest {
      * Test of buyAVowel method, of class GameMenuControl.
      */
     @Test
-    public void testBuyAVowel() {
+    public void testBuyAVowel() throws RectangleOfFortuneException {
         System.out.println("buyAVowel");
         Game game = null;
         GameMenuControl.buyAVowel(game);
@@ -82,7 +83,7 @@ public class GameMenuControlTest {
      * Test of showCurrentPlayerStanding method, of class GameMenuControl.
      */
     @Test
-    public void testShowCurrentPlayerStanding() {
+    public void testShowCurrentPlayerStanding() throws RectangleOfFortuneException {
         System.out.println("showCurrentPlayerStanding");
         Player[] playerList = null;
         GameMenuControl.showCurrentPlayerStanding(playerList);

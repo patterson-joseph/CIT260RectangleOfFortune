@@ -22,14 +22,14 @@ public class GameMenuControl  {
         char guessedLetter = guessAConsonant.getInput();
         
         int count = game.getPuzzle().countLetters(guessedLetter);        
-        
+
         if(count > 0){
             game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
             Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
         } else {
             game.changeCurrentPlayerTurn();
 //            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
-            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
+//            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
         }
     }
     
@@ -46,7 +46,7 @@ public class GameMenuControl  {
         } else {
             game.changeCurrentPlayerTurn();
 //            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
-            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
+//            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
         }
     }
           
