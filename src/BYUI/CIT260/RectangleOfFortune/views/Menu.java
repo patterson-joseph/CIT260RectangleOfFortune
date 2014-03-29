@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package BYUI.CIT260.RectangleOfFortune.views;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.ErrorTypes;
@@ -17,7 +11,7 @@ import static java.lang.Integer.parseInt;
 
 /**
  *
- * @author Joseph
+ * @author Joseph/Dustin
  */
 public class Menu implements DisplayInfo, EnterInfo {
     private String[][] menuItems = null;
@@ -78,7 +72,7 @@ public class Menu implements DisplayInfo, EnterInfo {
         for (String[] menuItem : this.menuItems) {
             menuText += "\n\t" + menuItem[0] + "\t" + menuItem[1];
         }
-        Messages.displayMessage(menuText.toString());
+        Messages.displayMessage(menuText);
     }
 
     public final void display(Player player) {
