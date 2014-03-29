@@ -1,5 +1,6 @@
 package BYUI.CIT260.RectangleOfFortune.models;
 
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import java.io.Serializable;
 
 /**
@@ -40,17 +41,22 @@ public class Player implements Serializable {
        return true;
     }
     
-   public boolean setPlayerRoundBank(int letterValue
-            , int numberOfCorrectLetters) {
+   public boolean setPlayerRoundBank (int letterValue
+            , int numberOfCorrectLetters) throws RectangleOfFortuneException {
        if (numberOfCorrectLetters < 0) {
-           System.out.println("Invalid number of letters: \n"
+//           System.out.println("Invalid number of letters: \n"
+//                    + "\t" + numberOfCorrectLetters);
+//           return false;
+           throw new RectangleOfFortuneException("Invalid number of letters: \n"
                     + "\t" + numberOfCorrectLetters);
-           return false;
+
        }
        if (playerRoundBank < 0) {
-           System.out.println("Invalid player bank amount: \n"
-                   + "\t" + playerRoundBank);
-           return false;
+//           System.out.println("Invalid player bank amount: \n"
+//                   + "\t" + playerRoundBank);
+//           return false;
+           throw new RectangleOfFortuneException("Invalid player bank amount: \n"
+                   + "\t" + playerRoundBank);           
        }
        
        playerRoundBank += letterValue*numberOfCorrectLetters;

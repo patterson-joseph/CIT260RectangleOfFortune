@@ -1,5 +1,6 @@
 package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import java.util.Scanner;
@@ -12,7 +13,7 @@ import BYUI.CIT260.RectangleOfFortune.views.Messages;
  * @author Joseph/Dustin
  */
 public class GameMenuControl  {
-    public static void spin(Game game) {
+    public static void spin(Game game) throws RectangleOfFortuneException {
         game.getSpinner().spin(); 
         Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
         
@@ -26,12 +27,13 @@ public class GameMenuControl  {
             game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
             Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
         } else {
-            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
             game.changeCurrentPlayerTurn();
+//            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
+            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
         }
     }
     
-    public static void buyAVowel(Game game) {        
+    public static void buyAVowel (Game game) throws RectangleOfFortuneException {        
         game.displayPuzzle();
         GuessAVowel guessAVowel = new GuessAVowel();
         char guessedLetter = guessAVowel.getInput();
@@ -42,8 +44,9 @@ public class GameMenuControl  {
             game.getCurrentPlayer().setPlayerRoundBank(-250,1);
             Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
         } else {
-            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
             game.changeCurrentPlayerTurn();
+//            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
+            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
         }
     }
           
@@ -63,7 +66,7 @@ public class GameMenuControl  {
         }
     }
     
-    public static void showCurrentPlayerStanding(Player[] playerList) {
+    public static void showCurrentPlayerStanding(Player[] playerList) throws RectangleOfFortuneException {
         //sort player list by bank amount, highest to lowest
         //using insertion sort method
 
@@ -74,7 +77,8 @@ public class GameMenuControl  {
         int i;
 
         if (tempArray==null) {
-            System.out.println("Missing or corrupt player array!");
+//            System.out.println("Missing or corrupt player array!");
+            throw new RectangleOfFortuneException("Missing or corrupt player array!");            
         } else {
             for(j=1;j<tempArray.length;j++) { // start with base 1 counting
                 key=tempArray[j]; // remember which array starts in the first position

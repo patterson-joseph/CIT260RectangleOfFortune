@@ -1,6 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.models;
 
 import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import java.io.Serializable;
 import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Large;
 import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Small;
@@ -55,17 +56,19 @@ public class Game implements Serializable{
         this.currentPlayerNumberTurn = currentPlayerNumberTurn;
     }
    
-    public String getCurrentPlayerName() {
-        String playerName="";
+    public String getCurrentPlayerName() throws RectangleOfFortuneException {
+//        String playerName="";
         
         if (getPlayerList()==null) {
-            System.out.println("Missing or corrupt player array!");
-            return playerName;
+//            System.out.println("Missing or corrupt player array!");
+//            return playerName;
+            throw new RectangleOfFortuneException("Missing or corrupt player array!");
         }
         
         if (getCurrentPlayerNumberTurn()<0 | getCurrentPlayerNumberTurn()>2) {
-            System.out.println("Invalid Player turn defined");
-            return playerName;
+//            System.out.println("Invalid Player turn defined");
+//            return playerName;
+            throw new RectangleOfFortuneException("Invalid Player turn defined");
         }
         
         return getPlayerList()[getCurrentPlayerNumberTurn()].getPlayerName();
@@ -73,17 +76,20 @@ public class Game implements Serializable{
     
     /**
      * @return the currentPlayerName
+     * @throws BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException
      */
-    public Player getCurrentPlayer() {
-        Player currentPlayer=new Player(1);
+    public Player getCurrentPlayer() throws RectangleOfFortuneException {
+//        Player currentPlayer=new Player(1);
         
         if (getPlayerList()==null) {
-            System.out.println("Missing or corrupt player array!");
-            return currentPlayer;
+//            System.out.println("Missing or corrupt player array!");
+//            return currentPlayer;
+            throw new RectangleOfFortuneException("Missing or corrupt player array!");
         }
         if (getCurrentPlayerNumberTurn()<0 | getCurrentPlayerNumberTurn()>2) {
-            System.out.println("Invalid Player turn defined");
-            return currentPlayer;
+//            System.out.println("Invalid Player turn defined");
+//            return currentPlayer;
+            throw new RectangleOfFortuneException("Invalid Player turn defined!");            
         }
         return getPlayerList()[getCurrentPlayerNumberTurn()];
     }
@@ -108,7 +114,7 @@ public class Game implements Serializable{
         return getPlayerList().length;
     }
 
-    public void advanceToNextRound(Player roundWinner) {
+    public void advanceToNextRound(Player roundWinner) throws RectangleOfFortuneException{
         //reset for the next round
 
         //record the winner's totals into game totals

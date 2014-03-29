@@ -6,6 +6,7 @@
 
 package BYUI.CIT260.RectangleOfFortune.models;
 
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -65,11 +66,12 @@ public class Puzzle implements Serializable {
 //        this.puzzleTextToDisplay();
     }
 
-    public int countLetters(char letter) {
+    public int countLetters (char letter) throws RectangleOfFortuneException {
         int count = 0;
         if (!Character.isLetter(letter) || this.getPuzzleText().trim().isEmpty()) {
-            System.out.print("Invalid letter or puzzle given!");
-            return -1;
+//            System.out.print("Invalid letter or puzzle given!");
+            throw new RectangleOfFortuneException("Invalid letter or puzzle given!");
+//            return -1;
         }
         for (int i = 0; i < this.getPuzzleText().length(); i++) {
             if (this.getPuzzleText().charAt(i) == letter) {
