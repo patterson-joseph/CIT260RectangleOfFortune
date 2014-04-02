@@ -1,5 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.menu.controls;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.views.HelpMenuView;
 import BYUI.CIT260.RectangleOfFortune.views.GameMenuView;
 import java.io.Serializable;
@@ -19,4 +21,9 @@ public class MainMenuControl implements Serializable {
         helpMenu.executeCommands();
     }
     
+    public Game createGame(GameType gameType){
+        Game game=new Game();
+        game.setPlayerCount(gameType);
+        return game;
+    }
 }

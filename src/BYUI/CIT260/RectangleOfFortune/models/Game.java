@@ -1,5 +1,6 @@
 package BYUI.CIT260.RectangleOfFortune.models;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
 import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import java.io.Serializable;
@@ -46,6 +47,22 @@ public class Game implements Serializable{
 
     public void setPlayerCount(int playerCount) {
         this.playerCount = playerCount;
+    }
+    
+    public void setPlayerCount(GameType gameType) {
+        int iCount=0;
+        switch(gameType){
+            case ONEPLAYER:
+                iCount=1;
+                break;
+            case TWOPLAYER:
+                iCount=2;
+                break;
+            case THREEPLAYER:
+                iCount=3;
+                break;
+        }
+        this.playerCount=iCount;
     }
     
     public int getCurrentPlayerNumberTurn() {

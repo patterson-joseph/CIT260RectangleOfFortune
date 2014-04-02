@@ -6,12 +6,14 @@
 
 package BYUI.CIT260.RectangleOfFortune.frames;
 
+import BYUI.CIT260.RectangleOfFortune.models.Game;
+
 /**
  *
  * @author Crossley Family
  */
 public class PlayerNameFrame extends javax.swing.JFrame {
-
+    private Game game = null;
     /**
      * Creates new form EnterPlayerNames
      */
@@ -19,6 +21,36 @@ public class PlayerNameFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    public PlayerNameFrame(Game game) {
+        initComponents();
+        this.game = game;
+        setLocationRelativeTo(null);
+    }
+    
+    public void initializeForm (int numberOfPlayers) {
+        resetPlayerEntryControls();
+        switch (numberOfPlayers) {
+            case 3:
+                this.jlPlayer3.setVisible(true);
+                this.jTPlayer3Name.setVisible(true);
+            case 2:
+                this.jlPlayer2.setVisible(true);
+                this.jTPlayer2Name.setVisible(true);
+            case 1:
+                this.jlPlayer1.setVisible(true);    
+                this.jTPlayer1Name.setVisible(true);
+        }
+    }
+    
+    private void resetPlayerEntryControls(){
+        this.jlPlayer3.setVisible(false);
+        this.jTPlayer3Name.setVisible(false);
+        this.jlPlayer2.setVisible(false);
+        this.jTPlayer2Name.setVisible(false);
+        this.jlPlayer1.setVisible(false);    
+        this.jTPlayer1Name.setVisible(false);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -30,14 +62,14 @@ public class PlayerNameFrame extends javax.swing.JFrame {
 
         jpBody = new javax.swing.JPanel();
         jpTitle = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        jlTitle = new javax.swing.JLabel();
         jpNameEntry = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jlPlayer1 = new javax.swing.JLabel();
+        jlPlayer2 = new javax.swing.JLabel();
         jTPlayer1Name = new javax.swing.JTextField();
         jTPlayer2Name = new javax.swing.JTextField();
         jTPlayer3Name = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        jlPlayer3 = new javax.swing.JLabel();
         jbContinue = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,23 +80,23 @@ public class PlayerNameFrame extends javax.swing.JFrame {
 
         jpTitle.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel1.setText("Enter the name of the player/s below:");
+        jlTitle.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
+        jlTitle.setForeground(new java.awt.Color(0, 51, 153));
+        jlTitle.setText("Enter the name of the player/s below:");
 
         jpNameEntry.setBackground(new java.awt.Color(204, 255, 255));
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel2.setText("Player Name");
+        jlPlayer1.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jlPlayer1.setForeground(new java.awt.Color(0, 51, 153));
+        jlPlayer1.setText("Player 1 Name");
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel3.setText("Player Name");
+        jlPlayer2.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jlPlayer2.setForeground(new java.awt.Color(0, 51, 153));
+        jlPlayer2.setText("Player 2 Name");
 
-        jLabel4.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(0, 51, 153));
-        jLabel4.setText("Player Name");
+        jlPlayer3.setFont(new java.awt.Font("Comic Sans MS", 0, 14)); // NOI18N
+        jlPlayer3.setForeground(new java.awt.Color(0, 51, 153));
+        jlPlayer3.setText("Player 3 Name");
 
         javax.swing.GroupLayout jpNameEntryLayout = new javax.swing.GroupLayout(jpNameEntry);
         jpNameEntry.setLayout(jpNameEntryLayout);
@@ -74,15 +106,15 @@ public class PlayerNameFrame extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jpNameEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpNameEntryLayout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlPlayer2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTPlayer2Name, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpNameEntryLayout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlPlayer1, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTPlayer1Name, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpNameEntryLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jlPlayer3, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTPlayer3Name, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -92,16 +124,16 @@ public class PlayerNameFrame extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpNameEntryLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpNameEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jlPlayer1)
                     .addComponent(jTPlayer1Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpNameEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTPlayer2Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jlPlayer2))
                 .addGap(4, 4, 4)
                 .addGroup(jpNameEntryLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTPlayer3Name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4)))
+                    .addComponent(jlPlayer3)))
         );
 
         jbContinue.setText("Continue");
@@ -110,7 +142,7 @@ public class PlayerNameFrame extends javax.swing.JFrame {
         jpTitle.setLayout(jpTitleLayout);
         jpTitleLayout.setHorizontalGroup(
             jpTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jpNameEntry, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpTitleLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -121,7 +153,7 @@ public class PlayerNameFrame extends javax.swing.JFrame {
             jpTitleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpTitleLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
+                .addComponent(jlTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jpNameEntry, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(14, 14, 14)
@@ -200,14 +232,14 @@ public class PlayerNameFrame extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTPlayer1Name;
     private javax.swing.JTextField jTPlayer2Name;
     private javax.swing.JTextField jTPlayer3Name;
     private javax.swing.JButton jbContinue;
+    private javax.swing.JLabel jlPlayer1;
+    private javax.swing.JLabel jlPlayer2;
+    private javax.swing.JLabel jlPlayer3;
+    private javax.swing.JLabel jlTitle;
     private javax.swing.JPanel jpBody;
     private javax.swing.JPanel jpNameEntry;
     private javax.swing.JPanel jpTitle;

@@ -6,6 +6,7 @@
 
 package BYUI.CIT260.RectangleOfFortune.frames;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.MainMenuControl;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 
@@ -202,20 +203,26 @@ public class MainFrame extends javax.swing.JFrame {
 
     private void jbOnePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOnePlayerActionPerformed
         // TODO add your handling code here:   
-//        Game game  = this.mainCommands.
-        PlayerNameFrame playerNameFrame = new PlayerNameFrame();
-//        playerNameFrame.initializeForm();
-        playerNameFrame.setVisible(true);
+        setupPlayerFrame(GameType.ONEPLAYER);
     }//GEN-LAST:event_jbOnePlayerActionPerformed
 
     private void jbTwoPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTwoPlayerActionPerformed
         // TODO add your handling code here:
+        setupPlayerFrame(GameType.TWOPLAYER);
     }//GEN-LAST:event_jbTwoPlayerActionPerformed
 
     private void jbThreePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbThreePlayerActionPerformed
         // TODO add your handling code here:
+        setupPlayerFrame(GameType.THREEPLAYER);        
     }//GEN-LAST:event_jbThreePlayerActionPerformed
 
+    private void setupPlayerFrame(GameType gameType){
+        Game game  = this.mainCommands.createGame(gameType);
+        PlayerNameFrame playerNameFrame = new PlayerNameFrame(game);
+        playerNameFrame.initializeForm(game.getPlayerCount());
+        playerNameFrame.setVisible(true);        
+    }
+    
     private void jbHelpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHelpMenuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jbHelpMenuActionPerformed
