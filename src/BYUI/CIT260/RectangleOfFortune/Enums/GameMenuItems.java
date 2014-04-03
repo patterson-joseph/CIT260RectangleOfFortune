@@ -18,7 +18,8 @@ public enum GameMenuItems {
     NAMEPROMPT("Please enter your name"),
     EXITMESSAGE("Thanks for playing!"),
     ROUNDPROMPT("How many rounds do you want to play?"),
-    ROUNDLIMIT("Please enter a number between 1 and 5");
+    ROUNDLIMIT("Please enter a number between 1 and 5"),
+    PLAYERTURN(", it's your turn.");
 
     private final String mainText;
 

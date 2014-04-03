@@ -23,7 +23,7 @@ public class MainMenuControl implements Serializable {
     
     public Game createGame(GameType gameType){
         Game game=new Game();
-        game.setPlayerCount(gameType);
+        game.setGameType(gameType);
         return game;
     }
 }

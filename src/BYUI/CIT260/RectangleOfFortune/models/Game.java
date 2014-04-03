@@ -14,6 +14,7 @@ import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Small;
 
 public class Game implements Serializable{
     private int playerCount;
+    private GameType gameType;
     private int currentPlayerNumberTurn;
     private int totalNumberOfTurns;
     
@@ -49,7 +50,8 @@ public class Game implements Serializable{
         this.playerCount = playerCount;
     }
     
-    public void setPlayerCount(GameType gameType) {
+    public void setGameType(GameType gType) {
+        gameType=gType;
         int iCount=0;
         switch(gameType){
             case ONEPLAYER:
@@ -63,6 +65,10 @@ public class Game implements Serializable{
                 break;
         }
         this.playerCount=iCount;
+    }
+    
+    public GameType getGameType() {
+        return gameType;
     }
     
     public int getCurrentPlayerNumberTurn() {

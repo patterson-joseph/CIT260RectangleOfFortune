@@ -6,12 +6,18 @@
 
 package BYUI.CIT260.RectangleOfFortune.frames;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameMenuItems;
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
+import BYUI.CIT260.RectangleOfFortune.models.Game;
+import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
+
 /**
  *
  * @author Crossley Family
  */
 public class GameFrame extends javax.swing.JFrame {
-
+    Game game=null;
+    GameMenuControl gameMenuControl=null;
     /**
      * Creates new form GameFrame
      */
@@ -19,6 +25,17 @@ public class GameFrame extends javax.swing.JFrame {
         initComponents();
     }
 
+    public GameFrame(Game game){
+       this.game = game;
+//       this.gameMenuControl=new GameMenuControl();
+       initComponents();
+    }
+    
+    public void initializeForm() throws RectangleOfFortuneException{
+//        this.jlPlayerTurn.setText(game.getCurrentPlayerName().toString() + GameMenuItems.PLAYERTURN.getText());
+        this.jlPlayerTurn.setText("Player 1, it's your turn.");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +54,7 @@ public class GameFrame extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
+        jlPlayerTurn = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,6 +107,10 @@ public class GameFrame extends javax.swing.JFrame {
         jButton5.setBackground(new java.awt.Color(204, 255, 204));
         jButton5.setText("Spin");
 
+        jlPlayerTurn.setBackground(new java.awt.Color(153, 153, 255));
+        jlPlayerTurn.setText("Player Turn Indicator");
+        jlPlayerTurn.setToolTipText("");
+
         javax.swing.GroupLayout jpBodyLayout = new javax.swing.GroupLayout(jpBody);
         jpBody.setLayout(jpBodyLayout);
         jpBodyLayout.setHorizontalGroup(
@@ -109,21 +131,27 @@ public class GameFrame extends javax.swing.JFrame {
                                 .addGap(116, 116, 116)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(40, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlPlayerTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(233, 233, 233))
         );
         jpBodyLayout.setVerticalGroup(
             jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBodyLayout.createSequentialGroup()
                 .addContainerGap(228, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128)
+                .addComponent(jlPlayerTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpBodyLayout.createSequentialGroup()
-                        .addGap(191, 191, 191)
+                        .addGap(25, 25, 25)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton4)
                         .addGap(39, 39, 39))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGroup(jpBodyLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24))))
         );
@@ -192,6 +220,7 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel jlPlayerTurn;
     private javax.swing.JPanel jpBody;
     // End of variables declaration//GEN-END:variables
 }

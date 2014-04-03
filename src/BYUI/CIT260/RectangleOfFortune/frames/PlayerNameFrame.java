@@ -6,7 +6,11 @@
 
 package BYUI.CIT260.RectangleOfFortune.frames;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
+import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
+import BYUI.CIT260.RectangleOfFortune.models.Player;
+import BYUI.CIT260.RectangleOfFortune.views.Messages;
 
 /**
  *
@@ -27,16 +31,16 @@ public class PlayerNameFrame extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }
     
-    public void initializeForm (int numberOfPlayers) {
+    public void initializeForm (GameType gameType) {
         resetPlayerEntryControls();
-        switch (numberOfPlayers) {
-            case 3:
+        switch (gameType) {
+            case THREEPLAYER:
                 this.jlPlayer3.setVisible(true);
                 this.jTPlayer3Name.setVisible(true);
-            case 2:
+            case TWOPLAYER:
                 this.jlPlayer2.setVisible(true);
                 this.jTPlayer2Name.setVisible(true);
-            case 1:
+            case ONEPLAYER:
                 this.jlPlayer1.setVisible(true);    
                 this.jTPlayer1Name.setVisible(true);
         }
@@ -137,6 +141,11 @@ public class PlayerNameFrame extends javax.swing.JFrame {
         );
 
         jbContinue.setText("Continue");
+        jbContinue.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbContinueActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpTitleLayout = new javax.swing.GroupLayout(jpTitle);
         jpTitle.setLayout(jpTitleLayout);
@@ -195,6 +204,35 @@ public class PlayerNameFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jbContinueActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbContinueActionPerformed
+        // TODO add your handling code here:
+        Player[] playerList=new Player[game.getPlayerCount()];   //declare the array
+        try {
+            switch(game.getGameType()){ //populate array
+                case THREEPLAYER:
+                    playerList[2]=new Player(3);
+                    playerList[2].setPlayerName(this.jTPlayer3Name.toString());
+                case TWOPLAYER:
+                    playerList[1]=new Player(2);
+                    playerList[1].setPlayerName(this.jTPlayer2Name.toString());
+                case ONEPLAYER:
+                    playerList[0]=new Player(1);
+                    playerList[0].setPlayerName(this.jTPlayer1Name.toString());               
+            }
+            game.setPlayerList(playerList);
+            //display game frame and close down the player name frame
+            GameFrame gameFrame = new GameFrame(this.game);
+            gameFrame.initializeForm();
+            gameFrame.setVisible(true);
+        }
+        catch(RectangleOfFortuneException ex){
+            Messages.displayError(ex.toString());
+        }
+        finally{
+            this.dispose();   
+        }
+    }//GEN-LAST:event_jbContinueActionPerformed
 
 //    /**
 //     * @param args the command line arguments

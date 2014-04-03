@@ -38,22 +38,22 @@ public class GameTest {
     public void tearDown() {
     }
 
-    /**
-     * Test of getPlayerCount method, of class Game.
-     */
-    @Test
-    public void testGetPlayerCount() {
-        System.out.println("getPlayerCount");
-        Game instance = new Game();
-        int expResult = 0;
-        int result = instance.getPlayerCount();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+//    /**
+//     * Test of getPlayerCount method, of class Game.
+//     */
+//    @Test
+//    public void testGetPlayerCount() {
+//        System.out.println("getPlayerCount");
+//        Game instance = new Game();
+//        int expResult = 0;
+//        int result = instance.getPlayerCount();
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
 
     /**
-     * Test of setPlayerCount method, of class Game.
+     * Test of setGameType method, of class Game.
      */
     @Test
     public void testSetPlayerCount() {
