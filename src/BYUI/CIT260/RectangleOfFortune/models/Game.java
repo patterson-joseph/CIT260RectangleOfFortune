@@ -224,19 +224,23 @@ public class Game implements Serializable{
 //                puzzleView="Small";
                 
     }
-    public void displayPuzzle() {
-//        System.out.print(this.viewPuzzle.puzzleTextToDisplay());
-        puzzleInfo.displayPuzzle();
-//        switch (puzzleView){
-//            case "Small":
-//                this.viewPuzzle_Small.displayPuzzle();
-//                break;
-//            case "Large":
-//                this.viewPuzzle_Large.displayPuzzle();
-//        }
-        
-    }
+//    public void displayPuzzle() {
+////        System.out.print(this.viewPuzzle.puzzleTextToDisplay());
+//        puzzleInfo.displayPuzzle();
+////        switch (puzzleView){
+////            case "Small":
+////                this.viewPuzzle_Small.displayPuzzle();
+////                break;
+////            case "Large":
+////                this.viewPuzzle_Large.displayPuzzle();
+////        }
+//        
+//    }
 
+    public String displayPuzzle() {
+        return puzzleInfo.displayPuzzle();
+    }
+    
     public void setPlayerList(Player[] playerList) {
         this.playerList = playerList;
     }

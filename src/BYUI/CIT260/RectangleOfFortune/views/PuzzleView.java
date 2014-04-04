@@ -24,8 +24,11 @@ public abstract class PuzzleView implements PuzzleInfo{
     public abstract String puzzleTextToDisplay();
     
     @Override
-    public void displayPuzzle() {
-        System.out.print(puzzleTextToDisplay());
+//    public void displayPuzzle() {
+//        System.out.print(puzzleTextToDisplay());
+//    }
+    public String displayPuzzle() {
+        return puzzleTextToDisplay();
     }
 
     /**

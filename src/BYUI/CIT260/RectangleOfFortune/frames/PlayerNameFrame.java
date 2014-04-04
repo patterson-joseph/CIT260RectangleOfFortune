@@ -212,13 +212,13 @@ public class PlayerNameFrame extends javax.swing.JFrame {
             switch(game.getGameType()){ //populate array
                 case THREEPLAYER:
                     playerList[2]=new Player(3);
-                    playerList[2].setPlayerName(this.jTPlayer3Name.toString());
+                    playerList[2].setPlayerName(this.jTPlayer3Name.getText());
                 case TWOPLAYER:
                     playerList[1]=new Player(2);
-                    playerList[1].setPlayerName(this.jTPlayer2Name.toString());
+                    playerList[1].setPlayerName(this.jTPlayer2Name.getText());
                 case ONEPLAYER:
                     playerList[0]=new Player(1);
-                    playerList[0].setPlayerName(this.jTPlayer1Name.toString());               
+                    playerList[0].setPlayerName(this.jTPlayer1Name.getText());               
             }
             game.setPlayerList(playerList);
             //display game frame and close down the player name frame

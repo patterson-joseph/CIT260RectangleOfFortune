@@ -12,5 +12,5 @@ package BYUI.CIT260.RectangleOfFortune.Interfaces;
  */
 public interface PuzzleInfo {
     
-    void displayPuzzle();
+    String displayPuzzle();
 }

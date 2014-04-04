@@ -3,6 +3,7 @@ package BYUI.CIT260.RectangleOfFortune.menu.controls;
 import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import BYUI.CIT260.RectangleOfFortune.models.Player;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
+import BYUI.CIT260.RectangleOfFortune.models.Tile;
 import java.util.Scanner;
 import BYUI.CIT260.RectangleOfFortune.views.GuessAConsonant;
 import BYUI.CIT260.RectangleOfFortune.views.GuessAVowel;
@@ -13,6 +14,19 @@ import BYUI.CIT260.RectangleOfFortune.views.Messages;
  * @author Joseph/Dustin
  */
 public class GameMenuControl  {
+    private Game game;
+    
+    public GameMenuControl(Game game){
+        this.game = game;
+    }
+    
+    public Tile spin() {
+        game.getSpinner().spin();
+        return game.getSpinner().getCurrentSpinValue();
+    }
+    
+    // Original code below - beginning to phase it out, 03Apr2014 ~dustin
+    
     public static void spin(Game game) throws RectangleOfFortuneException {
         game.getSpinner().spin(); 
         Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
@@ -24,7 +38,7 @@ public class GameMenuControl  {
         int count = game.getPuzzle().countLetters(guessedLetter);        
 
         if(count > 0){
-            game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
+//            game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
             Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
         } else {
             game.changeCurrentPlayerTurn();
@@ -32,7 +46,7 @@ public class GameMenuControl  {
 //            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
         }
     }
-    
+   
     public static void buyAVowel (Game game) throws RectangleOfFortuneException {        
         game.displayPuzzle();
         GuessAVowel guessAVowel = new GuessAVowel();
