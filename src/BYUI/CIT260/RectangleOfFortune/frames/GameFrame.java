@@ -2,10 +2,11 @@ package BYUI.CIT260.RectangleOfFortune.frames;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.GameMenuItems;
 import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
-import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
+import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.models.Tile;
 import BYUI.CIT260.RectangleOfFortune.views.GuessAConsonant;
+import BYUI.CIT260.RectangleOfFortune.views.GuessAVowel;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -31,6 +32,7 @@ public class GameFrame extends javax.swing.JFrame {
     
     public void initializeForm() throws RectangleOfFortuneException{
         setGuessControlVisibility(false);
+        setGuessVowelControlVisibility(false);
         this.jlPlayerTurn.setText(game.getCurrentPlayerName() + GameMenuItems.PLAYERTURN.getText());
         this.jTPuzzle.setText(game.displayPuzzle());
         this.jPlayerRankText.setText(this.gameMenuControl.showCurrentPlayerStanding(game.getPlayerList()));
@@ -64,6 +66,9 @@ public class GameFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTPuzzle = new javax.swing.JTextArea();
+        jbGuessVowel = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        jTGuessVowel = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rectangle Of Fortune!");
@@ -75,6 +80,7 @@ public class GameFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTGuess);
 
         jbGuess.setText("Make Guess");
+        jbGuess.setToolTipText("");
         jbGuess.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbGuessActionPerformed(evt);
@@ -92,6 +98,11 @@ public class GameFrame extends javax.swing.JFrame {
         });
 
         jbBuyVowel.setText("Buy Vowel");
+        jbBuyVowel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBuyVowelActionPerformed(evt);
+            }
+        });
 
         jbSolvePuzzle.setText("Solve Puzzle");
 
@@ -200,12 +211,23 @@ public class GameFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
+        jbGuessVowel.setText("Make Guess");
+        jbGuessVowel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuessVowelActionPerformed(evt);
+            }
+        });
+
+        jTGuessVowel.setColumns(20);
+        jTGuessVowel.setRows(1);
+        jScrollPane5.setViewportView(jTGuessVowel);
+
         javax.swing.GroupLayout jpBodyLayout = new javax.swing.GroupLayout(jpBody);
         jpBody.setLayout(jpBodyLayout);
         jpBodyLayout.setHorizontalGroup(
             jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBodyLayout.createSequentialGroup()
-                .addContainerGap(29, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jpBodyLayout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +237,11 @@ public class GameFrame extends javax.swing.JFrame {
                                 .addComponent(jbGuess)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jpBodyLayout.createSequentialGroup()
+                                .addComponent(jbGuessVowel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -243,6 +269,10 @@ public class GameFrame extends javax.swing.JFrame {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
                             .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGap(32, 32, 32)
+                            .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jbGuessVowel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jbGuess, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -276,7 +306,6 @@ public class GameFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jbQuitGameActionPerformed
 
     private void jbSpinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbSpinActionPerformed
-        // TODO add your handling code here:
         Tile spinValue = gameMenuControl.spin();
         this.jTWinValue.setText("Each letter is worth $" + spinValue.getName());
         setGuessControlVisibility(true);
@@ -308,9 +337,49 @@ public class GameFrame extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jbGuessActionPerformed
 
+    private void jbBuyVowelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBuyVowelActionPerformed
+        if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
+            this.jTWinValue.setText("Please Guess a Vowel!");
+            setGuessVowelControlVisibility(true);
+        } else {
+            this.jTWinValue.setText("Not enough money! It costs $250 to buy a vowel.");
+        }
+    }//GEN-LAST:event_jbBuyVowelActionPerformed
+
+    private void jbGuessVowelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuessVowelActionPerformed
+        char guessedLetter = jTGuessVowel.getText().toUpperCase().charAt(0);
+        GuessAVowel guessAVowel = new GuessAVowel();
+        boolean validLetter = guessAVowel.getInput(guessedLetter);
+        if(validLetter){
+            int correctLetters = game.getPuzzle().countLetters(guessedLetter);
+            if(correctLetters > 0){
+                game.getCurrentPlayer().setPlayerRoundBank(-250,1);           
+                this.jTWinValue.setText("There are " + correctLetters + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
+                try {
+                    this.initializeForm();
+                } catch (RectangleOfFortuneException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                game.changeCurrentPlayerTurn();
+                this.jTWinValue.setText("Letter not found in puzzle or was already guessed!");
+                try {
+                    this.initializeForm();
+                } catch (RectangleOfFortuneException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jbGuessVowelActionPerformed
+
     private void setGuessControlVisibility(boolean visible){
         this.jbGuess.setEnabled(visible);
         this.jTGuess.setEnabled(visible);
+    }
+    
+    private void setGuessVowelControlVisibility(boolean visible){
+        this.jbGuessVowel.setEnabled(visible);
+        this.jTGuessVowel.setEnabled(visible);
     }
     
     
@@ -358,11 +427,14 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTextArea jTGuess;
+    private javax.swing.JTextArea jTGuessVowel;
     private javax.swing.JTextArea jTPuzzle;
     private javax.swing.JTextArea jTWinValue;
     private javax.swing.JButton jbBuyVowel;
     private javax.swing.JButton jbGuess;
+    private javax.swing.JButton jbGuessVowel;
     private javax.swing.JButton jbQuitGame;
     private javax.swing.JButton jbSolvePuzzle;
     private javax.swing.JButton jbSpin;

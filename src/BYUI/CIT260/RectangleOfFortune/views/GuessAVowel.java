@@ -21,7 +21,7 @@ public class GuessAVowel implements GuessALetter {
             }
         }
         
-        return notValid;
+        return !notValid;
     }
 
     // displays the help menu
