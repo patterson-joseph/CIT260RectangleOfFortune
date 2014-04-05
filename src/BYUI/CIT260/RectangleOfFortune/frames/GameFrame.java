@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package BYUI.CIT260.RectangleOfFortune.frames;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.GameMenuItems;
@@ -11,7 +5,9 @@ import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import BYUI.CIT260.RectangleOfFortune.models.Game;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.GameMenuControl;
 import BYUI.CIT260.RectangleOfFortune.models.Tile;
-import BYUI.CIT260.RectangleOfFortune.views.Messages;
+import BYUI.CIT260.RectangleOfFortune.views.GuessAConsonant;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,6 +33,7 @@ public class GameFrame extends javax.swing.JFrame {
         setGuessControlVisibility(false);
         this.jlPlayerTurn.setText(game.getCurrentPlayerName() + GameMenuItems.PLAYERTURN.getText());
         this.jTPuzzle.setText(game.displayPuzzle());
+        this.jPlayerRankText.setText(this.gameMenuControl.showCurrentPlayerStanding(game.getPlayerList()));
     }
     
     /**
@@ -61,7 +58,7 @@ public class GameFrame extends javax.swing.JFrame {
         jlPlayerTurn = new javax.swing.JLabel();
         jlPlayerRank = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jPlayerRankText = new javax.swing.JTextArea();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTWinValue = new javax.swing.JTextArea();
         jPanel1 = new javax.swing.JPanel();
@@ -78,6 +75,11 @@ public class GameFrame extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTGuess);
 
         jbGuess.setText("Make Guess");
+        jbGuess.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbGuessActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBackground(new java.awt.Color(102, 153, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -158,14 +160,15 @@ public class GameFrame extends javax.swing.JFrame {
         jlPlayerRank.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jlPlayerRank.setText("Player Rank");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(3);
-        jScrollPane2.setViewportView(jTextArea1);
+        jPlayerRankText.setEditable(false);
+        jPlayerRankText.setColumns(20);
+        jPlayerRankText.setRows(3);
+        jScrollPane2.setViewportView(jPlayerRankText);
 
         jTWinValue.setEditable(false);
         jTWinValue.setBackground(new java.awt.Color(153, 204, 255));
         jTWinValue.setColumns(20);
+        jTWinValue.setLineWrap(true);
         jTWinValue.setRows(5);
         jTWinValue.setToolTipText("");
         jScrollPane3.setViewportView(jTWinValue);
@@ -279,6 +282,32 @@ public class GameFrame extends javax.swing.JFrame {
         setGuessControlVisibility(true);
     }//GEN-LAST:event_jbSpinActionPerformed
 
+    private void jbGuessActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuessActionPerformed
+        char guessedLetter = jTGuess.getText().toUpperCase().charAt(0);
+        GuessAConsonant guessAConsonant = new GuessAConsonant();
+        boolean validLetter = guessAConsonant.getInput(guessedLetter);
+        if(validLetter){
+            int correctLetters = game.getPuzzle().countLetters(guessedLetter);
+            if(correctLetters > 0){
+                game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue().getValue(),correctLetters);           
+                this.jTWinValue.setText("There are " + correctLetters + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
+                try {
+                    this.initializeForm();
+                } catch (RectangleOfFortuneException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            } else {
+                game.changeCurrentPlayerTurn();
+                this.jTWinValue.setText("Letter not found in puzzle or was already guessed!");
+                try {
+                    this.initializeForm();
+                } catch (RectangleOfFortuneException ex) {
+                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }//GEN-LAST:event_jbGuessActionPerformed
+
     private void setGuessControlVisibility(boolean visible){
         this.jbGuess.setEnabled(visible);
         this.jTGuess.setEnabled(visible);
@@ -324,6 +353,7 @@ public class GameFrame extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextArea jPlayerRankText;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -331,7 +361,6 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JTextArea jTGuess;
     private javax.swing.JTextArea jTPuzzle;
     private javax.swing.JTextArea jTWinValue;
-    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbBuyVowel;
     private javax.swing.JButton jbGuess;
     private javax.swing.JButton jbQuitGame;

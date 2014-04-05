@@ -101,19 +101,7 @@ public class Game implements Serializable{
      * @return the currentPlayerName
      * @throws BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException
      */
-    public Player getCurrentPlayer() throws RectangleOfFortuneException {
-//        Player currentPlayer=new Player(1);
-        
-        if (getPlayerList()==null) {
-//            System.out.println("Missing or corrupt player array!");
-//            return currentPlayer;
-            throw new RectangleOfFortuneException("Missing or corrupt player array!");
-        }
-        if (getCurrentPlayerNumberTurn()<0 | getCurrentPlayerNumberTurn()>2) {
-//            System.out.println("Invalid Player turn defined");
-//            return currentPlayer;
-            throw new RectangleOfFortuneException("Invalid Player turn defined!");            
-        }
+    public Player getCurrentPlayer() {        
         return getPlayerList()[getCurrentPlayerNumberTurn()];
     }
     

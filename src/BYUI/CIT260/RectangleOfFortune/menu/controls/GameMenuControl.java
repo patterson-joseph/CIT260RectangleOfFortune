@@ -27,42 +27,42 @@ public class GameMenuControl  {
     
     // Original code below - beginning to phase it out, 03Apr2014 ~dustin
     
-    public static void spin(Game game) throws RectangleOfFortuneException {
-        game.getSpinner().spin(); 
-        Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
-        
-        game.displayPuzzle();
-        GuessAConsonant guessAConsonant = new GuessAConsonant();
-        char guessedLetter = guessAConsonant.getInput();
-        
-        int count = game.getPuzzle().countLetters(guessedLetter);        
-
-        if(count > 0){
-//            game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
-            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
-        } else {
-            game.changeCurrentPlayerTurn();
-//            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
-//            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
-        }
-    }
+//    public static void spin(Game game) throws RectangleOfFortuneException {
+//        game.getSpinner().spin(); 
+//        Messages.displayMessage("\tEach letter is worth $" + game.getSpinner().getCurrentSpinValue());
+//        
+//        game.displayPuzzle();
+//        GuessAConsonant guessAConsonant = new GuessAConsonant();
+//        char guessedLetter = guessAConsonant.getInput();
+//        
+//        int count = game.getPuzzle().countLetters(guessedLetter);        
+//
+//        if(count > 0){
+////            game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue(),count);           
+//            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
+//        } else {
+//            game.changeCurrentPlayerTurn();
+////            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
+////            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
+//        }
+//    }
    
-    public static void buyAVowel (Game game) throws RectangleOfFortuneException {        
-        game.displayPuzzle();
-        GuessAVowel guessAVowel = new GuessAVowel();
-        char guessedLetter = guessAVowel.getInput();
-        
-        int count = game.getPuzzle().countLetters(guessedLetter);  
-        
-        if(count > 0){
-            game.getCurrentPlayer().setPlayerRoundBank(-250,1);
-            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
-        } else {
-            game.changeCurrentPlayerTurn();
-//            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
-//            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
-        }
-    }
+//    public static void buyAVowel (Game game) throws RectangleOfFortuneException {        
+//        game.displayPuzzle();
+//        GuessAVowel guessAVowel = new GuessAVowel();
+//        char guessedLetter = guessAVowel.getInput();
+//        
+//        int count = game.getPuzzle().countLetters(guessedLetter);  
+//        
+//        if(count > 0){
+//            game.getCurrentPlayer().setPlayerRoundBank(-250,1);
+//            Messages.displayMessage("\tThere are " + count + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
+//        } else {
+//            game.changeCurrentPlayerTurn();
+////            Messages.displayMessage("\tLetter not found in puzzle or was already guessed!");
+////            throw new RectangleOfFortuneException("\tLetter not found in puzzle or was already guessed!");
+//        }
+//    }
           
     public static boolean solveThePuzzle(Game game) {
         game.displayPuzzle();
@@ -80,7 +80,7 @@ public class GameMenuControl  {
         }
     }
     
-    public static void showCurrentPlayerStanding(Player[] playerList) throws RectangleOfFortuneException {
+    public String showCurrentPlayerStanding(Player[] playerList) throws RectangleOfFortuneException {
         //sort player list by bank amount, highest to lowest
         //using insertion sort method
 
@@ -89,6 +89,7 @@ public class GameMenuControl  {
         int j;      //number of items sorted so far
         Player key;    // the item to be inserted
         int i;
+        String standings = "";
 
         if (tempArray==null) {
 //            System.out.println("Missing or corrupt player array!");
@@ -105,16 +106,14 @@ public class GameMenuControl  {
             }
 
             // tempArray is now sorted highest bank amount to lowest, so display it
-            System.out.println(
-            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
             for (i=0;i<tempArray.length;i++) {
-                System.out.println("\t\t" + tempArray[i].getPlayerName()
+                standings += tempArray[i].getPlayerName()
                 + " is in " + placeRank(i) + " place with $"
-                + tempArray[i].getPlayerRoundBank());
+                + tempArray[i].getPlayerRoundBank() + "\n";
             }
-            System.out.println(
-            "\t~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         }
+        
+        return standings;
     }
     
     private static String placeRank(int rank) {

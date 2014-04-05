@@ -1,8 +1,5 @@
 package BYUI.CIT260.RectangleOfFortune.views;
-import BYUI.CIT260.RectangleOfFortune.menu.controls.RectangleOfFortune;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.GuessALetter;
-import BYUI.CIT260.RectangleOfFortune.exceptions.MenuException;
-import java.util.Scanner;
 
 /**
  * @author Joseph/Dustin
@@ -12,36 +9,17 @@ public class GuessAConsonant implements GuessALetter {
 
     // display the Guess A Letter menu and get the end users input selection
     @Override
-    public char getInput() {
+    public boolean getInput(char command) {
         Boolean notValid = true;
-        char command = 0;
-        Scanner inFile = RectangleOfFortune.getInputFile();
-
-            do {
-                try{
-                    this.display(this.getValidOptions()); // display the menu
-                    // get command entered
-                    command = Character.toUpperCase(inFile.next().charAt(0));
-                    for (char letter : this.getValidOptions()) {
-                        if (letter == command) {
-                            notValid = false;
-                            break;
-                        }
-                    }
-                    if (notValid) {
-                        throw new MenuException("Please enter a valid command!");
-                    }
-                 }catch(MenuException e){
-                       Messages.displayError(e.getMessage());
-                 }              
-                         
-            } while (notValid);
-         
-           
-        //read the current Scanner line to clear it out of the buffer
-        //so it's ready for the next read
-        inFile.nextLine();
-        return command;
+        
+        for (char letter : this.getValidOptions()) {
+            if (letter == command) {
+                notValid = false;
+                break;
+            }
+        }
+        
+        return !notValid;
     }
 
     // displays the help menu

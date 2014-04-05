@@ -6,21 +6,19 @@
 
 package BYUI.CIT260.RectangleOfFortune.frames;
 
-import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
+import BYUI.CIT260.RectangleOfFortune.Enums.HelpMenuItems;
 import BYUI.CIT260.RectangleOfFortune.menu.controls.MainMenuControl;
-import BYUI.CIT260.RectangleOfFortune.models.Game;
 
 
 /**
  *
  * @author Crossley Family
  */
-public class MainFrame extends javax.swing.JFrame {
-    private MainMenuControl mainCommands = new MainMenuControl();
+public class HelpMenuFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainFrame
      */
-    public MainFrame() {
+    public HelpMenuFrame() {
         initComponents();
     }
 
@@ -42,11 +40,13 @@ public class MainFrame extends javax.swing.JFrame {
         jbThreePlayer = new javax.swing.JButton();
         jbHelpMenu = new javax.swing.JButton();
         jbExitGame = new javax.swing.JButton();
+        jbExitGame1 = new javax.swing.JButton();
+        jbExitGame2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTWelcome = new javax.swing.JTextArea();
+        jTHelpIntro = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Rectangle of Fortune");
+        setTitle("Help Menu - Rectangle of Fortune");
 
         jpBody.setBackground(new java.awt.Color(204, 255, 255));
         jpBody.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(204, 204, 255), 2, true));
@@ -77,38 +77,54 @@ public class MainFrame extends javax.swing.JFrame {
         jpMenuItems.setBackground(new java.awt.Color(204, 255, 255));
         jpMenuItems.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jbOnePlayer.setText("1 Player Practice");
+        jbOnePlayer.setText("Rectangle of Fortune Game");
         jbOnePlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbOnePlayerActionPerformed(evt);
+                jbShowGameIntroActionPerformed(evt);
             }
         });
 
-        jbTwoPlayer.setText("2 Player Game");
+        jbTwoPlayer.setText("The Rectangle");
+        jbTwoPlayer.setToolTipText("");
         jbTwoPlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbTwoPlayerActionPerformed(evt);
+                jbShowRectangleActionPerformed(evt);
             }
         });
 
-        jbThreePlayer.setText("3 Player Game");
+        jbThreePlayer.setText("Computer Player");
         jbThreePlayer.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbThreePlayerActionPerformed(evt);
+                jbComputerPlayerHelpActionPerformed(evt);
             }
         });
 
-        jbHelpMenu.setText("Help Menu");
+        jbHelpMenu.setText("Taking Your Turn");
         jbHelpMenu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbHelpMenuActionPerformed(evt);
+                jbTurnHelpInfoActionPerformed(evt);
             }
         });
 
-        jbExitGame.setText("Exit");
+        jbExitGame.setText("Puzzle");
         jbExitGame.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbExitGameActionPerformed(evt);
+                jbPuzzleHelpInfoActionPerformed(evt);
+            }
+        });
+
+        jbExitGame1.setText("Bank");
+        jbExitGame1.setToolTipText("");
+        jbExitGame1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbBankHelpInfoActionPerformed(evt);
+            }
+        });
+
+        jbExitGame2.setText("Exit");
+        jbExitGame2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbExitHelpActionPerformed(evt);
             }
         });
 
@@ -125,7 +141,9 @@ public class MainFrame extends javax.swing.JFrame {
                     .addGroup(jpMenuItemsLayout.createSequentialGroup()
                         .addComponent(jbOnePlayer)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jbExitGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jbExitGame, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbExitGame1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jbExitGame2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jpMenuItemsLayout.setVerticalGroup(
@@ -141,17 +159,21 @@ public class MainFrame extends javax.swing.JFrame {
                 .addComponent(jbHelpMenu)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jbExitGame)
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbExitGame1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jbExitGame2)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTWelcome.setEditable(false);
-        jTWelcome.setColumns(20);
-        jTWelcome.setLineWrap(true);
-        jTWelcome.setRows(5);
-        jTWelcome.setText("This is the game of Rectangle of Fortune.\n\nYou will be playing against 1 or 2 other players. The object of the game is to solve the puzzle before  the other players.  Guessing a correct letter allows you guess another letter or guess the puzzle. Press the spin button to start your turn.  Player 1 goes first.");
-        jTWelcome.setWrapStyleWord(true);
-        jTWelcome.setMargin(new java.awt.Insets(5, 5, 5, 5));
-        jScrollPane1.setViewportView(jTWelcome);
+        jTHelpIntro.setEditable(false);
+        jTHelpIntro.setColumns(20);
+        jTHelpIntro.setLineWrap(true);
+        jTHelpIntro.setRows(5);
+        jTHelpIntro.setText("The objective of the game is to be the first player to correctly guess the puzzle word or phrase. Each player takes turns spinning for a value of correctly guessedconsonants, then guesses a single consonant. Guessing an incorrect consonant or a consonant already guessed in the round is the end of the turn. Play resumes with the next player spinning either guessing a consonant, buying remaining vowels, or guessing the puzzle.Players may buy a vowel if they have at least $250 in their bank.");
+        jTHelpIntro.setWrapStyleWord(true);
+        jTHelpIntro.setMargin(new java.awt.Insets(5, 5, 5, 5));
+        jScrollPane1.setViewportView(jTHelpIntro);
 
         javax.swing.GroupLayout jpBodyLayout = new javax.swing.GroupLayout(jpBody);
         jpBody.setLayout(jpBodyLayout);
@@ -176,7 +198,7 @@ public class MainFrame extends javax.swing.JFrame {
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jpMenuItems, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jScrollPane1))
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -199,37 +221,34 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jbExitGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitGameActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-    }//GEN-LAST:event_jbExitGameActionPerformed
+    private void jbPuzzleHelpInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbPuzzleHelpInfoActionPerformed
+        // TODO add your hdling code here:
+        jTHelpIntro.setText(HelpMenuItems.PUZZLE.getHelpText());
+    }//GEN-LAST:event_jbPuzzleHelpInfoActionPerformed
 
-    private void jbOnePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbOnePlayerActionPerformed
-        // TODO add your handling code here:   
-        setupPlayerFrame(GameType.ONEPLAYER);
-    }//GEN-LAST:event_jbOnePlayerActionPerformed
+    private void jbShowGameIntroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbShowGameIntroActionPerformed
+        jTHelpIntro.setText(HelpMenuItems.GAME.getHelpText());
+    }//GEN-LAST:event_jbShowGameIntroActionPerformed
 
-    private void jbTwoPlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTwoPlayerActionPerformed
-        // TODO add your handling code here:
-        setupPlayerFrame(GameType.TWOPLAYER);
-    }//GEN-LAST:event_jbTwoPlayerActionPerformed
+    private void jbShowRectangleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbShowRectangleActionPerformed
+        jTHelpIntro.setText(HelpMenuItems.RECTANGLE.getHelpText());
+    }//GEN-LAST:event_jbShowRectangleActionPerformed
 
-    private void jbThreePlayerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbThreePlayerActionPerformed
-        // TODO add your handling code here:
-        setupPlayerFrame(GameType.THREEPLAYER);        
-    }//GEN-LAST:event_jbThreePlayerActionPerformed
-
-    private void setupPlayerFrame(GameType gameType){
-        Game game  = this.mainCommands.createGame(gameType);
-        PlayerNameFrame playerNameFrame = new PlayerNameFrame(game);
-        playerNameFrame.initializeForm(gameType);
-        playerNameFrame.setVisible(true);        
-    }
+    private void jbComputerPlayerHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbComputerPlayerHelpActionPerformed
+        jTHelpIntro.setText(HelpMenuItems.COMPUTER.getHelpText());
+    }//GEN-LAST:event_jbComputerPlayerHelpActionPerformed
     
-    private void jbHelpMenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbHelpMenuActionPerformed
-        HelpMenuFrame helpMenuFrame = new HelpMenuFrame();
-        helpMenuFrame.setVisible(true);
-    }//GEN-LAST:event_jbHelpMenuActionPerformed
+    private void jbTurnHelpInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbTurnHelpInfoActionPerformed
+        jTHelpIntro.setText(HelpMenuItems.TURN.getHelpText());
+    }//GEN-LAST:event_jbTurnHelpInfoActionPerformed
+
+    private void jbBankHelpInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbBankHelpInfoActionPerformed
+        jTHelpIntro.setText(HelpMenuItems.BANK.getHelpText());
+    }//GEN-LAST:event_jbBankHelpInfoActionPerformed
+
+    private void jbExitHelpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbExitHelpActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_jbExitHelpActionPerformed
 
     /**
      * @param args the command line arguments
@@ -268,8 +287,10 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jTWelcome;
+    private javax.swing.JTextArea jTHelpIntro;
     private javax.swing.JButton jbExitGame;
+    private javax.swing.JButton jbExitGame1;
+    private javax.swing.JButton jbExitGame2;
     private javax.swing.JButton jbHelpMenu;
     private javax.swing.JButton jbOnePlayer;
     private javax.swing.JButton jbThreePlayer;

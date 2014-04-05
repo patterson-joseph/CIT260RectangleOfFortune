@@ -46,63 +46,63 @@ public class GameMenuView extends Menu {
         
 
             String command="";       
-            for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++){
-                game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
-            }
-
-            //ask for and set number of rounds
-            game.setNumberOfRounds(getNumberOfRounds());
-
-            
-            do {
-                try {
-                    game.displayPuzzle();
-                    this.display(game.getCurrentPlayer());
-
-                    // get commaned entered
-                    command = this.getCommand();
-
-                    switch (command) {
-                        case "S":
-                            GameMenuControl.spin(game);
-                            break;
-                        case "B":
-                            if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
-                                GameMenuControl.buyAVowel(game);
-                            } else {
-                                Messages.displayMessage(GameMenuItems.LOWBALANCE.getText());
-                            }
-                            break;
-                        case "P":
-                            boolean result = GameMenuControl.solveThePuzzle(game);
-                            if(result){
-                                Messages.displayMessage(game.getCurrentPlayer().getPlayerName() 
-                                        + " wins! $" + game.getCurrentPlayer().getPlayerRoundBank()
-                                        + " in total winnings.");
-                                game.getPuzzle().makeWinningPuzzleVisible();
-                                game.displayPuzzle();
-                                Messages.displayMessage("Total turns played: "
-                                    + game.getTotalNumberOfTurns() + "."
-                                    + GameMenuItems.EXITMESSAGE.getText());
-                                command = "Q";
-                            } else {
-                                Messages.displayMessage(GameMenuItems.WRONGGUESS.getText());
-                            }
-                            break; 
-                        case "C":
-                            GameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
-                            break;
-                        case "V":
-                            GameMenuControl.changePuzzleView(game);
-                            Messages.displayMessage(GameMenuItems.VIEWCHANGED.getText());
-                        case "Q":
-                            break;
-                    }
-                }
-                catch (RectangleOfFortuneException ex) {
-                    Messages.displayError(ex.getMessage());
-                }
-            } while (!command.equals("Q"));      
+//            for(int i=0;i<GameMenuView.game.getNumberOfPlayers();i++){
+//                game.getPlayerList()[i].setPlayerName(this.getPlayerName(i+1));
+//            }
+//
+//            //ask for and set number of rounds
+//            game.setNumberOfRounds(getNumberOfRounds());
+//
+//            
+//            do {
+//                try {
+//                    game.displayPuzzle();
+//                    this.display(game.getCurrentPlayer());
+//
+//                    // get commaned entered
+//                    command = this.getCommand();
+//
+//                    switch (command) {
+//                        case "S":
+//                            GameMenuControl.spin(game);
+//                            break;
+//                        case "B":
+//                            if(game.getCurrentPlayer().getPlayerRoundBank() >= 250){
+//                                GameMenuControl.buyAVowel(game);
+//                            } else {
+//                                Messages.displayMessage(GameMenuItems.LOWBALANCE.getText());
+//                            }
+//                            break;
+//                        case "P":
+//                            boolean result = GameMenuControl.solveThePuzzle(game);
+//                            if(result){
+//                                Messages.displayMessage(game.getCurrentPlayer().getPlayerName() 
+//                                        + " wins! $" + game.getCurrentPlayer().getPlayerRoundBank()
+//                                        + " in total winnings.");
+//                                game.getPuzzle().makeWinningPuzzleVisible();
+//                                game.displayPuzzle();
+//                                Messages.displayMessage("Total turns played: "
+//                                    + game.getTotalNumberOfTurns() + "."
+//                                    + GameMenuItems.EXITMESSAGE.getText());
+//                                command = "Q";
+//                            } else {
+//                                Messages.displayMessage(GameMenuItems.WRONGGUESS.getText());
+//                            }
+//                            break; 
+//                        case "C":
+//                            GameMenuControl.showCurrentPlayerStanding(game.getPlayerList());
+//                            break;
+//                        case "V":
+//                            GameMenuControl.changePuzzleView(game);
+//                            Messages.displayMessage(GameMenuItems.VIEWCHANGED.getText());
+//                        case "Q":
+//                            break;
+//                    }
+//                }
+//                catch (RectangleOfFortuneException ex) {
+//                    Messages.displayError(ex.getMessage());
+//                }
+//            } while (!command.equals("Q"));      
 
             return command;
 

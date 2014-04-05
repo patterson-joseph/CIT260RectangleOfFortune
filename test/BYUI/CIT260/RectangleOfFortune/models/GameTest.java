@@ -6,6 +6,7 @@
 
 package BYUI.CIT260.RectangleOfFortune.models;
 
+import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -248,6 +249,74 @@ public class GameTest {
         Player[] playerList = null;
         Game instance = new Game();
         instance.setPlayerList(playerList);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getPlayerCount method, of class Game.
+     */
+    @Test
+    public void testGetPlayerCount() {
+        System.out.println("getPlayerCount");
+        Game instance = new Game();
+        int expResult = 0;
+        int result = instance.getPlayerCount();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setGameType method, of class Game.
+     */
+    @Test
+    public void testSetGameType() {
+        System.out.println("setGameType");
+        GameType gType = null;
+        Game instance = new Game();
+        instance.setGameType(gType);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getGameType method, of class Game.
+     */
+    @Test
+    public void testGetGameType() {
+        System.out.println("getGameType");
+        Game instance = new Game();
+        GameType expResult = null;
+        GameType result = instance.getGameType();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of getNumberOfRounds method, of class Game.
+     */
+    @Test
+    public void testGetNumberOfRounds() {
+        System.out.println("getNumberOfRounds");
+        Game instance = new Game();
+        int expResult = 0;
+        int result = instance.getNumberOfRounds();
+        assertEquals(expResult, result);
+        // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
+    }
+
+    /**
+     * Test of setNumberOfRounds method, of class Game.
+     */
+    @Test
+    public void testSetNumberOfRounds() {
+        System.out.println("setNumberOfRounds");
+        int numberOfRounds = 0;
+        Game instance = new Game();
+        instance.setNumberOfRounds(numberOfRounds);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
