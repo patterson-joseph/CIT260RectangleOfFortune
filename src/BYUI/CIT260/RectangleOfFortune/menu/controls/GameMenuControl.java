@@ -64,20 +64,24 @@ public class GameMenuControl  {
 //        }
 //    }
           
-    public static boolean solveThePuzzle(Game game) {
-        game.displayPuzzle();
-        Messages.displayMessage("Please enter your guess!");
-        Scanner inFile = RectangleOfFortune.getInputFile();
-        String command;
-        
-        command = inFile.nextLine();
-        command = command.trim().toUpperCase();
-        
-        if(command.equals(game.getPuzzle().getPuzzleText())){
-            return true;
-        } else {
-            return false;
-        }
+//    public static boolean solveThePuzzle(Game game) {
+//        game.displayPuzzle();
+//        Messages.displayMessage("Please enter your guess!");
+//        Scanner inFile = RectangleOfFortune.getInputFile();
+//        String command;
+//        
+//        command = inFile.nextLine();
+//        command = command.trim().toUpperCase();
+//        
+//        if(command.equals(game.getPuzzle().getPuzzleText())){
+//            return true;
+//        } else {
+//            return false;
+//        }
+//    }
+
+    public boolean solveThePuzzle(String guess) {       
+        return guess.equals(game.getPuzzle().getPuzzleText());
     }
     
     public String showCurrentPlayerStanding(Player[] playerList) throws RectangleOfFortuneException {

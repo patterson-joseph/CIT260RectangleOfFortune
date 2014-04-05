@@ -19,7 +19,12 @@ public enum GameMenuItems {
     EXITMESSAGE("Thanks for playing!"),
     ROUNDPROMPT("How many rounds do you want to play?"),
     ROUNDLIMIT("Please enter a number between 1 and 5"),
-    PLAYERTURN(", it's your turn.");
+    PLAYERTURN(", it's your turn."),
+    LETTERWORTH("Each letter is worth $"),
+    LETTERNOTFOUND("Letter not found in puzzle or was already guessed!"),
+    GUESSVOWEL("Please Guess a Vowel!"),
+    GUESSCONSONANT("Please Guess a Consonant!"),
+    GUESSPUZZLE("Please type what you think the puzzle is!");
 
     private final String mainText;
 

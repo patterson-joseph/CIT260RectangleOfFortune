@@ -1,6 +1,7 @@
 package BYUI.CIT260.RectangleOfFortune.models;
 
 import BYUI.CIT260.RectangleOfFortune.Enums.GameType;
+import BYUI.CIT260.RectangleOfFortune.Enums.GuessType;
 import BYUI.CIT260.RectangleOfFortune.Interfaces.PuzzleInfo;
 import BYUI.CIT260.RectangleOfFortune.exceptions.RectangleOfFortuneException;
 import java.io.Serializable;
@@ -15,6 +16,7 @@ import BYUI.CIT260.RectangleOfFortune.views.PuzzleView_Small;
 public class Game implements Serializable{
     private int playerCount;
     private GameType gameType;
+    private GuessType guessType;
     private int currentPlayerNumberTurn;
     private int totalNumberOfTurns;
     
@@ -245,5 +247,19 @@ public class Game implements Serializable{
      */
     public void setNumberOfRounds(int numberOfRounds) {
         this.numberOfRounds = numberOfRounds;
+    }
+
+    /**
+     * @return the guessType
+     */
+    public GuessType getGuessType() {
+        return guessType;
+    }
+
+    /**
+     * @param guessType the guessType to set
+     */
+    public void setGuessType(GuessType guessType) {
+        this.guessType = guessType;
     }
 }
