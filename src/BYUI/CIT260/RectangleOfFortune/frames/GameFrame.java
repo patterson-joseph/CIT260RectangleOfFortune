@@ -68,11 +68,10 @@ public class GameFrame extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTPuzzle = new javax.swing.JTextArea();
-        jbGuessVowel = new javax.swing.JButton();
-        jScrollPane5 = new javax.swing.JScrollPane();
-        jTGuessVowel = new javax.swing.JTextArea();
         jScrollPane6 = new javax.swing.JScrollPane();
         jTMessages = new javax.swing.JTextArea();
+        jlSpinValue = new javax.swing.JLabel();
+        jlPlayerTurnDisplay = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Rectangle Of Fortune!");
@@ -165,16 +164,14 @@ public class GameFrame extends javax.swing.JFrame {
         jpPlayerTurnIndicatorLayout.setHorizontalGroup(
             jpPlayerTurnIndicatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpPlayerTurnIndicatorLayout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jlPlayerTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(0, 48, Short.MAX_VALUE))
         );
         jpPlayerTurnIndicatorLayout.setVerticalGroup(
             jpPlayerTurnIndicatorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpPlayerTurnIndicatorLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jlPlayerTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jlPlayerTurn, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jlPlayerRank.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
@@ -188,8 +185,7 @@ public class GameFrame extends javax.swing.JFrame {
         jTWinValue.setEditable(false);
         jTWinValue.setBackground(new java.awt.Color(153, 204, 255));
         jTWinValue.setColumns(20);
-        jTWinValue.setLineWrap(true);
-        jTWinValue.setRows(5);
+        jTWinValue.setRows(1);
         jTWinValue.setToolTipText("");
         jScrollPane3.setViewportView(jTWinValue);
 
@@ -220,20 +216,13 @@ public class GameFrame extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jbGuessVowel.setText("Make Guess");
-        jbGuessVowel.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jbGuessVowelActionPerformed(evt);
-            }
-        });
-
-        jTGuessVowel.setColumns(20);
-        jTGuessVowel.setRows(1);
-        jScrollPane5.setViewportView(jTGuessVowel);
-
         jTMessages.setColumns(20);
         jTMessages.setRows(5);
         jScrollPane6.setViewportView(jTMessages);
+
+        jlSpinValue.setText("Spin Value");
+
+        jlPlayerTurnDisplay.setText("Player Turn");
 
         javax.swing.GroupLayout jpBodyLayout = new javax.swing.GroupLayout(jpBody);
         jpBody.setLayout(jpBodyLayout);
@@ -248,49 +237,48 @@ public class GameFrame extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
-                                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpBodyLayout.createSequentialGroup()
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jpBodyLayout.createSequentialGroup()
-                                                .addComponent(jbGuess)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(190, 190, 190))
-                                            .addGroup(jpBodyLayout.createSequentialGroup()
-                                                .addComponent(jScrollPane6)
-                                                .addGap(52, 52, 52))))
-                                    .addGroup(jpBodyLayout.createSequentialGroup()
-                                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(8, 8, 8)
-                                        .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)))
-                                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jlPlayerRank, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(21, 21, 21))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
-                                .addComponent(jbGuessVowel)
+                            .addGroup(jpBodyLayout.createSequentialGroup()
+                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(239, 239, 239))))))
+                                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addGroup(jpBodyLayout.createSequentialGroup()
+                                        .addComponent(jbGuess)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(190, 190, 190))
+                                    .addGroup(jpBodyLayout.createSequentialGroup()
+                                        .addComponent(jScrollPane6)
+                                        .addGap(52, 52, 52))))
+                            .addGroup(jpBodyLayout.createSequentialGroup()
+                                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jlSpinValue, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(8, 8, 8)
+                                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jlPlayerTurnDisplay)
+                                    .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)))
+                        .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jlPlayerRank, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(21, 21, 21))))
         );
         jpBodyLayout.setVerticalGroup(
             jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpBodyLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jbGuessVowel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 178, Short.MAX_VALUE)
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jlPlayerRank, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
+                        .addComponent(jlSpinValue)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpBodyLayout.createSequentialGroup()
+                        .addComponent(jlPlayerTurnDisplay)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jpPlayerTurnIndicator, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2)
@@ -365,12 +353,6 @@ public class GameFrame extends javax.swing.JFrame {
             this.jTMessages.setText(GameMenuItems.LOWBALANCE.getText());
         }
     }//GEN-LAST:event_jbBuyVowelActionPerformed
-
-    private void jbGuessVowelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbGuessVowelActionPerformed
-        char guessedLetter = jTGuessVowel.getText().toUpperCase().charAt(0);
-        vowelGuess(guessedLetter);
-        
-    }//GEN-LAST:event_jbGuessVowelActionPerformed
        
     private void consonantGuess(char guessedLetter){
         GuessAConsonant guessAConsonant = new GuessAConsonant();
@@ -504,21 +486,20 @@ public class GameFrame extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTextArea jTGuess;
-    private javax.swing.JTextArea jTGuessVowel;
     private javax.swing.JTextArea jTMessages;
     private javax.swing.JTextArea jTPuzzle;
     private javax.swing.JTextArea jTWinValue;
     private javax.swing.JButton jbBuyVowel;
     private javax.swing.JButton jbGuess;
-    private javax.swing.JButton jbGuessVowel;
     private javax.swing.JButton jbQuitGame;
     private javax.swing.JButton jbSolvePuzzle;
     private javax.swing.JButton jbSpin;
     private javax.swing.JLabel jlPlayerRank;
     private javax.swing.JLabel jlPlayerTurn;
+    private javax.swing.JLabel jlPlayerTurnDisplay;
+    private javax.swing.JLabel jlSpinValue;
     private javax.swing.JPanel jpBody;
     private javax.swing.JPanel jpPlayerTurnIndicator;
     // End of variables declaration//GEN-END:variables
