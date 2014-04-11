@@ -61,5 +61,20 @@ public class Letter implements Serializable{
     public char getValue() {
         return value;
     }
-
+    
+    public String getStringValue() {
+        return value+"";
+    }
+    
+    public String showToWorld() {
+        String letter;
+        
+        if (isVisible) {
+            letter=Character.toString(value);
+        } else {
+            letter=" ";
+        }
+        return letter;
+    }
+      
 }

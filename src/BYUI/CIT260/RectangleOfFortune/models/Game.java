@@ -32,7 +32,7 @@ public class Game implements Serializable{
     private PuzzleInfo puzzleInfo;
     
     // default constructor
-    public Game() {
+    public Game() throws RectangleOfFortuneException {
         // initialize variables
         this.currentPlayerNumberTurn=0;
         this.startOfRoundPlayerNumber=1;
