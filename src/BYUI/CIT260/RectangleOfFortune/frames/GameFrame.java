@@ -362,22 +362,15 @@ public class GameFrame extends javax.swing.JFrame {
             if(correctLetters > 0){
                 game.getCurrentPlayer().setPlayerRoundBank(game.getSpinner().getCurrentSpinValue().getValue(),correctLetters);           
                 this.jTMessages.setText("There are " + correctLetters + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
-                try {
-                    this.initializeForm();
-                } catch (RectangleOfFortuneException ex) {
-                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                callInit();
             } else {
                 game.changeCurrentPlayerTurn();
                 this.jTMessages.setText(GameMenuItems.LETTERNOTFOUND.getText());
-                try {
-                    this.initializeForm();
-                } catch (RectangleOfFortuneException ex) {
-                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                callInit();
             }
         }
     }
+    
     private void vowelGuess(char guessedLetter){
         GuessAVowel guessAVowel = new GuessAVowel();
         boolean validLetter = guessAVowel.getInput(guessedLetter);
@@ -386,19 +379,11 @@ public class GameFrame extends javax.swing.JFrame {
             if(correctLetters > 0){
                 game.getCurrentPlayer().setPlayerRoundBank(-250,1);           
                 this.jTMessages.setText("There are " + correctLetters + " " + guessedLetter + "'s. Your bank total is now: $" + game.getCurrentPlayer().getPlayerRoundBank());
-                try {
-                    this.initializeForm();
-                } catch (RectangleOfFortuneException ex) {
-                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                callInit();
             } else {
                 game.changeCurrentPlayerTurn();
                 this.jTMessages.setText(GameMenuItems.LETTERNOTFOUND.getText());
-                try {
-                    this.initializeForm();
-                } catch (RectangleOfFortuneException ex) {
-                    Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                callInit();
             }
         }
     }
@@ -417,6 +402,8 @@ public class GameFrame extends javax.swing.JFrame {
                 + GameMenuItems.EXITMESSAGE.getText());
         } else {
             this.jTMessages.setText(GameMenuItems.WRONGGUESS.getText());
+            game.changeCurrentPlayerTurn();
+            callInit();
         }        
     }
     
@@ -434,7 +421,15 @@ public class GameFrame extends javax.swing.JFrame {
 //        this.jTMessages.setText(null);
     }
             
+    private void callInit(){
+         try {
+            this.initializeForm();
+         } catch (RectangleOfFortuneException ex) {
+            Logger.getLogger(GameFrame.class.getName()).log(Level.SEVERE, null, ex);
+         }
+    }
         
+    
 //    private void setGuessVowelControlVisibility(boolean visible){
 //        this.jbGuessVowel.setEnabled(visible);
 //        this.jTGuessVowel.setEnabled(visible);
